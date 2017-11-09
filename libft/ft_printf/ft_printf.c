@@ -5,15 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/19 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2016/05/19 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2017/11/09 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-void						ft_printf()
-{
-
+void					ft_printf(void){
+	printf("holla back youngin");
 }
