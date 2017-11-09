@@ -89,6 +89,7 @@ SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_putstrtab.c \
 		ft_libft/ft_tablen.c \
 		ft_printf/ft_printf.c \
+		ft_printf/check_format.c \
 
 
 OBJ = $(SRC:.c=.o)

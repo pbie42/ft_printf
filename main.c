@@ -13,7 +13,6 @@
 #include "ft_printf.h"
 
 int						main(void){
-	printf("sup fool");
-	ft_printf();
+	ft_printf("format is: % is by % Modest % Mouse\n");
 	return (0);
 }

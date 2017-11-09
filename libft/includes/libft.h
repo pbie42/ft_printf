@@ -58,6 +58,56 @@
 
 typedef int					t_bool;
 
+typedef struct		s_pf_flags
+{
+	t_bool			minus;
+	t_bool			plus;
+	t_bool			hash;
+	t_bool			zero;
+}					t_pf_flags;
+
+typedef struct		s_pf_lmods
+{
+	t_bool			hh;
+	t_bool			h;
+	t_bool			l;
+	t_bool			ll;
+	t_bool			j;
+	t_bool			z;
+}					t_pf_lmods;
+
+typedef struct		s_pf_cspecs
+{
+	t_bool			s;
+	t_bool			lg_s;
+	t_bool			p;
+	t_bool			d;
+	t_bool			lg_d;
+	t_bool			i;
+	t_bool			o;
+	t_bool			lg_o;
+	t_bool			u;
+	t_bool			lg_u;
+	t_bool			x;
+	t_bool			lg_x;
+	t_bool			c;
+	t_bool			lg_c;
+}					t_pf_cspecs;
+
+typedef struct		s_pf_item
+{
+	t_pf_flags		*flags;
+	t_pf_lmods		*lenmods;
+	t_pf_cspecs		*cspecs;
+
+}					t_pf_item;
+
+typedef struct		s_pf
+{
+	int				pos;
+	const char		*format;
+}					t_pf;
+
 typedef struct		s_list
 {
 	void			*content;
@@ -148,6 +198,7 @@ int					ft_tablen(char **tab);
 void				ft_exit(const char *message);
 char				**ft_buildtab(int j);
 int					ft_includes_char(char *s, char c);
-void				ft_printf(void);
+void				ft_printf(const char *format);
+void					check_format(const char *format);
 
 #endif

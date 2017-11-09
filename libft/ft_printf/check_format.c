@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   check_format.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,23 +12,15 @@
 
 #include "libft.h"
 
-// void					*handle_arg(t_pf *pf)
-// {
-
-// }
-
-void					ft_printf(const char *format)
+void					check_format(const char *format)
 {
-	t_pf				*pf;
+	int				count;
+	int				i;
 
-	pf = (t_pf *)malloc(sizeof(t_pf) * 1);
-	pf->pos = -1;
-	pf->format = format;
-	check_format(pf->format);
-	while(pf->format[++pf->pos])
-	{
-		if (pf->format[pf->pos] == '%')
-			;
-		// printf("hello %c\n", pf->format[pf->pos]);
-	}
+	count = 0;
+	i = -1;
+	while(format[++i])
+		if (format[i] == '%')
+			count++;
+	printf("%d", count);
 }
