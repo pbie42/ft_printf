@@ -12,23 +12,24 @@
 
 #include "libft.h"
 
-// void					*handle_arg(t_pf *pf)
-// {
-
-// }
-
 void					ft_printf(const char *format)
 {
 	t_pf				*pf;
 
+	printf("%-100d !\n", 999);
 	pf = (t_pf *)malloc(sizeof(t_pf) * 1);
 	pf->pos = -1;
 	pf->format = format;
 	check_format(pf->format);
 	while(pf->format[++pf->pos])
 	{
-		if (pf->format[pf->pos] == '%')
-			;
-		// printf("hello % %c\n", pf->format[pf->pos]);
+		if (pf->format[pf->pos] == '%' && pf->format[pf->pos + 1]
+			&& pf->format[pf->pos + 1] != '%')
+				handle_identifier(pf);
+		else if (pf->format[pf->pos] == '%' && pf->format[pf->pos + 1]
+			&& pf->format[pf->pos + 1] == '%')
+			ft_putchar(pf->format[++pf->pos]);
+		else
+			ft_putchar(pf->format[pf->pos]);
 	}
 }

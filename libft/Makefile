@@ -40,6 +40,7 @@ SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_putchar.c \
 		ft_libft/ft_putchar_fd.c \
 		ft_libft/ft_putendl.c \
+		ft_libft/ft_putendlnbr.c \
 		ft_libft/ft_putendl_fd.c \
 		ft_libft/ft_putnbr.c \
 		ft_libft/ft_putnbr_fd.c \
@@ -89,7 +90,18 @@ SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_putstrtab.c \
 		ft_libft/ft_tablen.c \
 		ft_printf/ft_printf.c \
-		ft_printf/check_format.c \
+		ft_printf/utils/check_format.c \
+		ft_printf/utils/ft_isconversion.c \
+		ft_printf/utils/ft_isflag.c \
+		ft_printf/utils/ft_islmod.c \
+		ft_printf/utils/print_pfi.c \
+		ft_printf/handlers/handle_flag.c \
+		ft_printf/handlers/handle_identifier.c \
+		ft_printf/handlers/handle_field_width.c \
+		ft_printf/handlers/handle_precision.c \
+		ft_printf/handlers/handle_len_mod.c \
+		ft_printf/handlers/handle_conversion.c \
+		ft_printf/inits/init_pfi.c \
 
 
 OBJ = $(SRC:.c=.o)

@@ -101,6 +101,8 @@ typedef struct		s_pf_item
 	t_pf_flags		*flags;
 	t_pf_lmods		*lenmods;
 	t_pf_cspecs		*cspecs;
+	int				field_w;
+	int				precision;
 
 }					t_pf_item;
 
@@ -200,7 +202,20 @@ int					ft_tablen(char **tab);
 void				ft_exit(const char *message);
 char				**ft_buildtab(int j);
 int					ft_includes_char(char *s, char c);
+void				ft_putendlnbr(char *s, int num);
 void				ft_printf(const char *format);
 void				check_format(const char *format);
+int					ft_isconversion(char c);
+int					ft_islmod(char c);
+int					ft_isflag(char c);
+void				handle_flag(t_pf *pf, t_pf_item *pfi);
+void				handle_identifier(t_pf *pf);
+void				handle_precision(t_pf *pf, t_pf_item *pfi);
+void				handle_field_width(t_pf *pf, t_pf_item *pfi);
+void				handle_len_mod(t_pf *pf, t_pf_item *pfi);
+void				handle_conversion(t_pf *pf, t_pf_item *pfi);
+void				init_pfi(t_pf_item *pfi);
+void					print_pfi(t_pf_item *pfi);
+
 
 #endif

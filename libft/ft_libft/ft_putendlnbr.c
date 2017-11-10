@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendlnbr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/09 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2017/M/ 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2017/M/ 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int						main(void){
-	ft_printf("%-500.100#hhc abcdefg\n");
-	return (0);
+void					ft_putendlnbr(char *s, int num)
+{
+	ft_putstr(s);
+	ft_putnbr(num);
+	ft_putchar('\n');
 }
