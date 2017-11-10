@@ -22,5 +22,10 @@ void					check_format(const char *format)
 	while(format[++i])
 		if (format[i] == '%')
 			count++;
+	if (count % 2 == 0)
+		ft_exit("Incorrect format with % signs");
+	i = -1;
+	// while(format[++i])
+	// 	if (format[i] == '%' && format[i + 1] && format[i])
 	printf("%d", count);
 }

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_select
+NAME = ft_printf
 
 CFLAGS = -g -Wall -Werror -Wextra -I includes
 

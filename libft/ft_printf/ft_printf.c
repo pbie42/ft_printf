@@ -29,6 +29,6 @@ void					ft_printf(const char *format)
 	{
 		if (pf->format[pf->pos] == '%')
 			;
-		// printf("hello %c\n", pf->format[pf->pos]);
+		printf("hello % %c\n", pf->format[pf->pos]);
 	}
 }
