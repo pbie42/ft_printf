@@ -58,6 +58,8 @@
 
 typedef int					t_bool;
 
+typedef int					t_bool;
+
 typedef struct		s_pf_flags
 {
 	t_bool			minus;
@@ -199,6 +201,6 @@ void				ft_exit(const char *message);
 char				**ft_buildtab(int j);
 int					ft_includes_char(char *s, char c);
 void				ft_printf(const char *format);
-void					check_format(const char *format);
+void				check_format(const char *format);
 
 #endif

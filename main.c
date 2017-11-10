@@ -13,6 +13,6 @@
 #include "ft_printf.h"
 
 int						main(void){
-	ft_printf("format is: % is by % Modest % Mouse\n");
+	ft_printf("format is: % %% is by Modest Mouse\n");
 	return (0);
 }

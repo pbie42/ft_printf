@@ -14,7 +14,7 @@ NAME = ft_printf
 
 CFLAGS = -g -Wall -Werror -Wextra -I includes
 
-SRC = main.c
+SRC = main.c \
 
 
 OBJ = $(SRC:.c=.o)

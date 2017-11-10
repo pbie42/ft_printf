@@ -65,7 +65,5 @@
 # include "../libft/includes/libft.h"
 # include <term.h>
 
-typedef int					t_bool;
-
 
 #endif
