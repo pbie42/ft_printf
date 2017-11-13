@@ -22,7 +22,7 @@ void					handle_identifier(t_pf *pf)
 	pfi->field_w = 0;
 	pfi->precision = 0;
 	init_pfi(pfi);
-	if (ft_isflag(pf->format[pf->pos]))
+	while (ft_isflag(pf->format[pf->pos]))
 	{
 		ft_putendl("isflag");
 		ft_putchar(pf->format[pf->pos]);
@@ -53,4 +53,5 @@ void					handle_identifier(t_pf *pf)
 		handle_conversion(pf, pfi);
 	}
 	print_pfi(pfi);
+	handle_conditions(pfi);
 }

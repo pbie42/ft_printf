@@ -13,6 +13,6 @@
 #include "ft_printf.h"
 
 int						main(void){
-	ft_printf("%-500.100#hhc abcdefg\n");
+	ft_printf("%#-+500.100hhd abcdefg\n");
 	return (0);
 }

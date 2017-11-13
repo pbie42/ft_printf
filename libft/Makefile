@@ -101,6 +101,7 @@ SRC = ft_libft/ft_atoi.c \
 		ft_printf/handlers/handle_precision.c \
 		ft_printf/handlers/handle_len_mod.c \
 		ft_printf/handlers/handle_conversion.c \
+		ft_printf/handlers/handle_conditions.c \
 		ft_printf/inits/init_pfi.c \
 
 

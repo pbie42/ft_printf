@@ -16,7 +16,7 @@ void					ft_printf(const char *format)
 {
 	t_pf				*pf;
 
-	printf("%-100d !\n", 999);
+	printf("%+0100d !\n", 999);
 	pf = (t_pf *)malloc(sizeof(t_pf) * 1);
 	pf->pos = -1;
 	pf->format = format;

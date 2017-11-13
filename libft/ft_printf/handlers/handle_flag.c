@@ -15,15 +15,39 @@
 void					handle_flag(t_pf *pf, t_pf_item *pfi)
 {
 	if (pf->format[pf->pos] == '-')
-		while(pf->format[pf->pos++] == '-')
+	{
+		ft_putendl("is minus");
+		while(pf->format[pf->pos] == '-')
+		{
 			pfi->flags->minus = TRUE;
+			pf->pos++;
+		}
+	}
 	if (pf->format[pf->pos] == '+')
-		while(pf->format[pf->pos++] == '+')
+	{
+		ft_putendl("is plus");
+		while(pf->format[pf->pos] == '+')
+		{
 			pfi->flags->plus = TRUE;
+			pf->pos++;
+		}
+	}
 	if (pf->format[pf->pos] == '#')
-		while(pf->format[pf->pos++] == '#')
+	{
+		ft_putendl("is hash");
+		while(pf->format[pf->pos] == '#')
+		{
 			pfi->flags->hash = TRUE;
+			pf->pos++;
+		}
+	}
 	if (pf->format[pf->pos] == '0')
-		while(pf->format[pf->pos++] == '0')
+	{
+		ft_putendl("is zero");
+		while(pf->format[pf->pos] == '0')
+		{
 			pfi->flags->zero = TRUE;
+			pf->pos++;
+		}
+	}
 }

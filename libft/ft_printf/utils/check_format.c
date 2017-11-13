@@ -26,6 +26,8 @@ void					check_format(const char *format)
 			count++;
 	if (count == 0)
 		return ;
+	if (count == 1)
+		return ;
 	if (count % 2 == 0)
 		ft_exit("Incorrect format with % signs");
 	i = -1;

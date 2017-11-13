@@ -216,6 +216,7 @@ void				handle_len_mod(t_pf *pf, t_pf_item *pfi);
 void				handle_conversion(t_pf *pf, t_pf_item *pfi);
 void				init_pfi(t_pf_item *pfi);
 void					print_pfi(t_pf_item *pfi);
+void					handle_conditions(t_pf_item *pfi);
 
 
 #endif
