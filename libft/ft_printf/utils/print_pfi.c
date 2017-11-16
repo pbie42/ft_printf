@@ -19,6 +19,7 @@ void					print_pfi(t_pf_item *pfi)
 	ft_putendlnbr("flags->zero: ", pfi->flags->zero);
 	ft_putendlnbr("flags->plus: ", pfi->flags->plus);
 	ft_putendlnbr("flags->minus: ", pfi->flags->minus);
+	ft_putendlnbr("flags->space: ", pfi->flags->space);
 	ft_putchar('\n');
 	ft_putendl("FIELD WIDTH");
 	ft_putendlnbr("field_w: ", pfi->field_w);

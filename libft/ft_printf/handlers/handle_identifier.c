@@ -12,7 +12,29 @@
 
 #include "libft.h"
 
-void					handle_identifier(t_pf *pf)
+void					print_identifier(t_pf_item *pfi, va_list args)
+{
+	t_types			*types;
+
+	if(!(types = (t_types *)malloc(sizeof(t_types) * 1)))
+		ft_exit("malloc error handle_identifier");
+	if (pfi->cspecs->c)
+	{
+		types->i = va_arg(args, int);
+		ft_putchar(types->i);
+	}
+	else if (pfi->cspecs->d || pfi->cspecs->i)
+		print_int(pfi, va_arg(args, int));
+	else if (pfi->cspecs->s)
+	{
+		types->s = ft_strdup(va_arg(args, char *));
+		ft_putstr(types->s);
+		free(types->s);
+	}
+	free(types);
+}
+
+void					handle_identifier(t_pf *pf, va_list args)
 {
 	t_pf_item		*pfi;
 
@@ -52,6 +74,10 @@ void					handle_identifier(t_pf *pf)
 		ft_putchar(pf->format[pf->pos]);
 		handle_conversion(pf, pfi);
 	}
+	else
+		pfi->c_error = pf->format[pf->pos];
 	print_pfi(pfi);
 	handle_conditions(pfi);
+	print_identifier(pfi, args);
+	free(pfi);
 }

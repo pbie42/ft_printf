@@ -14,6 +14,12 @@
 
 void					handle_flag(t_pf *pf, t_pf_item *pfi)
 {
+	while (pf->format[pf->pos] == ' ')
+	{
+		ft_putendl("space");
+		pfi->flags->space = TRUE;
+		pf->pos++;
+	}
 	if (pf->format[pf->pos] == '-')
 	{
 		ft_putendl("is minus");

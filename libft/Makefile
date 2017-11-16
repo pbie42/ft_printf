@@ -90,11 +90,13 @@ SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_putstrtab.c \
 		ft_libft/ft_tablen.c \
 		ft_printf/ft_printf.c \
+		ft_printf/output/print_int.c \
 		ft_printf/utils/check_format.c \
 		ft_printf/utils/ft_isconversion.c \
 		ft_printf/utils/ft_isflag.c \
 		ft_printf/utils/ft_islmod.c \
 		ft_printf/utils/print_pfi.c \
+		ft_printf/utils/lengths/int_length.c \
 		ft_printf/handlers/handle_flag.c \
 		ft_printf/handlers/handle_identifier.c \
 		ft_printf/handlers/handle_field_width.c \

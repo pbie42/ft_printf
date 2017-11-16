@@ -12,24 +12,26 @@
 
 #include "libft.h"
 
-void					ft_printf(const char *format)
+void					ft_printf(const char *format, ...)
 {
 	t_pf				*pf;
+	va_list			args;
 
-	printf("%+0100d !\n", 999);
+	va_start(args, format);
 	pf = (t_pf *)malloc(sizeof(t_pf) * 1);
 	pf->pos = -1;
 	pf->format = format;
-	check_format(pf->format);
+	// check_format(pf->format);
 	while(pf->format[++pf->pos])
 	{
 		if (pf->format[pf->pos] == '%' && pf->format[pf->pos + 1]
 			&& pf->format[pf->pos + 1] != '%')
-				handle_identifier(pf);
+				handle_identifier(pf, args);
 		else if (pf->format[pf->pos] == '%' && pf->format[pf->pos + 1]
 			&& pf->format[pf->pos + 1] == '%')
 			ft_putchar(pf->format[++pf->pos]);
 		else
 			ft_putchar(pf->format[pf->pos]);
 	}
+	va_end(args);
 }

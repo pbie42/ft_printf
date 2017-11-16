@@ -66,6 +66,7 @@ typedef struct		s_pf_flags
 	t_bool			plus;
 	t_bool			hash;
 	t_bool			zero;
+	t_bool			space;
 }					t_pf_flags;
 
 typedef struct		s_pf_lmods
@@ -101,6 +102,7 @@ typedef struct		s_pf_item
 	t_pf_flags		*flags;
 	t_pf_lmods		*lenmods;
 	t_pf_cspecs		*cspecs;
+	char				c_error;
 	int				field_w;
 	int				precision;
 
@@ -111,6 +113,14 @@ typedef struct		s_pf
 	int				pos;
 	const char		*format;
 }					t_pf;
+
+typedef struct		s_types
+{
+	int				i;
+	long				l;
+	char				c;
+	char				*s;
+}					t_types;
 
 typedef struct		s_list
 {
@@ -203,13 +213,13 @@ void				ft_exit(const char *message);
 char				**ft_buildtab(int j);
 int					ft_includes_char(char *s, char c);
 void				ft_putendlnbr(char *s, int num);
-void				ft_printf(const char *format);
+void				ft_printf(const char *format, ...);
 void				check_format(const char *format);
 int					ft_isconversion(char c);
 int					ft_islmod(char c);
 int					ft_isflag(char c);
 void				handle_flag(t_pf *pf, t_pf_item *pfi);
-void				handle_identifier(t_pf *pf);
+void				handle_identifier(t_pf *pf, va_list args);
 void				handle_precision(t_pf *pf, t_pf_item *pfi);
 void				handle_field_width(t_pf *pf, t_pf_item *pfi);
 void				handle_len_mod(t_pf *pf, t_pf_item *pfi);
@@ -217,6 +227,8 @@ void				handle_conversion(t_pf *pf, t_pf_item *pfi);
 void				init_pfi(t_pf_item *pfi);
 void					print_pfi(t_pf_item *pfi);
 void					handle_conditions(t_pf_item *pfi);
+void					print_int(t_pf_item *pfi, int num);
+int					int_length(int num);
 
 
 #endif

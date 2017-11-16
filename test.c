@@ -14,6 +14,6 @@
 
 int					main(void)
 {
-	printf("%04.2d\n", 500);
+	printf("% s\n", "hello");
 	return (0);
 }

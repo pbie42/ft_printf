@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   long_length.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/09 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2017/11/16 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2017/11/16 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int						main(void){
-	long					s;
-
-
-	printf("% -5i!\n", 1);
-	if (__builtin_types_compatible_p(__typeof__(s), long)) {
-		puts("long");
-	} else if (__builtin_types_compatible_p(__typeof__(s), char*)) {
-			puts("str");
+int					long_length(long num)
+{
+	int				counter;
+	
+	count = 0;
+	while (num > 0)
+	{
+		num = num / 10;
+		counter ++;
 	}
-	ft_printf("%5d\n", 500);
-	return (0);
+	return (counter);
 }
