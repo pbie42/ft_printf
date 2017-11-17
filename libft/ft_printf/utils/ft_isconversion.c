@@ -15,7 +15,7 @@
 int					ft_isconversion(char c)
 {
 	if (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D' || c == 'i' ||
-		c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' || c == 'x' ||
+		c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' || c == 'X' ||
 		c == 'c' || c == 'C')
 		return (1);
 	return (0);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_address.c                                    :+:      :+:    :+:   */
+/*   ft_strlower.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,8 +12,12 @@
 
 #include "libft.h"
 
-void					print_address(t_pf_item *pfi, long int n)
+char					*ft_strlower(char *s)
 {
-	ft_putstr("0x");
-	print_hex(pfi, n);
+	int				i;
+	
+		i = -1;
+		while (s[++i])
+			s[i] = ft_tolower(s[i]);
+		return (s);
 }

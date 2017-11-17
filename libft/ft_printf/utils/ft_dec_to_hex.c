@@ -12,29 +12,40 @@
 
 #include "libft.h"
 
-void					ft_dec_to_hex(int n)
+long int					ft_dec_to_hex_bis(char *hex, long int n)
+{
+	int				temp;
+	char				*tmp;
+
+	temp = 0;
+	temp = n % 16;
+	tmp = (char *)malloc(sizeof(char) * 1 + 1);
+	if (temp < 10)
+	{
+		tmp[0] = temp + 48;
+		tmp[1] = '\0';
+		hex = ft_strcat(hex, tmp);
+	}
+	else
+	{
+		tmp[0] = temp + 55;
+		tmp[1] = '\0';
+		hex = ft_strcat(hex, tmp);
+	}
+	free(tmp);
+	n = n / 16;
+	return (n);
+}
+
+char					*ft_dec_to_hex(long int n)
 {
 	char				*hex;
-	int				i;
-	int				temp;
 
-	i = 0;
+	hex = (char *)malloc(sizeof(char) * 1 + 1);
+	n = ft_dec_to_hex_bis(hex, n);
 	while (n != 0)
 	{
-		temp = 0;
-		temp = n % 16;
-		if (temp < 10)
-		{
-			hex[i] = temp + 48;
-			i++;
-		}
-		else
-		{
-			hex[i] = temp + 55;
-			i++;
-		}
-		n = n / 16;
+		n = ft_dec_to_hex_bis(hex, n);
 	}
-	ft_strrev(hex);
-	ft_putchar('\n');
+	return (hex);
 }

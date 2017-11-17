@@ -229,11 +229,14 @@ void					print_pfi(t_pf_item *pfi);
 void					handle_conditions(t_pf_item *pfi);
 void					print_int(t_pf_item *pfi, int num);
 void					print_long(t_pf_item *pfi, long num);
-void					print_address(va_list args);
+void					print_address(t_pf_item *pfi, long int n);
+void					print_hex(t_pf_item *pfi, long int n);
 int					int_length(int num);
 int					long_length(long num);
-void					ft_dec_to_hex(int n);
+char					*ft_dec_to_hex(long int n);
 void					ft_strrev(char *s);
+char					*ft_strupper(char *s);
+char					*ft_strlower(char *s);
 
 
 #endif

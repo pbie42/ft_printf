@@ -31,10 +31,10 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 		ft_putstr(types->s);
 		free(types->s);
 	}
-	else if (pfi->cspecs->x)
-		ft_dec_to_hex(va_arg(args, int));
+	else if (pfi->cspecs->x || pfi->cspecs->lg_x)
+		print_hex(pfi, va_arg(args, long int));
 	else if (pfi->cspecs->p)
-		print_address(args);
+		print_address(pfi, va_arg(args, long int));
 	free(types);
 }
 

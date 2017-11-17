@@ -31,7 +31,7 @@ int						main(void){
 	// 	puts("str");
 	// }
 	printf("%p\n", (void *)&i);
-	printf("printf displays: %x\n", i);
-	ft_printf("%x\n", i);
+	printf("printf displays: %X\n", i);
+	ft_printf("%p\n", (void *)&i);
 	return (0);
 }
