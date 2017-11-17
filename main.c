@@ -30,7 +30,7 @@ int						main(void){
 	// } else if (__builtin_types_compatible_p(__typeof__(s), char*)) {
 	// 	puts("str");
 	// }
-	printf("%10s!\n", "Hello");
-	ft_printf("%10s!\n", "Hello");
+	printf("octal is: %o!\n", i);
+	ft_printf("%o!\n", i);
 	return (0);
 }

@@ -27,6 +27,8 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 		print_int(pfi, va_arg(args, int));
 	else if (pfi->cspecs->s)
 		print_string(pfi, va_arg(args, char *));
+	else if (pfi->cspecs->o)
+		print_oct(pfi, va_arg(args, long int));
 	else if (pfi->cspecs->x || pfi->cspecs->lg_x)
 		print_hex(pfi, va_arg(args, long int));
 	else if (pfi->cspecs->p)

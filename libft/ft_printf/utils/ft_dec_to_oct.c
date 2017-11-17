@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dec_to_hex.c                                    :+:      :+:    :+:   */
+/*   ft_dec_to_oct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,13 @@
 
 #include "libft.h"
 
-long int					ft_dec_to_hex_bis(char *hex, long int n)
+long int					ft_dec_to_oct_bis(char *hex, long int n)
 {
 	int				temp;
 	char				*tmp;
 
 	temp = 0;
-	temp = n % 16;
+	temp = n % 8;
 	tmp = (char *)malloc(sizeof(char) * 1 + 1);
 	if (temp < 10)
 	{
@@ -33,17 +33,17 @@ long int					ft_dec_to_hex_bis(char *hex, long int n)
 		hex = ft_strcat(hex, tmp);
 	}
 	free(tmp);
-	n = n / 16;
+	n = n / 8;
 	return (n);
 }
 
-char					*ft_dec_to_hex(long int n)
+char					*ft_dec_to_oct(long int n)
 {
 	char				*hex;
-
+	
 	hex = (char *)malloc(sizeof(char) * 1 + 1);
-	n = ft_dec_to_hex_bis(hex, n);
+	n = ft_dec_to_oct_bis(hex, n);
 	while (n != 0)
-		n = ft_dec_to_hex_bis(hex, n);
+		n = ft_dec_to_oct_bis(hex, n);
 	return (hex);
 }
