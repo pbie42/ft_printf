@@ -20,8 +20,8 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 		ft_exit("malloc error handle_identifier");
 	if (pfi->cspecs->c)
 	{
-		types->i = va_arg(args, int);
-		ft_putchar(types->i);
+		types->c = (unsigned char)va_arg(args, int);
+		ft_putchar(types->c);
 	}
 	else if (pfi->cspecs->d || pfi->cspecs->i)
 		print_int(pfi, va_arg(args, int));
@@ -31,6 +31,10 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 		ft_putstr(types->s);
 		free(types->s);
 	}
+	else if (pfi->cspecs->x)
+		ft_dec_to_hex(va_arg(args, int));
+	else if (pfi->cspecs->p)
+		print_address(args);
 	free(types);
 }
 
@@ -44,6 +48,11 @@ void					handle_identifier(t_pf *pf, va_list args)
 	pfi->field_w = 0;
 	pfi->precision = 0;
 	init_pfi(pfi);
+	ft_putendl("before handle_identifier while");
+	ft_putstr("the current letter is: ");
+	ft_putchar(pf->format[pf->pos]);
+	ft_putchar('!');
+	ft_putchar('\n');
 	while (ft_isflag(pf->format[pf->pos]))
 	{
 		ft_putendl("isflag");
@@ -71,6 +80,10 @@ void					handle_identifier(t_pf *pf, va_list args)
 	if (ft_isconversion(pf->format[pf->pos]))
 	{
 		ft_putendl("isconversion");
+		ft_putstr("the current letter is: ");
+		ft_putchar(pf->format[pf->pos]);
+		ft_putchar('!');
+		ft_putchar('\n');
 		ft_putchar(pf->format[pf->pos]);
 		handle_conversion(pf, pfi);
 	}

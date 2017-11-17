@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   long_length.c                                      :+:      :+:    :+:   */
+/*   ft_dec_to_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/16 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2017/11/17 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2017/11/17 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					long_length(long num)
+void					ft_dec_to_hex(int n)
 {
-	int				counter;
-	
-	counter = 0;
-	while (num > 0)
+	char				*hex;
+	int				i;
+	int				temp;
+
+	i = 0;
+	while (n != 0)
 	{
-		num = num / 10;
-		counter ++;
+		temp = 0;
+		temp = n % 16;
+		if (temp < 10)
+		{
+			hex[i] = temp + 48;
+			i++;
+		}
+		else
+		{
+			hex[i] = temp + 55;
+			i++;
+		}
+		n = n / 16;
 	}
-	return (counter);
+	ft_strrev(hex);
+	ft_putchar('\n');
 }

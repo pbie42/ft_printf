@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   long_length.c                                      :+:      :+:    :+:   */
+/*   print_long.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,15 +12,37 @@
 
 #include "libft.h"
 
-int					long_length(long num)
+void					handle_spaces(t_pf_item *pfi, long num, t_bool minus)
 {
-	int				counter;
-	
-	counter = 0;
-	while (num > 0)
+	int				len;
+
+	len = long_length(num);
+	if (num < 0)
+		len += 1;
+	if (pfi->flags->space && num >= 0)
 	{
-		num = num / 10;
-		counter ++;
+		len += 1;
+		ft_putchar(' ');
 	}
-	return (counter);
+	if (minus)
+		ft_putnbr(num);
+	if (pfi->field_w - len > 0)
+		while (pfi->field_w > len)
+		{
+			ft_putchar(' ');
+			pfi->field_w--;
+		}
+}
+
+void					print_long(t_pf_item *pfi, long num)
+{
+	if (pfi->field_w > 0 && !pfi->flags->minus)
+	{
+		handle_spaces(pfi, num, FALSE);
+		ft_putnbr(num);
+	}
+	else if (pfi->field_w > 0 && pfi->flags->minus)
+		handle_spaces(pfi, num, TRUE);
+	else
+		ft_putnbr(num);
 }

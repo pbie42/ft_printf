@@ -14,6 +14,7 @@
 
 void					handle_flag(t_pf *pf, t_pf_item *pfi)
 {
+	ft_putendl("in handle flag");
 	while (pf->format[pf->pos] == ' ')
 	{
 		ft_putendl("space");

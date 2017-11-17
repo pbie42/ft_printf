@@ -20,6 +20,7 @@ void					init_flags(t_pf_item *pfi)
 	pfi->flags->plus = FALSE;
 	pfi->flags->hash = FALSE;
 	pfi->flags->zero = FALSE;
+	pfi->flags->space = FALSE;
 }
 
 void					init_lmods(t_pf_item *pfi)

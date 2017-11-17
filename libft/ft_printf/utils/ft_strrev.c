@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   long_length.c                                      :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/16 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2017/11/17 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2017/11/17 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					long_length(long num)
+void					ft_strrev(char *s)
 {
-	int				counter;
-	
-	counter = 0;
-	while (num > 0)
-	{
-		num = num / 10;
-		counter ++;
-	}
-	return (counter);
+	int				len;
+
+	len = ft_strlen(s);
+	while (len >= 0)
+		ft_putchar(s[len--]);
 }

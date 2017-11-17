@@ -48,7 +48,7 @@ t_bool				handle_conversion_bis(t_pf *pf, t_pf_item *pfi)
 	else if (pf->format[pf->pos] == 'S')
 		pfi->cspecs->lg_s = TRUE;
 	else if (pf->format[pf->pos] == 'p')
-		pfi->cspecs->s = TRUE;
+		pfi->cspecs->p = TRUE;
 	else if (pf->format[pf->pos] == 'd')
 		pfi->cspecs->d = TRUE;
 	else if (pf->format[pf->pos] == 'D')

@@ -118,7 +118,7 @@ typedef struct		s_types
 {
 	int				i;
 	long				l;
-	char				c;
+	unsigned char	c;
 	char				*s;
 }					t_types;
 
@@ -228,7 +228,12 @@ void				init_pfi(t_pf_item *pfi);
 void					print_pfi(t_pf_item *pfi);
 void					handle_conditions(t_pf_item *pfi);
 void					print_int(t_pf_item *pfi, int num);
+void					print_long(t_pf_item *pfi, long num);
+void					print_address(va_list args);
 int					int_length(int num);
+int					long_length(long num);
+void					ft_dec_to_hex(int n);
+void					ft_strrev(char *s);
 
 
 #endif
