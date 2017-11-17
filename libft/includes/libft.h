@@ -231,6 +231,7 @@ void					print_int(t_pf_item *pfi, int num);
 void					print_long(t_pf_item *pfi, long num);
 void					print_address(t_pf_item *pfi, long int n);
 void					print_hex(t_pf_item *pfi, long int n);
+void					print_string(t_pf_item *pfi, char *s);
 int					int_length(int num);
 int					long_length(long num);
 char					*ft_dec_to_hex(long int n);

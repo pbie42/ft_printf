@@ -26,11 +26,7 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 	else if (pfi->cspecs->d || pfi->cspecs->i)
 		print_int(pfi, va_arg(args, int));
 	else if (pfi->cspecs->s)
-	{
-		types->s = ft_strdup(va_arg(args, char *));
-		ft_putstr(types->s);
-		free(types->s);
-	}
+		print_string(pfi, va_arg(args, char *));
 	else if (pfi->cspecs->x || pfi->cspecs->lg_x)
 		print_hex(pfi, va_arg(args, long int));
 	else if (pfi->cspecs->p)

@@ -30,8 +30,7 @@ int						main(void){
 	// } else if (__builtin_types_compatible_p(__typeof__(s), char*)) {
 	// 	puts("str");
 	// }
-	printf("%p\n", (void *)&i);
-	printf("printf displays: %X\n", i);
-	ft_printf("%p\n", (void *)&i);
+	printf("%10s!\n", "Hello");
+	ft_printf("%10s!\n", "Hello");
 	return (0);
 }
