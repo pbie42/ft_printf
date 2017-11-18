@@ -94,7 +94,9 @@ SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_strrev.c \
 		ft_libft/ft_strupper.c \
 		ft_printf/output/print_address.c \
+		ft_printf/output/print_char.c \
 		ft_printf/output/print_hex.c \
+		ft_printf/output/print_identifier.c \
 		ft_printf/output/print_int.c \
 		ft_printf/output/print_long.c \
 		ft_printf/output/print_oct.c \

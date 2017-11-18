@@ -24,6 +24,7 @@ void					handle_spaces(t_pf_item *pfi, int num, t_bool minus)
 		len += 1;
 		ft_putchar(' ');
 	}
+	pfi->bytes += len;
 	if (minus)
 		ft_putnbr(num);
 	if (pfi->field_w - len > 0)
@@ -31,6 +32,7 @@ void					handle_spaces(t_pf_item *pfi, int num, t_bool minus)
 		{
 			ft_putchar(' ');
 			pfi->field_w--;
+			pfi->bytes++;
 		}
 }
 
@@ -44,5 +46,8 @@ void					print_int(t_pf_item *pfi, int num)
 	else if (pfi->field_w > 0 && pfi->flags->minus)
 		handle_spaces(pfi, num, TRUE);
 	else
+	{
 		ft_putnbr(num);
+		pfi->bytes += int_length(num);
+	}
 }

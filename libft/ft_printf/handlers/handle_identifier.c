@@ -12,24 +12,6 @@
 
 #include "libft.h"
 
-void					print_identifier(t_pf_item *pfi, va_list args)
-{
-	if (pfi->cspecs->lg_c || (pfi->cspecs->c && pfi->lenmods->l))
-		print_wide(va_arg(args, wint_t));
-	else if (pfi->cspecs->c)
-		ft_putchar((unsigned char)va_arg(args, int));
-	else if (pfi->cspecs->d || pfi->cspecs->i)
-		print_int(pfi, va_arg(args, int));
-	else if (pfi->cspecs->s)
-		print_string(pfi, va_arg(args, char *));
-	else if (pfi->cspecs->o)
-		print_oct(pfi, va_arg(args, long int));
-	else if (pfi->cspecs->x || pfi->cspecs->lg_x)
-		print_hex(pfi, va_arg(args, long int));
-	else if (pfi->cspecs->p)
-		print_address(pfi, va_arg(args, long int));
-}
-
 void					handle_identifier(t_pf *pf, va_list args)
 {
 	t_pf_item		*pfi;
@@ -39,6 +21,7 @@ void					handle_identifier(t_pf *pf, va_list args)
 		ft_exit("malloc error handle_identifier");
 	pfi->field_w = 0;
 	pfi->precision = 0;
+	pfi->bytes = 0;
 	init_pfi(pfi);
 	ft_putendl("before handle_identifier while");
 	ft_putstr("the current letter is: ");
@@ -84,5 +67,6 @@ void					handle_identifier(t_pf *pf, va_list args)
 	print_pfi(pfi);
 	handle_conditions(pfi);
 	print_identifier(pfi, args);
+	pf->bytes += pfi->bytes;
 	free(pfi);
 }

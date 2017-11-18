@@ -108,6 +108,7 @@ typedef struct		s_pf_item
 	char				c_error;
 	int				field_w;
 	int				precision;
+	int				bytes;
 
 }					t_pf_item;
 
@@ -221,15 +222,17 @@ void				handle_field_width(t_pf *pf, t_pf_item *pfi);
 void				handle_len_mod(t_pf *pf, t_pf_item *pfi);
 void				handle_conversion(t_pf *pf, t_pf_item *pfi);
 void				init_pfi(t_pf_item *pfi);
-void					print_pfi(t_pf_item *pfi);
-void					handle_conditions(t_pf_item *pfi);
-void					print_int(t_pf_item *pfi, int num);
-void					print_long(t_pf_item *pfi, long num);
-void					print_address(t_pf_item *pfi, long int n);
-void					print_hex(t_pf_item *pfi, long int n);
-void					print_oct(t_pf_item *pfi, long int n);
-void					print_string(t_pf_item *pfi, char *s);
-void					print_wide(wint_t wide);
+void				print_pfi(t_pf_item *pfi);
+void				handle_conditions(t_pf_item *pfi);
+void				print_identifier(t_pf_item *pfi, va_list args);
+void				print_int(t_pf_item *pfi, int num);
+void				print_long(t_pf_item *pfi, long num);
+void				print_address(t_pf_item *pfi, long int n);
+void				print_hex(t_pf_item *pfi, long int n);
+void				print_oct(t_pf_item *pfi, long int n);
+void				print_char(t_pf_item *pfi, unsigned char c);
+void				print_string(t_pf_item *pfi, char *s);
+void				print_wide(t_pf_item *pfi, wint_t wide);
 int					int_length(int num);
 int					long_length(long num);
 char					*ft_dec_to_hex(long int n);

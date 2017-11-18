@@ -19,9 +19,15 @@ void					print_precision(t_pf_item *pfi, char *s)
 	i = 0;
 	if (pfi->precision > 0)
 		while (i < pfi->precision)
+		{
 			ft_putchar(s[i++]);
+			pfi->bytes++;
+		}
 	else
+	{
 		ft_putstr(s);
+		pfi->bytes++;
+	}
 }
 
 void					print_field_w(t_pf_item *pfi, char *s)
@@ -35,12 +41,18 @@ void					print_field_w(t_pf_item *pfi, char *s)
 	{
 		print_precision(pfi, s);
 		while (i++ < width)
+		{
 			ft_putchar(' ');
+			pfi->bytes++;
+		}
 	}
 	else
 	{
 		while (i++ < width)
+		{
 			ft_putchar(' ');
+			pfi->bytes++;
+		}
 		print_precision(pfi, s);
 	}
 }
@@ -57,5 +69,8 @@ void					print_string(t_pf_item *pfi, char *s)
 	else if (pfi->precision > 0)
 		print_precision(pfi, s);
 	else
+	{
 		ft_putstr(s);
+		pfi->bytes++;
+	}
 }

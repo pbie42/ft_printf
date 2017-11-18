@@ -32,33 +32,32 @@
 ** 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx       = 4034953344   OR 0xF0808080
 */
 
-void					write_wide(char c)
+void					write_wide(t_pf_item *pfi, char c)
 {
 	write(1, &c, 1);
+	pfi->bytes++;
 }
 
-void					print_wide(wint_t wide)
+void					print_wide(t_pf_item *pfi, wint_t wide)
 {
-	char				c[4];
-
 	if (wide <= 0x7F)
-		write_wide(wide, 1);
+		write_wide(pfi, wide);
 	else if (wide <= 0x7FF)
 	{
-		write_wide((0xC0 | (wide >> 6)));
-		write_wide((0x80 | (wide & 0x3F)));
+		write_wide(pfi, (0xC0 | (wide >> 6)));
+		write_wide(pfi, (0x80 | (wide & 0x3F)));
 	}
 	else if (wide <= 0xFFFF)
 	{
-		write_wide((0xE0 | (wide >> 12)));
-		write_wide((0x80 | ((wide >> 6) & 0x3F)));
-		write_wide((0x80 | (wide & 0x3F)));
+		write_wide(pfi, (0xE0 | (wide >> 12)));
+		write_wide(pfi, (0x80 | ((wide >> 6) & 0x3F)));
+		write_wide(pfi, (0x80 | (wide & 0x3F)));
 	}
 	else if (wide <= 0x10FFFF)
 	{
-		write_wide((0xF0 | (wide >> 18)));
-		write_wide((0x80 | ((wide >> 12) & 0x3F)));
-		write_wide((0x80 | ((wide >> 6) & 0x3F)));
-		write_wide((0x80 | (wide & 0x3F)));
+		write_wide(pfi, (0xF0 | (wide >> 18)));
+		write_wide(pfi, (0x80 | ((wide >> 12) & 0x3F)));
+		write_wide(pfi, (0x80 | ((wide >> 6) & 0x3F)));
+		write_wide(pfi, (0x80 | (wide & 0x3F)));
 	}
 }

@@ -20,6 +20,7 @@ void					ft_printf(const char *format, ...)
 	va_start(args, format);
 	pf = (t_pf *)malloc(sizeof(t_pf) * 1);
 	pf->pos = -1;
+	pf->bytes = 0;
 	pf->format = format;
 	// check_format(pf->format);
 	while(pf->format[++pf->pos])
@@ -29,9 +30,15 @@ void					ft_printf(const char *format, ...)
 				handle_identifier(pf, args);
 		else if (pf->format[pf->pos] == '%' && pf->format[pf->pos + 1]
 			&& pf->format[pf->pos + 1] == '%')
+		{
 			ft_putchar(pf->format[++pf->pos]);
+			pf->bytes++;
+		}
 		else
+		{
 			ft_putchar(pf->format[pf->pos]);
+			pf->bytes++;
+		}
 	}
 	va_end(args);
 }
