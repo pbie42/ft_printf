@@ -55,6 +55,9 @@
 # include <fcntl.h>
 # include <stdarg.h>
 # include <stdio.h>
+# include <stddef.h>
+# include <wchar.h>
+# include <locale.h>
 
 typedef int					t_bool;
 
@@ -111,16 +114,9 @@ typedef struct		s_pf_item
 typedef struct		s_pf
 {
 	int				pos;
+	int				bytes;
 	const char		*format;
 }					t_pf;
-
-typedef struct		s_types
-{
-	int				i;
-	long				l;
-	unsigned char	c;
-	char				*s;
-}					t_types;
 
 typedef struct		s_list
 {
@@ -233,6 +229,7 @@ void					print_address(t_pf_item *pfi, long int n);
 void					print_hex(t_pf_item *pfi, long int n);
 void					print_oct(t_pf_item *pfi, long int n);
 void					print_string(t_pf_item *pfi, char *s);
+void					print_wide(wint_t wide);
 int					int_length(int num);
 int					long_length(long num);
 char					*ft_dec_to_hex(long int n);

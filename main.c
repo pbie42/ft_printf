@@ -14,15 +14,23 @@
 
 int						main(void){
 	int					i;
+	int					rem;
 	int					*address;
 	long					s;
 	double				dub;
+	char* l = setlocale(LC_ALL, "en_US.UTF-8");
 
 
 	i = 2545;
 	address = &i;
 	dub = 15.45;
 	s = 500;
+	
+	if (l == NULL) 
+		printf("Locale not set\n");
+	else
+		printf("Locale set to %s\n", l);
+	// ft_putnbr(printf("%lc", 945));
 	// ft_putstr(ft_itoa(dub));
 	// ft_putchar('\n');
 	// if (__builtin_types_compatible_p(__typeof__(s), long)) {
@@ -30,7 +38,12 @@ int						main(void){
 	// } else if (__builtin_types_compatible_p(__typeof__(s), char*)) {
 	// 	puts("str");
 	// }
-	printf("octal is: %o!\n", i);
-	ft_printf("%o!\n", i);
+	i = 3 / 2;
+	rem = 3 % 2;
+	printf("Capital S is: %S!\n", L"漢字");
+	printf("Capital C is: %C!\n", 23588);
+	printf("Capital C is: %C!\n", 1588);
+	// printf("remainder is: %d!\n", rem);
+	ft_printf("%C!\n", 1588);
 	return (0);
 }

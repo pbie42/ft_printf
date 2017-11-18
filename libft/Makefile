@@ -90,21 +90,22 @@ SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_putstrtab.c \
 		ft_libft/ft_tablen.c \
 		ft_printf/ft_printf.c \
+		ft_libft/ft_strlower.c \
+		ft_libft/ft_strrev.c \
+		ft_libft/ft_strupper.c \
 		ft_printf/output/print_address.c \
 		ft_printf/output/print_hex.c \
 		ft_printf/output/print_int.c \
 		ft_printf/output/print_long.c \
 		ft_printf/output/print_oct.c \
 		ft_printf/output/print_string.c \
+		ft_printf/output/print_wide.c \
 		ft_printf/utils/check_format.c \
 		ft_printf/utils/ft_dec_to_hex.c \
 		ft_printf/utils/ft_dec_to_oct.c \
-		ft_printf/utils/ft_isconversion.c \
-		ft_printf/utils/ft_isflag.c \
-		ft_printf/utils/ft_islmod.c \
-		ft_printf/utils/ft_strlower.c \
-		ft_printf/utils/ft_strrev.c \
-		ft_printf/utils/ft_strupper.c \
+		ft_printf/utils/checks/ft_isconversion.c \
+		ft_printf/utils/checks/ft_isflag.c \
+		ft_printf/utils/checks/ft_islmod.c \
 		ft_printf/utils/print_pfi.c \
 		ft_printf/utils/lengths/int_length.c \
 		ft_printf/utils/lengths/long_length.c \

@@ -14,15 +14,10 @@
 
 void					print_identifier(t_pf_item *pfi, va_list args)
 {
-	t_types			*types;
-
-	if(!(types = (t_types *)malloc(sizeof(t_types) * 1)))
-		ft_exit("malloc error handle_identifier");
-	if (pfi->cspecs->c)
-	{
-		types->c = (unsigned char)va_arg(args, int);
-		ft_putchar(types->c);
-	}
+	if (pfi->cspecs->lg_c || (pfi->cspecs->c && pfi->lenmods->l))
+		print_wide(va_arg(args, wint_t));
+	else if (pfi->cspecs->c)
+		ft_putchar((unsigned char)va_arg(args, int));
 	else if (pfi->cspecs->d || pfi->cspecs->i)
 		print_int(pfi, va_arg(args, int));
 	else if (pfi->cspecs->s)
@@ -33,7 +28,6 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 		print_hex(pfi, va_arg(args, long int));
 	else if (pfi->cspecs->p)
 		print_address(pfi, va_arg(args, long int));
-	free(types);
 }
 
 void					handle_identifier(t_pf *pf, va_list args)
