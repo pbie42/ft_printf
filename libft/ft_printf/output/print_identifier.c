@@ -15,7 +15,9 @@
 void					print_identifier(t_pf_item *pfi, va_list args)
 {
 	if (pfi->cspecs->lg_c || (pfi->cspecs->c && pfi->lenmods->l))
-		print_wide(pfi, va_arg(args, wint_t));
+		print_wide_char(pfi, va_arg(args, wint_t));
+	if (pfi->cspecs->lg_s || (pfi->cspecs->s && pfi->lenmods->l))
+		print_wide_string(pfi, va_arg(args, wchar_t *));
 	else if (pfi->cspecs->c)
 		print_char(pfi, (unsigned char)va_arg(args, int));
 	else if (pfi->cspecs->d || pfi->cspecs->i)

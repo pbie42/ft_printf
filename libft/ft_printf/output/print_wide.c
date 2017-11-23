@@ -38,7 +38,7 @@ void					write_wide(t_pf_item *pfi, char c)
 	pfi->bytes++;
 }
 
-void					print_wide(t_pf_item *pfi, wint_t wide)
+void					print_wide_char(t_pf_item *pfi, wint_t wide)
 {
 	if (wide <= 0x7F)
 		write_wide(pfi, wide);
@@ -60,4 +60,13 @@ void					print_wide(t_pf_item *pfi, wint_t wide)
 		write_wide(pfi, (0x80 | ((wide >> 6) & 0x3F)));
 		write_wide(pfi, (0x80 | (wide & 0x3F)));
 	}
+}
+
+void					print_wide_string(t_pf_item *pfi, wchar_t *ws)
+{
+	int				i;
+
+	i = -1;
+	while (ws[++i])
+		print_wide_char(pfi, ws[i]);
 }

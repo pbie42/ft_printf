@@ -12,16 +12,18 @@
 
 #include "libft.h"
 
-void					ft_printf(const char *format, ...)
+int					ft_printf(const char *format, ...)
 {
 	t_pf				*pf;
 	va_list			args;
+	int				b;
 
 	va_start(args, format);
 	pf = (t_pf *)malloc(sizeof(t_pf) * 1);
 	pf->pos = -1;
 	pf->bytes = 0;
 	pf->format = format;
+	b = 0;
 	// check_format(pf->format);
 	while(pf->format[++pf->pos])
 	{
@@ -41,4 +43,8 @@ void					ft_printf(const char *format, ...)
 		}
 	}
 	va_end(args);
+	b = pf->bytes;
+	ft_putendlnbr("my bytes: ", b);
+	free(pf);
+	return (b);
 }

@@ -1,86 +1,32 @@
 printf:
 	Conversions:
-		☐ s - The maximum number of characters to be printed from the string.
-		☐ S - Equivalent to ls.
-		☐ p - The argument shall be a pointer to void. The value of the pointer is
-			☐ converted to a sequence of printable characters, in an implementation-defined manner.
-		☐ d, i - Display an int in signed decimal notation.
-		☐ D - ?
-		☐ o - The unsigned argument shall be converted to unsigned octal format in
-			☐ the style "dddd". The precision specifies the minimum number of digits to
-			☐ appear; if the value being converted can be represented in fewer digits,
-			☐ it shall be expanded with leading zeros. The default precision is 1.
-			☐ The result of converting zero with an explicit precision of zero shall be no characters.
-		☐ O - ?
-		☐ u - The unsigned argument shall be converted to unsigned decimal format
-			☐ in the style "dddd". The precision specifies the minimum number of digits
-			☐ to appear; if the value being converted can be represented in fewer digits,
-			☐ it shall be expanded with leading zeros. The default precision is 1. The
-			☐ result of converting zero with an explicit precision of zero shall be no characters.
-		☐ U - ?
-		☐ x - The unsigned argument shall be converted to unsigned hexadecimal format
-			☐ in the style "dddd"; the letters "abcdef" are used. The precision specifies
-			☐ the minimum number of digits to appear; if the value being converted can be
-			☐ represented in fewer digits, it shall be expanded with leading zeros. The
-			☐ default precision is 1. The result of converting zero with an explicit precision
-			☐ of zero shall be no characters.
-		☐ X - Equivalent to the x conversion specifier, except that letters "ABCDEF" are used instead of "abcdef" .
-		☐ c - The int argument shall be converted to an unsigned char, and the resulting byte shall be written.
-			☐ Ask Dan about l qualifier
-		☐ C - Equivalent to lc.
+		✔ s @done (2017-11-23 12:56:59)
+		✔ S @done (2017-11-23 12:57:00)
+		☐ p
+		☐ d
+		☐ i
+		☐ D
+		☐ o
+		☐ O
+		☐ u
+		☐ U
+		☐ x
+		☐ X
+		✔ c @done (2017-11-23 12:57:12)
+		✔ C @done (2017-11-23 12:57:13)
 	Flags:
-		☐ hh - Specifies that a following d, i, o, u, x, or X conversion specifier
-			☐ applies to a signed char or unsigned char argument (the argument will have
-			☐ been promoted according to the integer promotions, but its value shall be
-			☐ converted to signed char or unsigned char before printing); or that a following
-			☐ n conversion specifier applies to a pointer to a signed char argument.
-		☐ h - Specifies that a following d, i, o, u, x, or X conversion specifier
-			☐ applies to a short or unsigned short argument (the argument will have been
-			☐ promoted according to the integer promotions, but its value shall be converted
-			☐ to short or unsigned short before printing); or that a following n conversion
-			☐ specifier applies to a pointer to a short argument.
-		☐ l (ell) - Specifies that a following d, i, o, u, x, or X conversion specifier
-			☐ applies to a long or unsigned long argument; that a following n conversion
-			☐ specifier applies to a pointer to a long argument; that a following c conversion
-			☐ specifier applies to a wint_t argument; that a following s conversion specifier
-			☐ applies to a pointer to a wchar_t argument; or has no effect on a following
-			☐ a, A, e, E, f, F, g, or G conversion specifier.
-		☐ ll (ell-ell) - Specifies that a following d, i, o, u, x, or X conversion
-			☐ specifier applies to a long long or unsigned long long argument; or that a
-			☐ following n conversion specifier applies to a pointer to a long long argument.
-		☐ j - Specifies that a following d, i, o, u, x, or X conversion specifier
-			☐ applies to an intmax_t or uintmax_t argument; or that a following n conversion
-			☐ specifier applies to a pointer to an intmax_t argument.
-		☐ z - Specifies that a following d, i, o, u, x, or X conversion specifier
-			☐ applies to a size_t or the corresponding signed integer type argument; or
-			☐ that a following n conversion specifier applies to a pointer to a signed
-			☐ integer type corresponding to a size_t argument.
-		☐ # - Specifies that the value is to be converted to an alternative form.
-			☐ For o conversion, it shall increase the precision, if and only if necessary,
-			☐ to force the first digit of the result to be a zero (if the value and precision
-			☐ are both 0, a single 0 is printed). For x or X conversion specifiers, a
-			☐ non-zero result shall have 0x (or 0X) prefixed to it. For a, A, e, E, f, F, g,
-			☐ and G conversion specifiers, the result shall always contain a radix character,
-			☐ even if no digits follow the radix character. Without this flag, a radix
-			☐ character appears in the result of these conversions only if a digit follows
-			☐ it. For g and G conversion specifiers, trailing zeros shall not be removed
-			☐ from the result as they normally are. For other conversion specifiers, the behavior is undefined.
-		☐ 0 - For d, i, o, u, x, X, a, A, e, E, f, F, g, and G conversion specifiers,
-			☐ leading zeros (following any indication of sign or base) are used to pad to
-			☐ the field width rather than performing space padding, except when converting
-			☐ an infinity or NaN. If the '0' and '-' flags both appear, the '0' flag is ignored.
-			☐ For d, i, o, u, x, and X conversion specifiers, if a precision is specified, the
-			☐ '0' flag shall be ignored. [CX] [Option Start] If the '0' and <apostrophe>
-			☐ flags both appear, the grouping characters are inserted before zero padding.
-			☐ For other conversions, the behavior is undefined.
-		☐ <minus> - The result of the conversion shall be left-justified within the field.
-			☐ The conversion is right-justified if this flag is not specified.
-		☐ <plus> - The result of a signed conversion shall always begin with a sign
-			☐ ( '+' or '-' ). The conversion shall begin with a sign only when a negative
-			☐ value is converted if this flag is not specified.
-		☐ <space> - If the first character of a signed conversion is not a sign or
-			☐ if a signed conversion results in no characters, a <space> shall be prefixed
-			☐ to the result. This means that if the <space> and '+' flags both appear,
-			☐ the <space> flag shall be ignored.
+		☐ hh
+		☐ h
+		☐ l
+		☐ ll
+		☐ j
+		☐ z
+		☐ #
+		☐ 0
+		☐ <minus>
+		☐ <plus>
+		☐ <space>
 	Other:
-		☐ %% - Ask Dan
+		☐ %%
+		✔ precision @done (2017-11-23 12:57:41)
+		✔ field width @done (2017-11-23 12:57:40)

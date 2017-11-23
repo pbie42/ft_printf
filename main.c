@@ -40,10 +40,12 @@ int						main(void){
 	// }
 	i = 3 / 2;
 	rem = 3 % 2;
-	// printf("Capital S is: %S!\n", L"漢字");
-	// printf("Capital C is: %C!\n", 23588);
+	i = printf("%S!\n", L"漢字");
+	rem = printf("%C!\n", 23588);
+	printf("i is: %d", i);
+	printf("rem is: %d", rem);
 	// printf("Capital C is: %C!\n", 1588);
-	i = printf("%d", 500);
-	ft_printf("%d!\n", i);
+	ft_printf("%S!\n", L"漢字");
+	// ft_printf("%C!\n", 23588);
 	return (0);
 }
