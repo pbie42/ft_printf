@@ -12,42 +12,79 @@
 
 #include "libft.h"
 
-void					handle_spaces(t_pf_item *pfi, int num, t_bool minus)
+void					pr_int_precision(t_pf_item *pfi, int num)
 {
+	int				i;
 	int				len;
-
+	
+	i = pfi->precision;
 	len = int_length(num);
-	if (num < 0)
-		len += 1;
-	if (pfi->flags->space && num >= 0)
+	while (i-- > len)
 	{
-		len += 1;
-		ft_putchar(' ');
+		ft_putchar('0');
+		pfi->bytes++;
 	}
-	pfi->bytes += len;
-	if (minus)
-		ft_putnbr(num);
-	if (pfi->field_w - len > 0)
-		while (pfi->field_w > len)
+	ft_putnbr(num);
+	pfi->bytes++;
+}
+
+int					int_get_width(t_pf_item *pfi, int num)
+{
+	int				width;
+
+	width = 0;
+	if (pfi->precision >= pfi->field_w)
+		pfi->precision = 0;
+	width = pfi->field_w - pfi->precision - 1;
+	if (!pfi->precision)
+		width -= int_length(num);
+	return (width);
+}
+
+void					pr_int_field_w(t_pf_item *pfi, int num)
+{
+	int				i;
+	int				width;
+
+	i = 0;
+	width = int_get_width(pfi, num);
+	if (pfi->flags->minus)
+	{
+		pr_int_precision(pfi, num);
+		while (i++ <= width)
 		{
 			ft_putchar(' ');
-			pfi->field_w--;
 			pfi->bytes++;
 		}
+	}
+	else
+	{
+		while (i++ <= width)
+		{
+			if (pfi->flags->zero)
+				ft_putchar('0');
+			else
+				ft_putchar(' ');
+			pfi->bytes++;
+		}
+		pr_int_precision(pfi, num);
+	}
 }
 
 void					print_int(t_pf_item *pfi, int num)
 {
-	if (pfi->field_w > 0 && !pfi->flags->minus)
+	if (pfi->field_w > 0)
 	{
-		handle_spaces(pfi, num, FALSE);
-		ft_putnbr(num);
+		if (pfi->precision > pfi->field_w)
+			pr_int_precision(pfi, num);
+		else
+			pr_int_field_w(pfi, num);
 	}
-	else if (pfi->field_w > 0 && pfi->flags->minus)
-		handle_spaces(pfi, num, TRUE);
+	else if (pfi->precision > 0)
+		pr_int_precision(pfi, num);
 	else
 	{
 		ft_putnbr(num);
-		pfi->bytes += int_length(num);
+		pfi->bytes++;
 	}
 }
