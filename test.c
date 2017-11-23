@@ -14,6 +14,6 @@
 
 int					main(void)
 {
-	printf("% s\n", "hello");
+	printf("%-10.3s!\n", "hello");
 	return (0);
 }

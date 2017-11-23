@@ -24,13 +24,13 @@ void					handle_identifier(t_pf *pf, va_list args)
 	pfi->bytes = 0;
 	init_pfi(pfi);
 	// ft_putendl("before handle_identifier while");
-	// ft_putstr("the current letter is: ");
-	// ft_putchar(pf->format[pf->pos]);
-	// ft_putchar('!');
-	// ft_putchar('\n');
+	ft_putstr("the current letter is: ");
+	ft_putchar(pf->format[pf->pos]);
+	ft_putchar('!');
+	ft_putchar('\n');
 	while (ft_isflag(pf->format[pf->pos]))
 	{
-		// ft_putendl("isflag");
+		ft_putendl("isflag");
 		ft_putchar(pf->format[pf->pos]);
 		handle_flag(pf, pfi);
 	}

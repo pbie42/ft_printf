@@ -30,8 +30,8 @@ void					check_conversions(t_pf_item *pfi)
 
 void					handle_conditions(t_pf_item *pfi)
 {
-	if (pfi->flags->minus && pfi->flags->zero)
-		ft_exit("warning: flag '0' is ignored when flag '-' is present");
+	// if (pfi->flags->minus && pfi->flags->zero)
+	// 	ft_exit("warning: flag '0' is ignored when flag '-' is present");
 	if (pfi->flags->hash && pfi->cspecs->d)
 		ft_exit("flag '#' results in undefined behavior with 'd' conversion specifier");
 	if (pfi->flags->space && pfi->cspecs->s)

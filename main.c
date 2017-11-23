@@ -45,7 +45,7 @@ int						main(void){
 	printf("i is: %d", i);
 	printf("rem is: %d", rem);
 	// printf("Capital C is: %C!\n", 1588);
-	ft_printf("%S!\n", L"漢字");
+	ft_printf("%-10.3s!\n", "hello");
 	// ft_printf("%C!\n", 23588);
 	return (0);
 }

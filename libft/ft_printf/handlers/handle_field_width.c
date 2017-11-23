@@ -34,5 +34,6 @@ void					handle_field_width(t_pf *pf, t_pf_item *pfi)
 	ft_putendl(anum);
 	anum[i] = '\0';
 	pfi->field_w = ft_atoi(anum);
+	ft_putendlnbr("field_w is: ", pfi->field_w);
 	free(anum);
 }
