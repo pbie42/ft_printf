@@ -12,38 +12,18 @@
 
 #include "libft.h"
 
-long int					ft_dec_to_oct_bis(char *hex, long int n)
+int					ft_dec_to_oct(long int decimalNumber)
 {
-	int				temp;
-	char				*tmp;
+	int				octalNumber;
+	int				i;
 
-	temp = 0;
-	temp = n % 8;
-	tmp = (char *)malloc(sizeof(char) * 1 + 1);
-	if (temp < 10)
+	octalNumber = 0;
+	i = 1;
+	while (decimalNumber != 0)
 	{
-		tmp[0] = temp + 48;
-		tmp[1] = '\0';
-		hex = ft_strcat(hex, tmp);
+		octalNumber += (decimalNumber % 8) * i;
+		decimalNumber /= 8;
+		i *= 10;
 	}
-	else
-	{
-		tmp[0] = temp + 55;
-		tmp[1] = '\0';
-		hex = ft_strcat(hex, tmp);
-	}
-	free(tmp);
-	n = n / 8;
-	return (n);
-}
-
-char					*ft_dec_to_oct(long int n)
-{
-	char				*hex;
-	
-	hex = (char *)malloc(sizeof(char) * 1 + 1);
-	n = ft_dec_to_oct_bis(hex, n);
-	while (n != 0)
-		n = ft_dec_to_oct_bis(hex, n);
-	return (hex);
+	return octalNumber;
 }

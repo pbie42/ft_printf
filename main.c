@@ -45,7 +45,7 @@ int						main(void){
 	printf("i is: %d", i);
 	printf("rem is: %d", rem);
 	// printf("Capital C is: %C!\n", 1588);
-	ft_printf("%050d!\n", 5555);
+	ft_printf("%010o!\n", 5555);
 	// ft_printf("%C!\n", 23588);
 	return (0);
 }

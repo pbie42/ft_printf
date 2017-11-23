@@ -14,6 +14,6 @@
 
 int					main(void)
 {
-	printf("%050d!\n", 5555);
+	printf("%010o!\n", 5555);
 	return (0);
 }

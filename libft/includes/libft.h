@@ -237,7 +237,7 @@ void					print_wide_string(t_pf_item *pfi, wchar_t *ws);
 int					int_length(int num);
 int					long_length(long num);
 char					*ft_dec_to_hex(long int n);
-char					*ft_dec_to_oct(long int n);
+int					ft_dec_to_oct(long int n);
 void					ft_strrev(char *s);
 char					*ft_strupper(char *s);
 char					*ft_strlower(char *s);
