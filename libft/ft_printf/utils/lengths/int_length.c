@@ -12,10 +12,12 @@
 
 #include "libft.h"
 
-int					int_length(int num)
+int					int_length(long long int num)
 {
 	int				counter;
 
+	if (num == 0)
+		return (1);
 	counter = 0;
 	while (num > 0)
 	{

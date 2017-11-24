@@ -101,6 +101,7 @@ SRC = ft_libft/ft_atoi.c \
 		ft_printf/output/print_long.c \
 		ft_printf/output/print_oct.c \
 		ft_printf/output/print_string.c \
+		ft_printf/output/print_unsigned_int.c \
 		ft_printf/output/print_wide.c \
 		ft_printf/utils/check_format.c \
 		ft_printf/utils/ft_dec_to_hex.c \

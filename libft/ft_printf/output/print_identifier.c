@@ -22,6 +22,8 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 		print_char(pfi, (unsigned char)va_arg(args, int));
 	else if (pfi->cspecs->d || pfi->cspecs->i)
 		print_int(pfi, va_arg(args, int));
+	else if (pfi->cspecs->u)
+		print_unsigned_int(pfi, va_arg(args, long long int));
 	else if (pfi->cspecs->s)
 		print_string(pfi, va_arg(args, char *));
 	else if (pfi->cspecs->o)

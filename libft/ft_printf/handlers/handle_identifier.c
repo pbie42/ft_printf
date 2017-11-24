@@ -24,42 +24,28 @@ void					handle_identifier(t_pf *pf, va_list args)
 	pfi->bytes = 0;
 	init_pfi(pfi);
 	// ft_putendl("before handle_identifier while");
-	ft_putstr("the current letter is: ");
-	ft_putchar(pf->format[pf->pos]);
-	ft_putchar('!');
-	ft_putchar('\n');
+	// ft_putstr("the current letter is: ");
+	// ft_putchar(pf->format[pf->pos]);
+	// ft_putchar('!');
+	// ft_putchar('\n');
 	while (ft_isflag(pf->format[pf->pos]))
 	{
-		ft_putendl("isflag");
-		ft_putchar(pf->format[pf->pos]);
 		handle_flag(pf, pfi);
 	}
 	if (ft_isdigit(pf->format[pf->pos]))
 	{
-		// ft_putendl("isdigit");
-		ft_putchar(pf->format[pf->pos]);
 		handle_field_width(pf, pfi);
 	}
 	if (pf->format[pf->pos] == '.')
 	{
-		// ft_putendl("isprecision");
-		ft_putchar(pf->format[pf->pos]);
 		handle_precision(pf, pfi);
 	}
 	if (ft_islmod(pf->format[pf->pos]))
 	{
-		// ft_putendl("islmod");
-		ft_putchar(pf->format[pf->pos]);
 		handle_len_mod(pf, pfi);
 	}
 	if (ft_isconversion(pf->format[pf->pos]))
 	{
-		// ft_putendl("isconversion");
-		// ft_putstr("the current letter is: ");
-		ft_putchar(pf->format[pf->pos]);
-		ft_putchar('!');
-		ft_putchar('\n');
-		ft_putchar(pf->format[pf->pos]);
 		handle_conversion(pf, pfi);
 	}
 	else

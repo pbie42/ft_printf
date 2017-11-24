@@ -11,9 +11,18 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <float.h>
 
 int					main(void)
 {
-	printf("%010o!\n", 5555);
+	int	x;
+	char				c;
+
+	x = 15;
+	c = 'a';
+	printf("UINT_MAX    :   %u\n", (unsigned int) UINT_MAX);
+	printf("%.10u!\n", 0);
 	return (0);
 }
