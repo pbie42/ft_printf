@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/10 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2017/11/24 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2017/11/24 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <float.h>
+#include "libft.h"
 
-int					main(void)
+void						ft_putll(long long int nb)
 {
-	int	x;
-	char				c;
-
-	x = 15;
-	c = 'a';
-	printf("UINT_MAX    :   %u\n", (unsigned int) UINT_MAX);
-	printf("%020p!\n", &x);
-	printf("%020x!\n", &x);
-	return (0);
+	if (nb == LONG_MIN)
+		ft_putstr("-9223372036854775808");
+	if (nb < 0 && nb != LONG_MIN)
+	{
+		ft_putchar('-');
+		nb = -nb;
+	}
+	if (nb >= 10 && nb != LONG_MIN)
+	{
+		ft_putll(nb / 10);
+		ft_putll(nb % 10);
+	}
+	else if (nb != LONG_MIN)
+	{
+		ft_putll(nb + '0');
+	}
 }

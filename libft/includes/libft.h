@@ -229,8 +229,8 @@ void				print_identifier(t_pf_item *pfi, va_list args);
 void				print_int(t_pf_item *pfi, int num);
 void				print_unsigned_int(t_pf_item *pfi, unsigned int num);
 void				print_long(t_pf_item *pfi, long num);
-void				print_address(t_pf_item *pfi, long int n);
-void				print_hex(t_pf_item *pfi, long int n);
+void				print_address(t_pf_item *pfi, long int num);
+void				print_hex(t_pf_item *pfi, int n);
 void				print_oct(t_pf_item *pfi, long int n);
 void				print_char(t_pf_item *pfi, unsigned char c);
 void				print_string(t_pf_item *pfi, char *s);
@@ -238,11 +238,13 @@ void				print_wide_char(t_pf_item *pfi, wint_t wide);
 void					print_wide_string(t_pf_item *pfi, wchar_t *ws);
 int					int_length(long long int num);
 int					long_length(long num);
-char					*ft_dec_to_hex(long int n);
+char					*ft_dec_to_hex(int n);
+char					*ft_address_to_hex(long int n);
 int					ft_dec_to_oct(long int n);
 void					ft_strrev(char *s);
 char					*ft_strupper(char *s);
 char					*ft_strlower(char *s);
+void				ft_putll(long long int nb);
 
 
 #endif

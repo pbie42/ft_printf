@@ -12,26 +12,6 @@
 
 #include "libft.h"
 
-void						new_putnbr(long long int nb)
-{
-	if (nb == LONG_MIN)
-		ft_putstr("-9223372036854775808");
-	if (nb < 0 && nb != LONG_MIN)
-	{
-		ft_putchar('-');
-		nb = -nb;
-	}
-	if (nb >= 10 && nb != LONG_MIN)
-	{
-		new_putnbr(nb / 10);
-		new_putnbr(nb % 10);
-	}
-	else if (nb != LONG_MIN)
-	{
-		ft_putchar(nb + '0');
-	}
-}
-
 void					pr_int_us_precision(t_pf_item *pfi, unsigned int num)
 {
 	int				i;
@@ -44,7 +24,7 @@ void					pr_int_us_precision(t_pf_item *pfi, unsigned int num)
 		ft_putchar('0');
 		pfi->bytes++;
 	}
-	new_putnbr(num);
+	ft_putll(num);
 	pfi->bytes++;
 }
 
@@ -108,7 +88,7 @@ void					print_unsigned_int(t_pf_item *pfi, unsigned int num)
 		pr_int_us_precision(pfi, i);
 	else
 	{
-		new_putnbr(num);
+		ft_putll(num);
 		pfi->bytes++;
 	}
 }

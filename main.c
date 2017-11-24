@@ -14,6 +14,7 @@
 
 int						main(void){
 	int					i;
+	int					x;
 	int					rem;
 	int					*address;
 	long					s;
@@ -40,12 +41,15 @@ int						main(void){
 	// }
 	i = 3 / 2;
 	rem = 3 % 2;
+	x = 15;
 	i = printf("%S!\n", L"漢字");
 	rem = printf("%C!\n", 23588);
-	printf("i is: %d", i);
-	printf("rem is: %d", rem);
+	printf("i is: %d\n", i);
+	// printf("x is: %010x\n", &x);
 	// printf("Capital C is: %C!\n", 1588);
-	ft_printf("%.10u!\n", 0);
+	printf("printf address is: %-020p!\n", &x);
+	ft_printf("%-020p!\n", &x);
+	// ft_printf("%010x!\n", &x);
 	// ft_printf("%C!\n", 23588);
 	return (0);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dec_to_hex.c                                    :+:      :+:    :+:   */
+/*   ft_address_to_hex.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/17 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2017/11/24 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2017/11/24 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					ft_dec_to_hex_ter(char *hex, int n)
+long int					ft_address_to_hex_ter(char *hex, long int n)
 {
 	int				temp;
 	char				*tmp;
@@ -37,7 +37,7 @@ int					ft_dec_to_hex_ter(char *hex, int n)
 	return (n);
 }
 
-int					ft_dec_to_hex_bis(char *hex, int n)
+long int					ft_address_to_hex_bis(char *hex, long int n)
 {
 	int				temp;
 
@@ -57,13 +57,13 @@ int					ft_dec_to_hex_bis(char *hex, int n)
 	return (n);
 }
 
-char					*ft_dec_to_hex(int n)
+char					*ft_address_to_hex(long int n)
 {
 	char				*hex;
 
 	hex = (char *)malloc(sizeof(char) * 1 + 1);
-	n = ft_dec_to_hex_bis(hex, n);
+	n = ft_address_to_hex_bis(hex, n);
 	while (n != 0)
-		n = ft_dec_to_hex_ter(hex, n);
+		n = ft_address_to_hex_ter(hex, n);
 	return (hex);
 }
