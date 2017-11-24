@@ -98,15 +98,3 @@ void					print_hex(t_pf_item *pfi, int num)
 	}
 	free(tmp);
 }
-
-// void					print_hex(t_pf_item *pfi, int n)
-// {
-// 	char				*tmp;
-
-// 	tmp = ft_dec_to_hex(n);
-// 	if (pfi->cspecs->lg_x)
-// 		ft_strrev(ft_strupper(tmp));
-// 	else
-// 		ft_strrev(ft_strlower(tmp));
-// 	free(tmp);
-// }

@@ -99,22 +99,3 @@ void					print_address(t_pf_item *pfi, long int num)
 	}
 	free(tmp);
 }
-
-// void					print_address(t_pf_item *pfi, long int n)
-// {
-// 	char				*tmp;
-
-// 	ft_putstr("0x");
-// 	tmp = ft_address_to_hex(n);
-// 	if (pfi->cspecs->lg_x)
-// 		ft_strrev(ft_strupper(tmp));
-// 	else
-// 		ft_strrev(ft_strlower(tmp));
-// 	free(tmp);
-// }
-
-// void					print_address(t_pf_item *pfi, long int n)
-// {
-	
-// 	print_hex(pfi, n);
-// }
