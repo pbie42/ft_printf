@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void					print_precision(t_pf_item *pfi, char *s)
 {
@@ -61,7 +61,7 @@ void					print_field_w(t_pf_item *pfi, char *s)
 	}
 	else
 	{
-		ft_putendl("no minus");
+		// ft_putendl("no minus");
 		while (i++ <= width)
 		{
 			if (pfi->flags->zero)
@@ -81,7 +81,7 @@ void					print_string(t_pf_item *pfi, char *s)
 		if (pfi->precision > pfi->field_w)
 			print_precision(pfi, s);
 		else{
-			ft_putendl("field_w > precision");
+			// ft_putendl("field_w > precision");
 			print_field_w(pfi, s);
 		}
 	}

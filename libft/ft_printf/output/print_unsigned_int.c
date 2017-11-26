@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void					pr_int_us_precision(t_pf_item *pfi, unsigned int num)
 {

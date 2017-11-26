@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 t_bool				handle_conversion_ter(t_pf *pf, t_pf_item *pfi)
 {

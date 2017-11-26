@@ -62,7 +62,7 @@
 # include <termios.h>
 # include <err.h>
 # include <termcap.h>
-# include "../libft/includes/libft.h"
+# include "../libft/includes/libftprintf.h"
 # include <term.h>
 
 

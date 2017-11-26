@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void					handle_identifier(t_pf *pf, va_list args)
 {
@@ -50,8 +50,8 @@ void					handle_identifier(t_pf *pf, va_list args)
 	}
 	else
 		pfi->c_error = pf->format[pf->pos];
-	print_pfi(pfi);
-	handle_conditions(pfi);
+	// print_pfi(pfi);
+	// handle_conditions(pfi);
 	print_identifier(pfi, args);
 	pf->bytes += pfi->bytes;
 	free(pfi);

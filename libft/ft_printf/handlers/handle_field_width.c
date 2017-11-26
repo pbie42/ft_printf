@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void					handle_field_width(t_pf *pf, t_pf_item *pfi)
 {
@@ -31,9 +31,9 @@ void					handle_field_width(t_pf *pf, t_pf_item *pfi)
 		i++;
 		len++;
 	}
-	ft_putendl(anum);
+	// ft_putendl(anum);
 	anum[i] = '\0';
 	pfi->field_w = ft_atoi(anum);
-	ft_putendlnbr("field_w is: ", pfi->field_w);
+	// ft_putendlnbr("field_w is: ", pfi->field_w);
 	free(anum);
 }

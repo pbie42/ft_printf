@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void					handle_spaces(t_pf_item *pfi, long num, t_bool minus)
 {

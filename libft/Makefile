@@ -12,7 +12,7 @@
 
 FLAG = -Wall -Wextra -Werror
 
-NAME = libft.a
+NAME = libftprintf.a
 
 SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_buildtab.c \

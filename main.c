@@ -47,7 +47,7 @@ int						main(void){
 	printf("i is: %d\n", i);
 	// printf("x is: %010x\n", &x);
 	// printf("Capital C is: %C!\n", 1588);
-	printf("printf address is: %-020p!\n", &x);
+	// printf("printf address is: %-020p!\n", &x);
 	ft_printf("%-020p!\n", &x);
 	// ft_printf("%010x!\n", &x);
 	// ft_printf("%C!\n", 23588);

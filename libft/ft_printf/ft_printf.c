@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 int					ft_printf(const char *format, ...)
 {
@@ -44,7 +44,7 @@ int					ft_printf(const char *format, ...)
 	}
 	va_end(args);
 	b = pf->bytes;
-	ft_putendlnbr("my bytes: ", b);
+	// ft_putendlnbr("my bytes: ", b);
 	free(pf);
 	return (b);
 }

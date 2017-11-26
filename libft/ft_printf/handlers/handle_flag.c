@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void					handle_flag(t_pf *pf, t_pf_item *pfi)
 {
-	ft_putendl("in handle flag");
+	// ft_putendl("in handle flag");
 	while (pf->format[pf->pos] == ' ')
 	{
-		ft_putendl("space");
+		// ft_putendl("space");
 		pfi->flags->space = TRUE;
 		pf->pos++;
 	}
 	if (pf->format[pf->pos] == '-')
 	{
-		ft_putendl("is minus");
+		// ft_putendl("is minus");
 		while(pf->format[pf->pos] == '-')
 		{
 			pfi->flags->minus = TRUE;
@@ -32,7 +32,7 @@ void					handle_flag(t_pf *pf, t_pf_item *pfi)
 	}
 	if (pf->format[pf->pos] == '+')
 	{
-		ft_putendl("is plus");
+		// ft_putendl("is plus");
 		while(pf->format[pf->pos] == '+')
 		{
 			pfi->flags->plus = TRUE;
@@ -41,7 +41,7 @@ void					handle_flag(t_pf *pf, t_pf_item *pfi)
 	}
 	if (pf->format[pf->pos] == '#')
 	{
-		ft_putendl("is hash");
+		// ft_putendl("is hash");
 		while(pf->format[pf->pos] == '#')
 		{
 			pfi->flags->hash = TRUE;
@@ -50,7 +50,7 @@ void					handle_flag(t_pf *pf, t_pf_item *pfi)
 	}
 	if (pf->format[pf->pos] == '0')
 	{
-		ft_putendl("is zero");
+		// ft_putendl("is zero");
 		while(pf->format[pf->pos] == '0')
 		{
 			pfi->flags->zero = TRUE;

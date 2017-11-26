@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void					handle_precision(t_pf *pf, t_pf_item *pfi)
 {
@@ -28,8 +28,8 @@ void					handle_precision(t_pf *pf, t_pf_item *pfi)
 		ft_exit("malloc problem handle_field_width");
 	while (len < pf->pos)
 	{
-		ft_putchar(pf->format[len]);
-		ft_putchar('\n');
+		// ft_putchar(pf->format[len]);
+		// ft_putchar('\n');
 		anum[i] = pf->format[len];
 		i++;
 		len++;

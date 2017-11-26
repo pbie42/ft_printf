@@ -23,7 +23,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	@make -C libft
-	@gcc $(CFLAGS) -o $(NAME) $(OBJ) -I libft/includes/libft.h libft/libft.a -ltermcap
+	@gcc $(CFLAGS) -o $(NAME) $(OBJ) -I libft/includes/libftprintf.h libft/libftprintf.a -ltermcap
 	@echo "$(NAME) created"
 
 clean :
@@ -33,7 +33,7 @@ clean :
 
 fclean : clean
 	rm -rf $(NAME)
-	rm -rf libft/libft.a
+	rm -rf libft/libftprintf.a
 	@echo "$(NAME) deleted"
 
 re : fclean all
