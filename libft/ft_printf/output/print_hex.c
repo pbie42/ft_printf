@@ -77,8 +77,10 @@ void					print_hex_field_w(t_pf_item *pfi, char *num)
 void					print_hex(t_pf_item *pfi, int num)
 {
 	char				*tmp;
-	
-	tmp = ft_dec_to_hex(num);
+	unsigned int	i;
+
+	i = num;
+	tmp = ft_dec_to_hex(i);
 	if (pfi->field_w > 0)
 	{
 		if (pfi->precision > pfi->field_w)

@@ -75,7 +75,6 @@ void					print_unsigned_int(t_pf_item *pfi, unsigned int num)
 {
 	unsigned int	i;
 
-	
 	i = num;
 	if (pfi->field_w > 0)
 	{

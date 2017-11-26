@@ -239,7 +239,7 @@ void				print_wide_char(t_pf_item *pfi, wint_t wide);
 void					print_wide_string(t_pf_item *pfi, wchar_t *ws);
 int					int_length(long long int num);
 int					long_length(long num);
-char					*ft_dec_to_hex(int n);
+char					*ft_dec_to_hex(unsigned int n);
 char					*ft_address_to_hex(long int n);
 int					ft_dec_to_oct(long int n);
 void					ft_strrev(char *s);
