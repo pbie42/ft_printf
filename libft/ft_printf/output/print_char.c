@@ -12,8 +12,39 @@
 
 #include "libftprintf.h"
 
+void					print_char_field_w(t_pf_item *pfi, unsigned char c)
+{
+	int				i;
+
+	i = 0;
+	if (pfi->flags->minus)
+	{
+		ft_putchar(c);
+		while(i++ < pfi->field_w - 1)
+		{
+			ft_putchar(' ');
+			pfi->bytes++;
+		}
+	}
+	else
+	{
+		while(i++ < pfi->field_w - 1)
+		{
+			if (pfi->flags->zero)
+				ft_putchar('0');
+			else
+				ft_putchar(' ');
+			pfi->bytes++;
+		}
+		ft_putchar(c);
+	}
+}
+
 void					print_char(t_pf_item *pfi, unsigned char c)
 {
-	ft_putchar(c);
+	if (pfi->field_w > 0)
+		print_char_field_w(pfi, c);
+	else
+		ft_putchar(c);
 	pfi->bytes++;
 }

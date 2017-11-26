@@ -49,5 +49,6 @@ void					print_pfi(t_pf_item *pfi)
 	ft_putendlnbr("cspecs->lg_x: ", pfi->cspecs->lg_x);
 	ft_putendlnbr("cspecs->c: ", pfi->cspecs->c);
 	ft_putendlnbr("cspecs->lg_c: ", pfi->cspecs->lg_c);
+	ft_putendlnbr("cspecs->percent: ", pfi->cspecs->percent);
 	ft_putchar('\n');
 }

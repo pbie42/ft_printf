@@ -12,7 +12,7 @@
 
 NAME = ft_printf
 
-CFLAGS = -g -Wall -Werror -Wextra -I includes
+CFLAGS = -g -I includes
 
 SRC = main.c \
 

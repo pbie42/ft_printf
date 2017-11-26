@@ -22,8 +22,8 @@ int					main(void)
 
 	x = 15;
 	c = 'a';
-	printf("UINT_MAX    :   %u\n", (unsigned int) UINT_MAX);
-	printf("%020p!\n", &x);
-	printf("%020x!\n", &x);
+	// printf("UINT_MAX    :   %u\n", (unsigned int) UINT_MAX);
+	// printf("%020p!\n", &x);
+	printf("%5%!\n");
 	return (0);
 }

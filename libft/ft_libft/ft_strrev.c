@@ -16,7 +16,13 @@ void					ft_strrev(char *s)
 {
 	int				len;
 
-	len = ft_strlen(s);
+	len = -1;
+	while (s[++len])
+		;
+	len--;
 	while (len >= 0)
-		ft_putchar(s[len--]);
+	{
+		ft_putchar(s[len]);
+		len--;
+	}
 }

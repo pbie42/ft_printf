@@ -90,6 +90,6 @@ void					print_string(t_pf_item *pfi, char *s)
 	else
 	{
 		ft_putstr(s);
-		pfi->bytes++;
+		pfi->bytes += ft_strlen(s);
 	}
 }

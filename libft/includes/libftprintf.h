@@ -99,6 +99,7 @@ typedef struct		s_pf_cspecs
 	t_bool			lg_x;
 	t_bool			c;
 	t_bool			lg_c;
+	t_bool			percent;
 }					t_pf_cspecs;
 
 typedef struct		s_pf_item

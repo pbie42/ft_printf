@@ -53,6 +53,7 @@ void					init_cspecs(t_pf_item *pfi)
 	pfi->cspecs->lg_x = FALSE;
 	pfi->cspecs->c = FALSE;
 	pfi->cspecs->lg_c = FALSE;
+	pfi->cspecs->percent = FALSE;
 }
 
 void					init_pfi(t_pf_item *pfi)

@@ -33,6 +33,8 @@ t_bool				handle_conversion_ter(t_pf *pf, t_pf_item *pfi)
 		pfi->cspecs->c = TRUE;
 	else if (pf->format[pf->pos] == 'C')
 		pfi->cspecs->lg_c = TRUE;
+	else if (pf->format[pf->pos] == '%')
+		pfi->cspecs->percent = TRUE;
 	else
 		found = FALSE;
 	return (found);

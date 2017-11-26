@@ -32,4 +32,6 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 		print_hex(pfi, va_arg(args, int));
 	else if (pfi->cspecs->p)
 		print_address(pfi, va_arg(args, long int));
+	else if (pfi->cspecs->percent)
+		print_char(pfi, '%');
 }

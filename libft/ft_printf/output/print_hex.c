@@ -28,7 +28,7 @@ void					print_hex_precision(t_pf_item *pfi, char *num)
 		ft_strrev(ft_strupper(num));
 	else
 		ft_strrev(ft_strlower(num));
-	pfi->bytes++;
+	pfi->bytes += len;
 }
 
 int					hex_get_width(t_pf_item *pfi, char *num)
@@ -94,7 +94,7 @@ void					print_hex(t_pf_item *pfi, int num)
 			ft_strrev(ft_strupper(tmp));
 		else
 			ft_strrev(ft_strlower(tmp));
-		pfi->bytes++;
+		pfi->bytes += ft_strlen(tmp);
 	}
 	free(tmp);
 }
