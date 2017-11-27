@@ -96,6 +96,7 @@ SRC = ft_libft/ft_atoi.c \
 		ft_printf/output/print_address.c \
 		ft_printf/output/print_char.c \
 		ft_printf/output/print_hex.c \
+		ft_printf/output/print_hex_long.c \
 		ft_printf/output/print_identifier.c \
 		ft_printf/output/print_int.c \
 		ft_printf/output/print_long.c \
@@ -104,9 +105,10 @@ SRC = ft_libft/ft_atoi.c \
 		ft_printf/output/print_unsigned_int.c \
 		ft_printf/output/print_wide.c \
 		ft_printf/utils/check_format.c \
-		ft_printf/utils/ft_address_to_hex.c \
-		ft_printf/utils/ft_dec_to_hex.c \
-		ft_printf/utils/ft_dec_to_oct.c \
+		ft_printf/utils/converters/ft_address_to_hex.c \
+		ft_printf/utils/converters/ft_dec_to_hex.c \
+		ft_printf/utils/converters/ft_dec_to_hex_long.c \
+		ft_printf/utils/converters/ft_dec_to_oct.c \
 		ft_printf/utils/checks/ft_isconversion.c \
 		ft_printf/utils/checks/ft_isflag.c \
 		ft_printf/utils/checks/ft_islmod.c \

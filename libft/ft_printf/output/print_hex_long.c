@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex.c                                        :+:      :+:    :+:   */
+/*   print_hex_long.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/17 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2016/11/27 13:17:17 by pbie              #+#    #+#             */
+/*   Updated: 2016/11/27 15:16:26 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void					print_hex_precision(t_pf_item *pfi, char *num)
+void					print_hex_long_precision(t_pf_item *pfi, char *num)
 {
 	int				i;
 	int				len;
@@ -31,29 +31,29 @@ void					print_hex_precision(t_pf_item *pfi, char *num)
 	pfi->bytes += len;
 }
 
-int					hex_get_width(t_pf_item *pfi, char *num)
+int					hex_long_get_width(t_pf_item *pfi, char *num)
 {
 	int				width;
 
 	width = 0;
 	if (pfi->precision >= pfi->field_w)
 		pfi->precision = 0;
-	width = pfi->field_w - ft_strlen(num) - 1;
-	if (pfi->flags->hash)
-		width -= 2;
+	width = pfi->field_w - pfi->precision - 1;
+	if (!pfi->precision)
+		width -= ft_strlen(num);
 	return (width);
 }
 
-void					print_hex_field_w(t_pf_item *pfi, char *num)
+void					print_hex_long_field_w(t_pf_item *pfi, char *num)
 {
 	int				i;
 	int				width;
 
 	i = 0;
-	width = hex_get_width(pfi, num);
+	width = hex_long_get_width(pfi, num);
 	if (pfi->flags->minus)
 	{
-		print_hex_precision(pfi, num);
+		print_hex_long_precision(pfi, num);
 		while (i++ <= width)
 		{
 			ft_putchar(' ');
@@ -62,13 +62,6 @@ void					print_hex_field_w(t_pf_item *pfi, char *num)
 	}
 	else
 	{
-		if (pfi->flags->hash && pfi->flags->zero)
-		{
-			if (pfi->cspecs->x)
-				ft_putstr("0x");
-			else
-				ft_putstr("0X");
-		}
 		while (i++ <= width)
 		{
 			if (pfi->flags->zero)
@@ -77,35 +70,31 @@ void					print_hex_field_w(t_pf_item *pfi, char *num)
 				ft_putchar(' ');
 			pfi->bytes++;
 		}
-		if (pfi->flags->hash && !pfi->flags->zero)
-		{
-			if (pfi->cspecs->x)
-				ft_putstr("0x");
-			else
-				ft_putstr("0X");
-		}
-		print_hex_precision(pfi, num);
+		print_hex_long_precision(pfi, num);
 	}
 }
 
-void					print_hex(t_pf_item *pfi, int num)
+void					print_hex_long(t_pf_item *pfi, long long int num)
 {
 	char				*tmp;
-	unsigned int	i;
+	unsigned long long int	i;
 
 	i = num;
 	if (pfi->flags->hash)
+	{
+		ft_putstr("0x");
 		pfi->bytes += 2;
-	tmp = ft_dec_to_hex(i);
+	}
+	tmp = ft_dec_to_hex_long(i);
 	if (pfi->field_w > 0)
 	{
-		if (pfi->precision >= pfi->field_w)
-			print_hex_precision(pfi, tmp);
+		if (pfi->precision > pfi->field_w)
+			print_hex_long_precision(pfi, tmp);
 		else
-			print_hex_field_w(pfi, tmp);
+			print_hex_long_field_w(pfi, tmp);
 	}
 	else if (pfi->precision > 0)
-		print_hex_precision(pfi, tmp);
+		print_hex_long_precision(pfi, tmp);
 	else
 	{
 		if (pfi->cspecs->lg_x)
