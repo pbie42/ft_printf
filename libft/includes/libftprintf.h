@@ -62,7 +62,7 @@
 
 typedef int					t_bool;
 
-typedef int					t_bool;
+typedef unsigned long long int		t_ulli;
 
 typedef struct		s_pf_flags
 {
@@ -247,7 +247,7 @@ void					print_wide_string(t_pf_item *pfi, wchar_t *ws);
 int					int_length(long long int num);
 int					long_length(long num);
 char					*ft_dec_to_hex(unsigned int n);
-char					*ft_dec_to_hex_long(unsigned long long int n);
+char					*ft_dec_to_hex_long(t_ulli n);
 char					*ft_address_to_hex(long int n);
 int					ft_dec_to_oct(long int n);
 void					ft_strrev(char *s);
