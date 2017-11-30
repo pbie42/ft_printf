@@ -34,12 +34,14 @@ int					ft_printf(const char *format, ...)
 			&& pf->format[pf->pos + 1] == '%')
 		{
 			ft_putchar(pf->format[++pf->pos]);
+			// ft_putendl("byte 1");
 			pf->bytes++;
 		}
 		else
 		{
 			ft_putchar(pf->format[pf->pos]);
 			pf->bytes++;
+			// ft_putendl("byte 2");
 		}
 	}
 	va_end(args);

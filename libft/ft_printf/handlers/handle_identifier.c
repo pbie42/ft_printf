@@ -54,6 +54,7 @@ void					handle_identifier(t_pf *pf, va_list args)
 	// print_pfi(pfi);
 	// handle_conditions(pfi);
 	print_identifier(pfi, args);
+	// ft_putendlnbr("pfi->bytes ", pfi->bytes);
 	pf->bytes += pfi->bytes;
 	free(pfi);
 }
