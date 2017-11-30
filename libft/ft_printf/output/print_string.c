@@ -54,10 +54,7 @@ void					print_field_w(t_pf_item *pfi, char *s)
 	{
 		print_precision(pfi, s);
 		while (i++ <= width)
-		{
-			ft_putchar(' ');
-			pfi->bytes++;
-		}
+			print_space_byte(pfi);
 	}
 	else
 	{

@@ -21,10 +21,7 @@ void					print_char_field_w(t_pf_item *pfi, unsigned char c)
 	{
 		ft_putchar(c);
 		while(i++ < pfi->field_w - 1)
-		{
-			ft_putchar(' ');
-			pfi->bytes++;
-		}
+			print_space_byte(pfi);
 	}
 	else
 	{

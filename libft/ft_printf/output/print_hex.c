@@ -27,9 +27,7 @@ void					print_hex_precision(t_pf_item *pfi, char *num, t_bool field)
 	if (pfi->flags->hash && pfi->flags->zero && (num != 0) && !field)
 		print_prefix(pfi);
 	if (pfi->lenmods->p && (ft_strcmp(num, "0") == 0) && (pfi->precision == 0))
-	{
 		ft_putchar(' ');
-	}
 	else if (pfi->cspecs->lg_x)
 		ft_strrev(ft_strupper(num));
 	else
@@ -61,10 +59,7 @@ void					print_hex_field_w(t_pf_item *pfi, char *num)
 	{
 		print_hex_precision(pfi, num, FALSE);
 		while (i++ <= width)
-		{
-			ft_putchar(' ');
-			pfi->bytes++;
-		}
+			print_space_byte(pfi);
 	}
 	else
 	{

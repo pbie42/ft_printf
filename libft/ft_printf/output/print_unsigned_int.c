@@ -52,10 +52,7 @@ void					pr_int_us_field_w(t_pf_item *pfi, unsigned int num)
 	{
 		pr_int_us_precision(pfi, num);
 		while (i++ <= width)
-		{
-			ft_putchar(' ');
-			pfi->bytes++;
-		}
+			print_space_byte(pfi);
 	}
 	else
 	{

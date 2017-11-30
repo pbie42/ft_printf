@@ -247,6 +247,7 @@ void				print_wide_char(t_pf_item *pfi, wint_t wide);
 void				print_prefix(t_pf_item *pfi);
 void				print_zero_space(t_pf_item *pfi);
 void				print_x_ul(t_pf_item *pfi, char *num);
+void				print_space_byte(t_pf_item *pfi);
 void					print_wide_string(t_pf_item *pfi, wchar_t *ws);
 int					int_length(long long int num);
 int					long_length(long num);

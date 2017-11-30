@@ -55,10 +55,7 @@ void					print_hex_max_field_w(t_pf_item *pfi, char *num)
 	{
 		print_hex_max_precision(pfi, num);
 		while (i++ <= width)
-		{
-			ft_putchar(' ');
-			pfi->bytes++;
-		}
+			print_space_byte(pfi);
 	}
 	else
 	{
