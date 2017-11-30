@@ -33,6 +33,7 @@ void					init_lmods(t_pf_item *pfi)
 	pfi->lenmods->ll = FALSE;
 	pfi->lenmods->j = FALSE;
 	pfi->lenmods->z = FALSE;
+	pfi->lenmods->p = FALSE;
 }
 
 void					init_cspecs(t_pf_item *pfi)

@@ -38,6 +38,7 @@ void					handle_identifier(t_pf *pf, va_list args)
 	}
 	if (pf->format[pf->pos] == '.')
 	{
+		pfi->lenmods->p = TRUE;
 		handle_precision(pf, pfi);
 	}
 	if (ft_islmod(pf->format[pf->pos]))

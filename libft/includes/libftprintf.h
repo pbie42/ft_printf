@@ -81,6 +81,7 @@ typedef struct		s_pf_lmods
 	t_bool			ll;
 	t_bool			j;
 	t_bool			z;
+	t_bool			p;
 }					t_pf_lmods;
 
 typedef struct		s_pf_cspecs
@@ -243,6 +244,9 @@ void				print_oct(t_pf_item *pfi, long int n);
 void				print_char(t_pf_item *pfi, unsigned char c);
 void				print_string(t_pf_item *pfi, char *s);
 void				print_wide_char(t_pf_item *pfi, wint_t wide);
+void				print_prefix(t_pf_item *pfi);
+void				print_zero_space(t_pf_item *pfi);
+void				print_x_ul(t_pf_item *pfi, char *num);
 void					print_wide_string(t_pf_item *pfi, wchar_t *ws);
 int					int_length(long long int num);
 int					long_length(long num);

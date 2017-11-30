@@ -30,3 +30,5 @@ printf:
 		☐ %%
 		✔ precision @done (2017-11-23 12:57:41)
 		✔ field width @done (2017-11-23 12:57:40)
+	Refactor:
+		☐ Make all hex algos same as print_hex
