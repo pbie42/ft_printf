@@ -234,7 +234,7 @@ void				init_pfi(t_pf_item *pfi);
 void				print_pfi(t_pf_item *pfi);
 void				handle_conditions(t_pf_item *pfi);
 void				print_identifier(t_pf_item *pfi, va_list args);
-void				print_int(t_pf_item *pfi, int num);
+void				print_int(t_pf_item *pfi, long int num);
 void				print_unsigned_int(t_pf_item *pfi, unsigned int num);
 void				print_long(t_pf_item *pfi, long num);
 void				print_address(t_pf_item *pfi, long int num);

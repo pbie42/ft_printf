@@ -15,13 +15,15 @@
 int					int_length(long long int num)
 {
 	int				counter;
+	long long int	anum;
 
-	if (num == 0)
+	anum = llabs(num);
+	if (anum == 0)
 		return (1);
 	counter = 0;
-	while (num > 0)
+	while (anum > 0)
 	{
-		num = num / 10;
+		anum = anum / 10;
 		counter ++;
 	}
 	return (counter);
