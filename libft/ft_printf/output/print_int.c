@@ -90,6 +90,10 @@ void					print_int(t_pf_item *pfi, long int num)
 {
 	int				anum;
 
+	if (pfi->lenmods->h)
+		num = (short)num;
+	if (pfi->lenmods->hh)
+		num = (signed char)num;
 	if (pfi->flags->space && !pfi->flags->plus && num > 0)
 		print_space_byte(pfi);
 	if (pfi->flags->plus && num >= 0)
