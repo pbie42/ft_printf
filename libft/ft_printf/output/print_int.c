@@ -12,6 +12,19 @@
 
 #include "libftprintf.h"
 
+int					int_get_width(t_pf_item *pfi, int num)
+{
+	int				width;
+
+	width = 0;
+	if (pfi->precision >= pfi->field_w)
+		pfi->precision = 0;
+	width = pfi->field_w - pfi->precision - 1;
+	if (!pfi->precision)
+		width -= int_length(num);
+	return (width);
+}
+
 void					pr_int_precision(t_pf_item *pfi, int num)
 {
 	int				i;
@@ -24,21 +37,12 @@ void					pr_int_precision(t_pf_item *pfi, int num)
 		ft_putchar('0');
 		pfi->bytes++;
 	}
+	if (num < 0)
+		pfi->bytes++;
+	if (num < 0)
+		pfi->bytes++;
 	ft_putnbr(num);
-	pfi->bytes++;
-}
-
-int					int_get_width(t_pf_item *pfi, int num)
-{
-	int				width;
-
-	width = 0;
-	if (pfi->precision >= pfi->field_w)
-		pfi->precision = 0;
-	width = pfi->field_w - pfi->precision - 1;
-	if (!pfi->precision)
-		width -= int_length(num);
-	return (width);
+	pfi->bytes += int_length(num);
 }
 
 void					pr_int_field_w(t_pf_item *pfi, int num)
@@ -81,7 +85,9 @@ void					print_int(t_pf_item *pfi, int num)
 		pr_int_precision(pfi, num);
 	else
 	{
+		if (num < 0)
+			pfi->bytes++;
 		ft_putnbr(num);
-		pfi->bytes++;
+		pfi->bytes += int_length(num);
 	}
 }

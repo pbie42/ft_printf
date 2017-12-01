@@ -44,12 +44,12 @@ int						main(void){
 	x = 15;
 	// i = printf("%S!\n", L"漢字");
 	// rem = printf("%C!\n", 23588);
-	printf("@moulitest: %.o %.0o!\n", 0, 0);
+	printf("%d\n", 4242);
 	// printf("x is: %010x\n", &x);
 	// printf("Capital C is: %C!\n", 1588);
 	// printf("printf address is: %-020p!\n", &x);
 	// ft_printf("%lx\n", 4294967296);
-	ft_printf("@moulitest: %.o %.0o!\n", 0, 0);
+	ft_printf("%d\n", 4242);
 	// ft_printf("%010x!\n", &x);
 	// ft_printf("%C!\n", 23588);
 	return (0);
