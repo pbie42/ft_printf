@@ -12,12 +12,17 @@
 
 #include "libftprintf.h"
 
-int					int_length(long long int num)
+int					int_length(intmax_t num)
 {
 	int				counter;
-	long long int	anum;
+	intmax_t			anum;
 
-	anum = llabs(num);
+	if ((unsigned long long)num == -9223372036854775808U)
+		return (19);
+	if (num < 0)
+		anum = num * -1;
+	else
+		anum = num;
 	if (anum == 0)
 		return (1);
 	counter = 0;

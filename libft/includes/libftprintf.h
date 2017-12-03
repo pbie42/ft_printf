@@ -49,6 +49,7 @@
 # define INVRED "\033[7;31m"
 # define INVMAGENTA "\033[7;35m"
 
+# include <inttypes.h>
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -234,7 +235,7 @@ void				init_pfi(t_pf_item *pfi);
 void				print_pfi(t_pf_item *pfi);
 void				handle_conditions(t_pf_item *pfi);
 void				print_identifier(t_pf_item *pfi, va_list args);
-void				print_int(t_pf_item *pfi, long int num);
+void				print_int(t_pf_item *pfi, intmax_t num);
 void				print_unsigned_int(t_pf_item *pfi, unsigned int num);
 void				print_long(t_pf_item *pfi, long num);
 void				print_address(t_pf_item *pfi, long int num);
@@ -250,7 +251,7 @@ void				print_x_ul(t_pf_item *pfi, char *num);
 void				print_space_byte(t_pf_item *pfi);
 void				print_hex_max(t_pf_item *pfi, intmax_t num);
 void					print_wide_string(t_pf_item *pfi, wchar_t *ws);
-int					int_length(long long int num);
+int					int_length(intmax_t num);
 int					long_length(long num);
 char					*ft_dec_to_hex(unsigned int n);
 char					*ft_dec_to_hex_long(t_ulli n);
@@ -261,6 +262,7 @@ void					ft_strrev(char *s);
 char					*ft_strupper(char *s);
 char					*ft_strlower(char *s);
 void				ft_putll(long long int nb);
+char		*ft_llitoa(intmax_t n);
 
 
 #endif
