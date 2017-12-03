@@ -12,10 +12,11 @@
 
 #include "libftprintf.h"
 
-void					pr_int_us_precision(t_pf_item *pfi, unsigned int num)
+void					pr_int_us_precision(t_pf_item *pfi, uintmax_t num)
 {
 	int				i;
 	int				len;
+	char				*test;
 	
 	i = pfi->precision;
 	len = int_length(num);
@@ -24,11 +25,13 @@ void					pr_int_us_precision(t_pf_item *pfi, unsigned int num)
 		ft_putchar('0');
 		pfi->bytes++;
 	}
-	ft_putll(num);
-	pfi->bytes++;
+	test = ft_llitoa(num);
+	ft_putstr(test);
+	// ft_putll(num);
+	pfi->bytes += int_length(num);
 }
 
-int					int_us_get_width(t_pf_item *pfi, unsigned int num)
+int					int_us_get_width(t_pf_item *pfi, uintmax_t num)
 {
 	int				width;
 
@@ -41,7 +44,7 @@ int					int_us_get_width(t_pf_item *pfi, unsigned int num)
 	return (width);
 }
 
-void					pr_int_us_field_w(t_pf_item *pfi, unsigned int num)
+void					pr_int_us_field_w(t_pf_item *pfi, uintmax_t num)
 {
 	int				i;
 	int				width;
@@ -68,9 +71,10 @@ void					pr_int_us_field_w(t_pf_item *pfi, unsigned int num)
 	}
 }
 
-void					print_unsigned_int(t_pf_item *pfi, unsigned int num)
+void					print_unsigned_int(t_pf_item *pfi, uintmax_t num)
 {
-	unsigned int	i;
+	uintmax_t	i;
+	char				*test;
 
 	i = num;
 	if (pfi->field_w > 0)
@@ -84,7 +88,9 @@ void					print_unsigned_int(t_pf_item *pfi, unsigned int num)
 		pr_int_us_precision(pfi, i);
 	else
 	{
-		ft_putll(num);
-		pfi->bytes++;
+		test = ft_llitoa(num);
+		ft_putstr(test);
+		// ft_putll(num);
+		pfi->bytes += int_length(num);
 	}
 }
