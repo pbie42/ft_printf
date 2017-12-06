@@ -44,13 +44,21 @@ int						main(void){
 	x = 15;
 	// i = printf("%S!\n", L"漢字");
 	// rem = printf("%C!\n", 23588);
-	printf("%jd\n", 9223372036854775807);
+	printf("%03.2d\n", 1);
 	// printf("x is: %010x\n", &x);
 	// printf("Capital C is: %C!\n", 1588);
 	// printf("printf address is: %-020p!\n", &x);
 	// ft_printf("%lx\n", 4294967296);
-	ft_printf("%jd\n", 9223372036854775807);
+	ft_printf("%03.2d\n", 1);
 	// ft_printf("%010x!\n", &x);
 	// ft_printf("%C!\n", 23588);
 	return (0);
 }
+
+// ft_printf("%+10.5d", 4242);
+//   1. (   10) -->+    04242<--
+//   2. (   10) -->    +04242<--
+
+// ft_printf("%0+5d", 42);
+//   1. (    5) -->00+42<--
+//   2. (    5) -->+0042<--

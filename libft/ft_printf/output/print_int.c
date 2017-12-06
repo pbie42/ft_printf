@@ -40,6 +40,8 @@ void					pr_int_precision(t_pf_item *pfi, intmax_t num)
 	
 	i = pfi->precision;
 	len = int_length(num);
+	if (num < 0 && !pfi->flags->zero && num != 2147483648 && num != -2147483648)
+		ft_putchar('-');
 	while (i-- > len)
 	{
 		ft_putchar('0');
@@ -47,14 +49,15 @@ void					pr_int_precision(t_pf_item *pfi, intmax_t num)
 	}
 	if (num < 0)
 		pfi->bytes++;
-	if (num < 0 && !pfi->flags->zero && num != 2147483648 && num != -2147483648)
-		ft_putchar('-');
 	if (num < 0)
 		anum = num * -1;
 	else
 		anum = num;
 	test = ft_llitoa(anum);
-	ft_putstr(test);
+	if (pfi->lenmods->p && (num == 0) && (pfi->precision == 0))
+			ft_putchar(' ');
+	else
+		ft_putstr(test);
 	// free(test);
 	pfi->bytes += int_length(num);
 }
@@ -68,18 +71,33 @@ void					pr_int_field_w(t_pf_item *pfi, intmax_t num)
 	width = int_get_width(pfi, num);
 	if (pfi->flags->minus)
 	{
+		if (pfi->flags->plus && num >= 0 && !pfi->flags->zero)
+		{
+			ft_putchar('+');
+			pfi->bytes++;
+		}
 		pr_int_precision(pfi, num);
 		while (i++ <= width)
 			print_space_byte(pfi);
 	}
 	else
 	{
+		if (pfi->flags->plus && num >= 0 && pfi->flags->zero)
+		{
+			ft_putchar('+');
+			pfi->bytes++;
+		}
 		while (i++ <= width)
 		{
-			if (pfi->flags->zero)
+			if (pfi->flags->zero && i >= pfi->precision)
 				ft_putchar('0');
 			else
 				ft_putchar(' ');
+			pfi->bytes++;
+		}
+		if (pfi->flags->plus && num >= 0 && !pfi->flags->zero)
+		{
+			ft_putchar('+');
 			pfi->bytes++;
 		}
 		pr_int_precision(pfi, num);
@@ -102,7 +120,7 @@ void					print_int(t_pf_item *pfi, intmax_t num)
 		num = (long long)num;
 	if (pfi->flags->space && !pfi->flags->plus && num > 0)
 		print_space_byte(pfi);
-	if (pfi->flags->plus && num >= 0)
+	if (pfi->flags->plus && num >= 0 && pfi->field_w == 0)
 	{
 		ft_putchar('+');
 		pfi->bytes++;
@@ -120,6 +138,7 @@ void					print_int(t_pf_item *pfi, intmax_t num)
 		pr_int_precision(pfi, num);
 	else
 	{
+		anum = num;
 		if (num < 0)
 			pfi->bytes++;
 		if (num < 0 && !pfi->flags->zero && num != 2147483648)
@@ -129,7 +148,10 @@ void					print_int(t_pf_item *pfi, intmax_t num)
 		else
 			anum = num;
 		test = ft_llitoa(anum);
-		ft_putstr(test);
+		if (pfi->lenmods->p && (num == 0) && (pfi->precision == 0))
+			pfi->bytes--;
+		else
+			ft_putstr(test);
 		// free(test);
 		pfi->bytes += int_length(num);
 	}
