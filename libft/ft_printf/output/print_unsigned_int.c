@@ -71,11 +71,17 @@ void					pr_int_us_field_w(t_pf_item *pfi, uintmax_t num)
 	}
 }
 
-void					print_unsigned_int(t_pf_item *pfi, uintmax_t num)
+void					print_unsigned_int(t_pf_item *pfi, intmax_t num)
 {
 	uintmax_t	i;
 	char				*test;
 
+	if (!pfi->lenmods->l && !pfi->lenmods->h && !pfi->lenmods->ll && !pfi->lenmods->j)
+		num = (unsigned int)num;
+	if (pfi->lenmods->l)
+		num = (unsigned long int)num;
+	if (pfi->lenmods->ll)
+		num = (unsigned long long int)num;
 	i = num;
 	if (pfi->field_w > 0)
 	{

@@ -23,7 +23,7 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 	else if (pfi->cspecs->d || pfi->cspecs->i)
 		print_int(pfi, va_arg(args, uintmax_t));
 	else if (pfi->cspecs->u)
-		print_unsigned_int(pfi, va_arg(args, long long int));
+		print_unsigned_int(pfi, va_arg(args, intmax_t));
 	else if (pfi->cspecs->s)
 		print_string(pfi, va_arg(args, char *));
 	else if (pfi->cspecs->o)
