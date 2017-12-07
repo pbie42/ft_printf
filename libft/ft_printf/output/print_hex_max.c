@@ -6,17 +6,17 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/17 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 16:17:34 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void					print_hex_max_precision(t_pf_item *pfi, char *num, t_bool field)
+void			print_hex_max_precision(t_pf_item *pfi, char *num, t_bool field)
 {
-	int				i;
-	int				len;
-	
+	int			i;
+	int			len;
+
 	i = pfi->precision;
 	len = ft_strlen(num);
 	while (i-- > len)
@@ -32,9 +32,9 @@ void					print_hex_max_precision(t_pf_item *pfi, char *num, t_bool field)
 	pfi->bytes += len;
 }
 
-int					hex_max_get_width(t_pf_item *pfi, char *num)
+int				hex_max_get_width(t_pf_item *pfi, char *num)
 {
-	int				width;
+	int			width;
 
 	width = 0;
 	if (pfi->precision >= pfi->field_w)
@@ -45,10 +45,10 @@ int					hex_max_get_width(t_pf_item *pfi, char *num)
 	return (width);
 }
 
-void					print_hex_max_field_w(t_pf_item *pfi, char *num)
+void			print_hex_max_field_w(t_pf_item *pfi, char *num)
 {
-	int				i;
-	int				width;
+	int			i;
+	int			width;
 
 	i = 0;
 	width = hex_max_get_width(pfi, num);
@@ -70,29 +70,26 @@ void					print_hex_max_field_w(t_pf_item *pfi, char *num)
 	}
 }
 
-void					print_hex_max(t_pf_item *pfi, intmax_t num)
+void			print_hex_max(t_pf_item *pfi, intmax_t num)
 {
-	char				*tmp;
-	uintmax_t		i;
+	char		*tmp;
 
-	i = num;
-	tmp = ft_dec_to_hex_max(i);
+	tmp = ft_dec_to_hex_max(num);
 	if (pfi->flags->hash && (ft_strcmp(tmp, "0") != 0))
 		pfi->bytes += 2;
 	if (pfi->field_w > 0)
-	{
 		if (pfi->precision >= pfi->field_w)
 			print_hex_max_precision(pfi, tmp, FALSE);
 		else
 			print_hex_max_field_w(pfi, tmp);
-	}
 	else if (pfi->precision > 0)
 		print_hex_max_precision(pfi, tmp, FALSE);
 	else
 	{
 		if (pfi->flags->hash && (ft_strcmp(tmp, "0") != 0))
 			print_prefix(pfi);
-		if (pfi->lenmods->p && (ft_strcmp(tmp, "0") == 0) && (pfi->precision == 0))
+		if (pfi->lenmods->p && (ft_strcmp(tmp, "0") == 0)
+			&& (pfi->precision == 0))
 			pfi->bytes--;
 		else
 			print_x_ul(pfi, tmp);

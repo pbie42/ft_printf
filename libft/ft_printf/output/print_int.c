@@ -78,62 +78,52 @@ void				pr_int_field_w(t_pf_item *pfi, intmax_t num)
 		if (pfi->flags->plus && num >= 0 && pfi->flags->zero)
 			print_plus_byte(pfi);
 		while (i++ <= width)
-		{
-			if (pfi->flags->zero && i >= pfi->precision)
-				ft_putchar('0');
-			else
-				ft_putchar(' ');
-			pfi->bytes++;
-		}
+			print_int_zero_space(pfi, i);
 		if (pfi->flags->plus && num >= 0 && !pfi->flags->zero)
 			print_plus_byte(pfi);
 		pr_int_precision(pfi, num);
 	}
 }
 
-void				print_int(t_pf_item *pfi, intmax_t num)
+void				print_int_bis(t_pf_item *pfi)
 {
 	intmax_t		anum;
 	char			*test;
 
-	if (!pfi->lenmods->h && !pfi->lenmods->hh && !pfi->lenmods->l
-		&& !pfi->lenmods->ll && !pfi->lenmods->j && !pfi->lenmods->z)
-		num = (int)num;
-	if (pfi->lenmods->h)
-		num = (short)num;
-	if (pfi->lenmods->hh)
-		num = (signed char)num;
-	if (pfi->lenmods->l)
-		num = (long long)num;
-	if (pfi->flags->space && !pfi->flags->plus && num > 0)
+	anum = pfi->num;
+	if (pfi->num < 0)
+		pfi->bytes++;
+	if (pfi->num < 0 && !pfi->flags->zero && pfi->num != 2147483648)
+		ft_putchar('-');
+	if (pfi->num < 0)
+		anum = pfi->num * -1;
+	else
+		anum = pfi->num;
+	test = ft_llitoa(anum);
+	if (pfi->lenmods->p && (pfi->num == 0) && (pfi->precision == 0))
+		pfi->bytes--;
+	else
+		ft_putstr(test);
+	pfi->bytes += int_length(pfi->num);
+}
+
+void				print_int(t_pf_item *pfi, intmax_t num)
+{
+	pfi->num = num;
+	get_int_type(pfi);
+	if (pfi->flags->space && !pfi->flags->plus && pfi->num > 0)
 		print_space_byte(pfi);
-	if (pfi->flags->plus && num >= 0 && pfi->field_w == 0)
+	if (pfi->flags->plus && pfi->num >= 0 && pfi->field_w == 0)
 		print_plus_byte(pfi);
-	if (pfi->flags->zero && num < 0 && num != 2147483648)
+	if (pfi->flags->zero && pfi->num < 0 && pfi->num != 2147483648)
 		ft_putchar('-');
 	if (pfi->field_w > 0)
 		if (pfi->precision > pfi->field_w)
-			pr_int_precision(pfi, num);
+			pr_int_precision(pfi, pfi->num);
 		else
-			pr_int_field_w(pfi, num);
+			pr_int_field_w(pfi, pfi->num);
 	else if (pfi->precision > 0)
-		pr_int_precision(pfi, num);
+		pr_int_precision(pfi, pfi->num);
 	else
-	{
-		anum = num;
-		if (num < 0)
-			pfi->bytes++;
-		if (num < 0 && !pfi->flags->zero && num != 2147483648)
-			ft_putchar('-');
-		if (num < 0)
-			anum = num * -1;
-		else
-			anum = num;
-		test = ft_llitoa(anum);
-		if (pfi->lenmods->p && (num == 0) && (pfi->precision == 0))
-			pfi->bytes--;
-		else
-			ft_putstr(test);
-		pfi->bytes += int_length(num);
-	}
+		print_int_bis(pfi);
 }

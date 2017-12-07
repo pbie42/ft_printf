@@ -12,28 +12,8 @@
 
 #include "libftprintf.h"
 
-void					print_pfi(t_pf_item *pfi)
+void					print_pfi_bis(t_pf_item *pfi)
 {
-	ft_putendl("FLAGS");
-	ft_putendlnbr("flags->hash: ", pfi->flags->hash);
-	ft_putendlnbr("flags->zero: ", pfi->flags->zero);
-	ft_putendlnbr("flags->plus: ", pfi->flags->plus);
-	ft_putendlnbr("flags->minus: ", pfi->flags->minus);
-	ft_putendlnbr("flags->space: ", pfi->flags->space);
-	ft_putchar('\n');
-	ft_putendl("FIELD WIDTH");
-	ft_putendlnbr("field_w: ", pfi->field_w);
-	ft_putendl("PRECISION WIDTH");
-	ft_putendlnbr("precision: ", pfi->precision);
-	ft_putendl("LENGTH MODIFIERS");
-	ft_putendlnbr("lenmods->h: ", pfi->lenmods->h);
-	ft_putendlnbr("lenmods->hh: ", pfi->lenmods->hh);
-	ft_putendlnbr("lenmods->l: ", pfi->lenmods->l);
-	ft_putendlnbr("lenmods->ll: ", pfi->lenmods->ll);
-	ft_putendlnbr("lenmods->j: ", pfi->lenmods->j);
-	ft_putendlnbr("lenmods->j: ", pfi->lenmods->j);
-	ft_putendlnbr("lenmods->z: ", pfi->lenmods->z);
-	ft_putchar('\n');
 	ft_putendl("CONVERSIONS");
 	ft_putendlnbr("cspecs->s: ", pfi->cspecs->s);
 	ft_putendlnbr("cspecs->lg_s: ", pfi->cspecs->lg_s);
@@ -51,4 +31,33 @@ void					print_pfi(t_pf_item *pfi)
 	ft_putendlnbr("cspecs->lg_c: ", pfi->cspecs->lg_c);
 	ft_putendlnbr("cspecs->percent: ", pfi->cspecs->percent);
 	ft_putchar('\n');
+}
+
+void					print_pfi(t_pf_item *pfi)
+{
+	ft_putendl("FLAGS");
+	ft_putendlnbr("flags->hash: ", pfi->flags->hash);
+	ft_putendlnbr("flags->zero: ", pfi->flags->zero);
+	ft_putendlnbr("flags->plus: ", pfi->flags->plus);
+	ft_putendlnbr("flags->minus: ", pfi->flags->minus);
+	ft_putendlnbr("flags->space: ", pfi->flags->space);
+	ft_putchar('\n');
+	ft_putendl("ERROR");
+	ft_putstr("c_error ");
+	ft_putchar(pfi->c_error);
+	ft_putchar('!');
+	ft_putendl("FIELD WIDTH");
+	ft_putendlnbr("field_w: ", pfi->field_w);
+	ft_putendl("PRECISION WIDTH");
+	ft_putendlnbr("precision: ", pfi->precision);
+	ft_putendl("LENGTH MODIFIERS");
+	ft_putendlnbr("lenmods->h: ", pfi->lenmods->h);
+	ft_putendlnbr("lenmods->hh: ", pfi->lenmods->hh);
+	ft_putendlnbr("lenmods->l: ", pfi->lenmods->l);
+	ft_putendlnbr("lenmods->ll: ", pfi->lenmods->ll);
+	ft_putendlnbr("lenmods->j: ", pfi->lenmods->j);
+	ft_putendlnbr("lenmods->j: ", pfi->lenmods->j);
+	ft_putendlnbr("lenmods->z: ", pfi->lenmods->z);
+	ft_putchar('\n');
+	print_pfi_bis(pfi);
 }

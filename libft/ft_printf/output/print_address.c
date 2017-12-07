@@ -6,17 +6,17 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/17 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 16:42:12 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void					print_address_precision(t_pf_item *pfi, char *num)
+void				print_address_precision(t_pf_item *pfi, char *num)
 {
 	int				i;
 	int				len;
-	
+
 	i = pfi->precision;
 	len = ft_strlen(num);
 	while (i-- > len)
@@ -41,7 +41,7 @@ int					address_get_width(t_pf_item *pfi, char *num)
 	return (width - 2);
 }
 
-void					print_address_field_w(t_pf_item *pfi, char *num)
+void				print_address_field_w(t_pf_item *pfi, char *num)
 {
 	int				i;
 	int				width;
@@ -68,11 +68,12 @@ void					print_address_field_w(t_pf_item *pfi, char *num)
 	}
 }
 
-void					print_address(t_pf_item *pfi, long int num)
+void				print_address(t_pf_item *pfi, long int num)
 {
-	char				*tmp;
-	
+	char			*tmp;
+
 	ft_putstr("0x");
+	pfi->bytes += 2;
 	tmp = ft_address_to_hex(num);
 	if (pfi->field_w > 0)
 	{
@@ -89,7 +90,7 @@ void					print_address(t_pf_item *pfi, long int num)
 			ft_strrev(ft_strupper(tmp));
 		else
 			ft_strrev(ft_strlower(tmp));
-		pfi->bytes++;
+		pfi->bytes += ft_strlen(tmp);
 	}
 	free(tmp);
 }

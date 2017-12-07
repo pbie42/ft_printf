@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:25:33 by pbie              #+#    #+#             */
-/*   Updated: 2017/12/07 13:12:05 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 16:52:46 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@
 
 typedef int					t_bool;
 
+typedef unsigned int		t_ui;
+
 typedef unsigned long long int					t_ulli;
 
 typedef struct		s_pf_flags
@@ -113,7 +115,7 @@ typedef struct		s_pf_item
 	int				field_w;
 	int				precision;
 	int				bytes;
-
+	intmax_t		num;
 }					t_pf_item;
 
 typedef struct		s_pf
@@ -227,6 +229,7 @@ void				handle_len_mod(t_pf *pf, t_pf_item *pfi);
 void				handle_conversion(t_pf *pf, t_pf_item *pfi);
 t_pf_item			*init_pfi(t_pf_item *pfi);
 void				print_pfi(t_pf_item *pfi);
+void				print_percentage(t_pf_item *pfi);
 void				print_identifier(t_pf_item *pfi, va_list args);
 void				print_int(t_pf_item *pfi, intmax_t num);
 void				print_unsigned_int(t_pf_item *pfi, intmax_t num);
@@ -234,11 +237,13 @@ void				print_long(t_pf_item *pfi, long num);
 void				print_address(t_pf_item *pfi, long int num);
 void				print_hex(t_pf_item *pfi, int n);
 void				print_hex_long(t_pf_item *pfi, long long int num);
+void				print_hex_long_prefix(t_pf_item *pfi);
 void				print_oct(t_pf_item *pfi, long int n);
 void				print_char(t_pf_item *pfi, unsigned char c);
 void				print_string(t_pf_item *pfi, char *s);
 void				print_wide_char(t_pf_item *pfi, wint_t wide);
 void				print_prefix(t_pf_item *pfi);
+void				print_int_zero_space(t_pf_item *pfi, int i);
 void				print_zero_space(t_pf_item *pfi);
 void				print_zero_byte(t_pf_item *pfi);
 void				print_plus_byte(t_pf_item *pfi);
@@ -247,6 +252,7 @@ void				print_o_ul(t_pf_item *pfi, char *num);
 void				print_space_byte(t_pf_item *pfi);
 void				print_hex_max(t_pf_item *pfi, intmax_t num);
 void				print_wide_string(t_pf_item *pfi, wchar_t *ws);
+void				get_int_type(t_pf_item *pfi);
 int					int_length(intmax_t num);
 int					long_length(long num);
 char				*ft_dec_to_hex(unsigned int n);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendlnbr.c                                    :+:      :+:    :+:   */
+/*   print_percentage.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,8 @@
 
 #include "libftprintf.h"
 
-void					ft_putendlnbr(char *s, int num)
+void				print_percentage(t_pf_item *pfi)
 {
-	ft_putstr(s);
-	ft_putnbr(num);
-	ft_putchar('\n');
+	print_char(pfi, '%');
+	// pfi->bytes++;
 }

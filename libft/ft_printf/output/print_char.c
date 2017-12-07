@@ -20,7 +20,7 @@ void					print_char_field_w(t_pf_item *pfi, unsigned char c)
 	if (pfi->flags->minus)
 	{
 		ft_putchar(c);
-		while(i++ < pfi->field_w - 1)
+		while (i++ < pfi->field_w - 1)
 			print_space_byte(pfi);
 	}
 	else

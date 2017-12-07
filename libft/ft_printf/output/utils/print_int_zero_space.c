@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendlnbr.c                                    :+:      :+:    :+:   */
+/*   print_int_zero_space.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,11 @@
 
 #include "libftprintf.h"
 
-void					ft_putendlnbr(char *s, int num)
+void				print_int_zero_space(t_pf_item *pfi, int i)
 {
-	ft_putstr(s);
-	ft_putnbr(num);
-	ft_putchar('\n');
+	if (pfi->flags->zero && i >= pfi->precision)
+		ft_putchar('0');
+	else
+		ft_putchar(' ');
+	pfi->bytes++;
 }

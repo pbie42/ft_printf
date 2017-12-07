@@ -93,6 +93,9 @@ SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_strlower.c \
 		ft_libft/ft_strrev.c \
 		ft_libft/ft_strupper.c \
+		ft_printf/output/utils/get_int_type.c \
+		ft_printf/output/utils/print_hex_long_prefix.c \
+		ft_printf/output/utils/print_int_zero_space.c \
 		ft_printf/output/utils/print_o_ul.c \
 		ft_printf/output/utils/print_plus_byte.c \
 		ft_printf/output/utils/print_prefix.c \
@@ -109,6 +112,7 @@ SRC = ft_libft/ft_atoi.c \
 		ft_printf/output/print_int.c \
 		ft_printf/output/print_long.c \
 		ft_printf/output/print_oct.c \
+		ft_printf/output/print_percentage.c \
 		ft_printf/output/print_string.c \
 		ft_printf/output/print_unsigned_int.c \
 		ft_printf/output/print_wide.c \

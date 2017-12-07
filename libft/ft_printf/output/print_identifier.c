@@ -28,16 +28,15 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 		print_string(pfi, va_arg(args, char *));
 	else if (pfi->cspecs->o)
 		print_oct(pfi, va_arg(args, long int));
-	else if ((pfi->lenmods->j)
-		&& (pfi->cspecs->x || pfi->cspecs->lg_x ))
+	else if ((pfi->lenmods->j) && (pfi->cspecs->x || pfi->cspecs->lg_x))
 		print_hex_max(pfi, va_arg(args, intmax_t));
 	else if ((pfi->lenmods->l || pfi->lenmods->ll)
-		&& (pfi->cspecs->x || pfi->cspecs->lg_x ))
+		&& (pfi->cspecs->x || pfi->cspecs->lg_x))
 		print_hex_long(pfi, va_arg(args, long int));
 	else if (pfi->cspecs->x || pfi->cspecs->lg_x)
 		print_hex(pfi, va_arg(args, int));
 	else if (pfi->cspecs->p)
 		print_address(pfi, va_arg(args, long int));
 	else if (pfi->cspecs->percent)
-		print_char(pfi, '%');
+		print_percentage(pfi);
 }

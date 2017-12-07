@@ -12,6 +12,15 @@
 
 #include "libftprintf.h"
 
+void					handle_error(t_pf *pf, t_pf_item *pfi)
+{
+	if (pf->format[pf->pos] != '%')
+	{
+		ft_putchar(pf->format[pf->pos]);
+		pfi->bytes++;
+	}
+}
+
 void					handle_identifier(t_pf *pf, va_list args)
 {
 	t_pf_item		*pfi;
@@ -33,8 +42,9 @@ void					handle_identifier(t_pf *pf, va_list args)
 	if (ft_isconversion(pf->format[pf->pos]))
 		handle_conversion(pf, pfi);
 	else
-		pfi->c_error = pf->format[pf->pos];
+		handle_error(pf, pfi);
 	print_identifier(pfi, args);
+	// print_pfi(pfi);
 	pf->bytes += pfi->bytes;
 	free(pfi);
 }
