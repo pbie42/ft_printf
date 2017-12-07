@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_int_type.c                                     :+:      :+:    :+:   */
+/*   ft_umaxitoa.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,16 +12,22 @@
 
 #include "libftprintf.h"
 
-void				get_int_type(t_pf_item *pfi)
+char		*ft_umaxitoa(uintmax_t n)
 {
-	if (!pfi->lenmods->h && !pfi->lenmods->hh && !pfi->lenmods->l
-		&& !pfi->lenmods->ll && !pfi->lenmods->j && !pfi->lenmods->z
-		&& !pfi->cspecs->lg_d)
-		pfi->num = (int)pfi->num;
-	if (pfi->lenmods->h)
-		pfi->num = (short)pfi->num;
-	if (pfi->lenmods->hh)
-		pfi->num = (signed char)pfi->num;
-	if (pfi->lenmods->l)
-		pfi->num = (long long)pfi->num;
+	char	*str;
+
+	if (!(str = (char *)malloc(sizeof(char) * 2)))
+		return (NULL);
+	if ((unsigned long long)n == -9223372036854775808U)
+		return (ft_strcpy(str, "9223372036854775808"));
+	if ((uintmax_t)n == 9223372036854775807)
+		return (ft_strcpy(str, "9223372036854775807"));
+	if (n >= 10)
+		str = ft_strjoin(ft_llitoa(n / 10), ft_llitoa(n % 10));
+	else if (n < 10)
+	{
+		str[0] = n + '0';
+		str[1] = '\0';
+	}
+	return (str);
 }

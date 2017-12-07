@@ -17,9 +17,9 @@ int				main(void){
 	int			x;
 	unsigned long	ul;
 
-	i = printf("real: {%S}", NULL);
+	i = printf("real: %O", LONG_MAX);
 	ft_putchar('\n');
-	x = ft_printf("mine: {%S}", NULL);
+	x = ft_printf("mine: %O", LONG_MAX);
 	ft_putchar('\n');
 
 	ft_putendlnbr("real is ", i);

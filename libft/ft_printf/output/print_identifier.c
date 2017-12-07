@@ -20,14 +20,14 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 		print_wide_string(pfi, va_arg(args, wchar_t *));
 	else if (pfi->cspecs->c)
 		print_char(pfi, (unsigned char)va_arg(args, int));
-	else if (pfi->cspecs->d || pfi->cspecs->i)
+	else if (pfi->cspecs->d || pfi->cspecs->i || pfi->cspecs->lg_d)
 		print_int(pfi, va_arg(args, uintmax_t));
 	else if (pfi->cspecs->u || pfi->cspecs->lg_u)
 		print_unsigned_int(pfi, va_arg(args, intmax_t));
 	else if (pfi->cspecs->s)
 		print_string(pfi, va_arg(args, char *));
-	else if (pfi->cspecs->o)
-		print_oct(pfi, va_arg(args, long int));
+	else if (pfi->cspecs->o || pfi->cspecs->lg_o)
+		print_oct(pfi, va_arg(args, intmax_t));
 	else if ((pfi->lenmods->j) && (pfi->cspecs->x || pfi->cspecs->lg_x))
 		print_hex_max(pfi, va_arg(args, intmax_t));
 	else if ((pfi->lenmods->l || pfi->lenmods->ll)

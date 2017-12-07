@@ -12,10 +12,10 @@
 
 #include "libftprintf.h"
 
-int					ft_dec_to_oct(long int decimal_number)
+intmax_t					ft_dec_to_oct(intmax_t decimal_number)
 {
-	int				octal_number;
-	int				i;
+	intmax_t				octal_number;
+	intmax_t				i;
 
 	octal_number = 0;
 	i = 1;

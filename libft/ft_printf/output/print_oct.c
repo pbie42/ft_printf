@@ -90,13 +90,13 @@ void			print_oct_bis(t_pf_item *pfi, char *tmp)
 	pfi->bytes += ft_strlen(tmp);
 }
 
-void			print_oct(t_pf_item *pfi, long int n)
+void			print_oct(t_pf_item *pfi, intmax_t n)
 {
 	char		*tmp;
-	int			oct;
+	intmax_t			oct;
 
 	oct = ft_dec_to_oct(n);
-	tmp = ft_itoa(oct);
+	tmp = ft_llitoa(oct);
 	if (pfi->flags->hash && (ft_strcmp(tmp, "0") != 0))
 		pfi->bytes += 1;
 	if (pfi->field_w > 0)

@@ -10,8 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-FLAG = -Wall -Wextra -Werror
-
 NAME = libftprintf.a
 
 SRC = ft_libft/ft_atoi.c \
@@ -150,7 +148,7 @@ $(NAME): $(OBJ)
 	@echo "$(NAME) indexed"
 
 %.o: %.c
-	@gcc $(FLAG) -I includes -c $< -o $@
+	@gcc -I includes -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
