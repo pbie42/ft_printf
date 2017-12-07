@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/24 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 14:03:44 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,22 @@
 
 void					pr_int_us_precision(t_pf_item *pfi, uintmax_t num)
 {
-	int				i;
-	int				len;
+	int					i;
+	int					len;
 	char				*test;
-	
+
 	i = pfi->precision;
 	len = int_length(num);
 	while (i-- > len)
-	{
-		ft_putchar('0');
-		pfi->bytes++;
-	}
+		print_zero_byte(pfi);
 	test = ft_llitoa(num);
 	ft_putstr(test);
-	// ft_putll(num);
 	pfi->bytes += int_length(num);
 }
 
-int					int_us_get_width(t_pf_item *pfi, uintmax_t num)
+int						int_us_get_width(t_pf_item *pfi, uintmax_t num)
 {
-	int				width;
+	int					width;
 
 	width = 0;
 	if (pfi->precision >= pfi->field_w)
@@ -46,8 +42,8 @@ int					int_us_get_width(t_pf_item *pfi, uintmax_t num)
 
 void					pr_int_us_field_w(t_pf_item *pfi, uintmax_t num)
 {
-	int				i;
-	int				width;
+	int					i;
+	int					width;
 
 	i = 0;
 	width = int_us_get_width(pfi, num);
@@ -73,30 +69,29 @@ void					pr_int_us_field_w(t_pf_item *pfi, uintmax_t num)
 
 void					print_unsigned_int(t_pf_item *pfi, intmax_t num)
 {
-	uintmax_t	i;
+	uintmax_t			i;
 	char				*test;
 
-	if (!pfi->lenmods->l && !pfi->lenmods->h && !pfi->lenmods->ll && !pfi->lenmods->j)
+	if (!pfi->lenmods->l && !pfi->lenmods->h && !pfi->lenmods->ll
+		&& !pfi->lenmods->j && !pfi->cspecs->lg_u)
 		num = (unsigned int)num;
 	if (pfi->lenmods->l)
 		num = (unsigned long int)num;
-	if (pfi->lenmods->ll)
+	if (pfi->lenmods->ll || pfi->cspecs->lg_u)
 		num = (unsigned long long int)num;
 	i = num;
 	if (pfi->field_w > 0)
-	{
 		if (pfi->precision > pfi->field_w)
 			pr_int_us_precision(pfi, i);
 		else
 			pr_int_us_field_w(pfi, i);
-	}
 	else if (pfi->precision > 0)
 		pr_int_us_precision(pfi, i);
 	else
 	{
 		test = ft_llitoa(num);
 		ft_putstr(test);
-		// ft_putll(num);
 		pfi->bytes += int_length(num);
+		free(test);
 	}
 }

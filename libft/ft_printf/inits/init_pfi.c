@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/10 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 13:59:13 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void					init_flags(t_pf_item *pfi)
 {
-	if(!(pfi->flags = (t_pf_flags *)malloc(sizeof(t_pf_flags) * 1)))
+	if (!(pfi->flags = (t_pf_flags *)malloc(sizeof(t_pf_flags) * 1)))
 		ft_exit("malloc error init_flags");
 	pfi->flags->minus = FALSE;
 	pfi->flags->plus = FALSE;
@@ -25,7 +25,7 @@ void					init_flags(t_pf_item *pfi)
 
 void					init_lmods(t_pf_item *pfi)
 {
-	if(!(pfi->lenmods = (t_pf_lmods *)malloc(sizeof(t_pf_lmods) * 1)))
+	if (!(pfi->lenmods = (t_pf_lmods *)malloc(sizeof(t_pf_lmods) * 1)))
 		ft_exit("malloc error init_lmods");
 	pfi->lenmods->h = FALSE;
 	pfi->lenmods->hh = FALSE;
@@ -38,7 +38,7 @@ void					init_lmods(t_pf_item *pfi)
 
 void					init_cspecs(t_pf_item *pfi)
 {
-	if(!(pfi->cspecs = (t_pf_cspecs *)malloc(sizeof(t_pf_cspecs) * 1)))
+	if (!(pfi->cspecs = (t_pf_cspecs *)malloc(sizeof(t_pf_cspecs) * 1)))
 		ft_exit("malloc error init_cspecs");
 	pfi->cspecs->s = FALSE;
 	pfi->cspecs->lg_s = FALSE;
@@ -57,9 +57,15 @@ void					init_cspecs(t_pf_item *pfi)
 	pfi->cspecs->percent = FALSE;
 }
 
-void					init_pfi(t_pf_item *pfi)
+t_pf_item				*init_pfi(t_pf_item *pfi)
 {
+	if (!(pfi = (t_pf_item *)malloc(sizeof(t_pf_item) * 1)))
+		ft_exit("malloc error handle_identifier");
+	pfi->field_w = 0;
+	pfi->precision = 0;
+	pfi->bytes = 0;
 	init_flags(pfi);
 	init_lmods(pfi);
 	init_cspecs(pfi);
+	return (pfi);
 }

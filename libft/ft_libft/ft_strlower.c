@@ -15,9 +15,9 @@
 char					*ft_strlower(char *s)
 {
 	int				i;
-	
-		i = -1;
-		while (s[++i])
-			s[i] = ft_tolower(s[i]);
-		return (s);
+
+	i = -1;
+	while (s[++i])
+		s[i] = ft_tolower(s[i]);
+	return (s);
 }

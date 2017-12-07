@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/16 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 13:20:58 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int					int_length(intmax_t num)
 {
 	int				counter;
-	intmax_t			anum;
+	intmax_t		anum;
 
 	if ((unsigned long long)num == -9223372036854775808U)
 		return (19);
@@ -29,7 +29,7 @@ int					int_length(intmax_t num)
 	while (anum > 0)
 	{
 		anum = anum / 10;
-		counter ++;
+		counter++;
 	}
 	return (counter);
 }

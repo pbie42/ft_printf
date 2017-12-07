@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putll.c                                         :+:      :+:    :+:   */
+/*   print_o_ul.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/24 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/24 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2017/12/07 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2017/12/07 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void						ft_putll(long long int nb)
+void			print_o_ul(t_pf_item *pfi, char *num)
 {
-	if (nb == LONG_MIN)
-		ft_putstr("-9223372036854775808");
-	if (nb < 0 && nb != LONG_MIN)
-	{
-		ft_putchar('-');
-		nb = -nb;
-	}
-	if (nb >= 10 && nb != LONG_MIN)
-	{
-		ft_putll(nb / 10);
-		ft_putll(nb % 10);
-	}
-	else if (nb != LONG_MIN)
-	{
-		ft_putll(nb + '0');
-	}
+	if (pfi->cspecs->lg_x)
+		ft_putstr(ft_strupper(num));
+	else
+		ft_putstr(ft_strlower(num));
 }

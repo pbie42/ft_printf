@@ -20,10 +20,7 @@ void					print_address_precision(t_pf_item *pfi, char *num)
 	i = pfi->precision;
 	len = ft_strlen(num);
 	while (i-- > len)
-	{
-		ft_putchar('0');
-		pfi->bytes++;
-	}
+		print_zero_byte(pfi);
 	if (pfi->cspecs->lg_x)
 		ft_strrev(ft_strupper(num));
 	else

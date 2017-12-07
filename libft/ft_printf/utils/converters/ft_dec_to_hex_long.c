@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:17:17 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/27 15:16:26 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 13:26:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_ulli					ft_dec_to_hex_long_ter(char *hex, t_ulli n)
 {
-	unsigned long long int				temp;
+	t_ulli				temp;
 	char				*tmp;
 
 	temp = 0;

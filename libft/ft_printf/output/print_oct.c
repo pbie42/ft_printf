@@ -6,25 +6,21 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/17 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 14:55:59 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-
-void					print_oct_precision(t_pf_item *pfi, char *num, t_bool field)
+void			print_oct_precision(t_pf_item *pfi, char *num, t_bool field)
 {
-	int				i;
-	int				len;
-	
+	int			i;
+	int			len;
+
 	i = pfi->precision;
 	len = ft_strlen(num);
 	while (i-- > len)
-	{
-		ft_putchar('0');
-		pfi->bytes++;
-	}
+		print_zero_byte(pfi);
 	if (pfi->flags->hash && (num != 0) && !field)
 		ft_putchar('0');
 	if (pfi->lenmods->p && (ft_strcmp(num, "0") == 0) && (pfi->precision == 0))
@@ -36,9 +32,9 @@ void					print_oct_precision(t_pf_item *pfi, char *num, t_bool field)
 	pfi->bytes += len;
 }
 
-int					oct_get_width(t_pf_item *pfi, char *num)
+int				oct_get_width(t_pf_item *pfi, char *num)
 {
-	int				width;
+	int			width;
 
 	width = 0;
 	if (pfi->precision >= pfi->field_w)
@@ -51,10 +47,10 @@ int					oct_get_width(t_pf_item *pfi, char *num)
 	return (width);
 }
 
-void					print_oct_field_w(t_pf_item *pfi, char *num)
+void			print_oct_field_w(t_pf_item *pfi, char *num)
 {
-	int				i;
-	int				width;
+	int			i;
+	int			width;
 
 	i = 0;
 	width = oct_get_width(pfi, num);
@@ -76,18 +72,28 @@ void					print_oct_field_w(t_pf_item *pfi, char *num)
 	}
 }
 
-void				print_o_ul(t_pf_item *pfi, char *num)
+void			print_oct_bis(t_pf_item *pfi, char *tmp)
 {
-	if (pfi->cspecs->lg_x)
-		ft_putstr(ft_strupper(num));
+	if (pfi->flags->hash && (ft_strcmp(tmp, "0") != 0))
+		ft_putchar('0');
+	if (pfi->lenmods->p && pfi->flags->hash && (ft_strcmp(tmp, "0") == 0)
+		&& (pfi->precision == 0))
+		ft_putchar('0');
 	else
-		ft_putstr(ft_strlower(num));
+	{
+		if (pfi->lenmods->p && !pfi->flags->hash
+			&& (ft_strcmp(tmp, "0") == 0) && (pfi->precision == 0))
+			pfi->bytes--;
+		else
+			print_o_ul(pfi, tmp);
+	}
+	pfi->bytes += ft_strlen(tmp);
 }
 
-void					print_oct(t_pf_item *pfi, long int n)
+void			print_oct(t_pf_item *pfi, long int n)
 {
-	char				*tmp;
-	int				oct;
+	char		*tmp;
+	int			oct;
 
 	oct = ft_dec_to_oct(n);
 	tmp = ft_itoa(oct);
@@ -103,20 +109,6 @@ void					print_oct(t_pf_item *pfi, long int n)
 	else if (pfi->precision > 0)
 		print_oct_precision(pfi, tmp, FALSE);
 	else
-	{
-		if (pfi->flags->hash && (ft_strcmp(tmp, "0") != 0))
-			ft_putchar('0');
-		if (pfi->lenmods->p && pfi->flags->hash && (ft_strcmp(tmp, "0") == 0) && (pfi->precision == 0))
-			ft_putchar('0');
-		else
-		{
-			if (pfi->lenmods->p && !pfi->flags->hash && (ft_strcmp(tmp, "0") == 0) && (pfi->precision == 0))
-				pfi->bytes--;
-			else
-				print_o_ul(pfi, tmp);
-			// ft_putendl("actually here");
-		}
-		pfi->bytes += ft_strlen(tmp);
-	}
+		print_oct_bis(pfi, tmp);
 	free(tmp);
 }

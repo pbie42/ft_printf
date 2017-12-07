@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dec_to_oct.c                                     :+:      :+:    :+:   */
+/*   ft_dec_to_oct.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,18 +12,18 @@
 
 #include "libftprintf.h"
 
-int					ft_dec_to_oct(long int decimalNumber)
+int					ft_dec_to_oct(long int decimal_number)
 {
-	int				octalNumber;
+	int				octal_number;
 	int				i;
 
-	octalNumber = 0;
+	octal_number = 0;
 	i = 1;
-	while (decimalNumber != 0)
+	while (decimal_number != 0)
 	{
-		octalNumber += (decimalNumber % 8) * i;
-		decimalNumber /= 8;
+		octal_number += (decimal_number % 8) * i;
+		decimal_number /= 8;
 		i *= 10;
 	}
-	return octalNumber;
+	return (octal_number);
 }

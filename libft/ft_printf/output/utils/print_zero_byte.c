@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   long_length.c                                      :+:      :+:    :+:   */
+/*   print_zero_byte.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/16 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2017/12/07 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2017/12/07 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int					long_length(long num)
+void				print_zero_byte(t_pf_item *pfi)
 {
-	int				counter;
-
-	counter = 0;
-	while (num > 0)
-	{
-		num = num / 10;
-		counter++;
-	}
-	return (counter);
+	ft_putchar('0');
+	pfi->bytes++;
 }

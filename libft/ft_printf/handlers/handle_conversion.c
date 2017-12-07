@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/10 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 13:37:43 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_bool				handle_conversion_bis(t_pf *pf, t_pf_item *pfi)
 	return (found);
 }
 
-void					handle_conversion(t_pf *pf, t_pf_item *pfi)
+void				handle_conversion(t_pf *pf, t_pf_item *pfi)
 {
 	if (!(handle_conversion_bis(pf, pfi)))
 		if (!(handle_conversion_ter(pf, pfi)))

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dec_to_hex_max.c                            :+:      :+:    :+:   */
+/*   ft_dec_to_hex_max.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:17:17 by pbie              #+#    #+#             */
-/*   Updated: 2016/11/29 15:16:26 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 13:28:35 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 uintmax_t					ft_dec_to_hex_max_ter(char *hex, uintmax_t n)
 {
-	int				temp;
-	char				*tmp;
+	int						temp;
+	char					*tmp;
 
 	temp = 0;
 	temp = n % 16;
@@ -40,7 +40,7 @@ uintmax_t					ft_dec_to_hex_max_ter(char *hex, uintmax_t n)
 
 uintmax_t					ft_dec_to_hex_max_bis(char *hex, uintmax_t n)
 {
-	int				temp;
+	int						temp;
 
 	temp = 0;
 	temp = n % 16;
@@ -58,9 +58,9 @@ uintmax_t					ft_dec_to_hex_max_bis(char *hex, uintmax_t n)
 	return (n);
 }
 
-char					*ft_dec_to_hex_max(uintmax_t n)
+char						*ft_dec_to_hex_max(uintmax_t n)
 {
-	char				*hex;
+	char					*hex;
 
 	hex = (char *)malloc(sizeof(char) * 1 + 1);
 	n = ft_dec_to_hex_max_bis(hex, n);

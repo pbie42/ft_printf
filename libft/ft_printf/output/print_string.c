@@ -6,16 +6,16 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/17 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 14:57:16 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void					print_precision(t_pf_item *pfi, char *s)
+void				print_precision(t_pf_item *pfi, char *s)
 {
 	int				i;
-	
+
 	i = 0;
 	if (pfi->precision > 0 && (ft_strcmp(s, "") != 0))
 		while (i < pfi->precision)
@@ -44,11 +44,10 @@ int					get_width(t_pf_item *pfi, char *s)
 		width -= pfi->precision;
 	if (!pfi->precision)
 		width -= ft_strlen(s);
-	// ft_putendlnbr("width is ", width);
 	return (width);
 }
 
-void					print_field_w(t_pf_item *pfi, char *s)
+void				print_field_w(t_pf_item *pfi, char *s)
 {
 	int				i;
 	int				width;
@@ -63,7 +62,6 @@ void					print_field_w(t_pf_item *pfi, char *s)
 	}
 	else
 	{
-		// ft_putendl("no minus");
 		while (i++ <= width)
 		{
 			if (pfi->flags->zero)
@@ -71,13 +69,12 @@ void					print_field_w(t_pf_item *pfi, char *s)
 			else
 				ft_putchar(' ');
 			pfi->bytes++;
-			// ft_putendl("space 2");
 		}
 		print_precision(pfi, s);
 	}
 }
 
-void					print_string(t_pf_item *pfi, char *s)
+void				print_string(t_pf_item *pfi, char *s)
 {
 	if (!s)
 		s = ft_strdup("(null)");
@@ -86,10 +83,7 @@ void					print_string(t_pf_item *pfi, char *s)
 		if (pfi->precision > pfi->field_w)
 			print_precision(pfi, s);
 		else
-		{
-			// ft_putendl("field_w > precision");
 			print_field_w(pfi, s);
-		}
 	}
 	else if (pfi->precision > 0)
 		print_precision(pfi, s);

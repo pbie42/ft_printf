@@ -93,9 +93,12 @@ SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_strlower.c \
 		ft_libft/ft_strrev.c \
 		ft_libft/ft_strupper.c \
+		ft_printf/output/utils/print_o_ul.c \
+		ft_printf/output/utils/print_plus_byte.c \
 		ft_printf/output/utils/print_prefix.c \
 		ft_printf/output/utils/print_space_byte.c \
 		ft_printf/output/utils/print_x_ul.c \
+		ft_printf/output/utils/print_zero_byte.c \
 		ft_printf/output/utils/print_zero_space.c \
 		ft_printf/output/print_address.c \
 		ft_printf/output/print_char.c \
@@ -116,10 +119,10 @@ SRC = ft_libft/ft_atoi.c \
 		ft_printf/utils/converters/ft_dec_to_hex_max.c \
 		ft_printf/utils/converters/ft_dec_to_oct.c \
 		ft_printf/utils/converters/ft_lltoa.c \
+		ft_printf/utils/checks/check_conversions.c \
 		ft_printf/utils/checks/ft_isconversion.c \
 		ft_printf/utils/checks/ft_isflag.c \
 		ft_printf/utils/checks/ft_islmod.c \
-		ft_printf/utils/ft_putll.c \
 		ft_printf/utils/print_pfi.c \
 		ft_printf/utils/lengths/int_length.c \
 		ft_printf/utils/lengths/long_length.c \
@@ -129,7 +132,6 @@ SRC = ft_libft/ft_atoi.c \
 		ft_printf/handlers/handle_precision.c \
 		ft_printf/handlers/handle_len_mod.c \
 		ft_printf/handlers/handle_conversion.c \
-		ft_printf/handlers/handle_conditions.c \
 		ft_printf/inits/init_pfi.c \
 
 

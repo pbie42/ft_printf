@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/17 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 13:24:07 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int					ft_dec_to_hex_ter(char *hex, unsigned int n)
 {
 	int				temp;
-	char				*tmp;
+	char			*tmp;
 
 	temp = 0;
 	temp = n % 16;
@@ -57,9 +57,9 @@ int					ft_dec_to_hex_bis(char *hex, unsigned int n)
 	return (n);
 }
 
-char					*ft_dec_to_hex(unsigned int n)
+char				*ft_dec_to_hex(unsigned int n)
 {
-	char				*hex;
+	char			*hex;
 
 	hex = (char *)malloc(sizeof(char) * 1 + 1);
 	n = ft_dec_to_hex_bis(hex, n);

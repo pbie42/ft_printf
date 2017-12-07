@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:25:33 by pbie              #+#    #+#             */
-/*   Updated: 2017/08/24 15:21:07 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 13:12:05 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@
 
 typedef int					t_bool;
 
-typedef unsigned long long int		t_ulli;
+typedef unsigned long long int					t_ulli;
 
 typedef struct		s_pf_flags
 {
@@ -104,18 +104,12 @@ typedef struct		s_pf_cspecs
 	t_bool			percent;
 }					t_pf_cspecs;
 
-typedef struct		s_hex_long
-{
-	char						*hex;
-	unsigned long long int	num;
-}									t_hex_long;
-
 typedef struct		s_pf_item
 {
 	t_pf_flags		*flags;
 	t_pf_lmods		*lenmods;
 	t_pf_cspecs		*cspecs;
-	char				c_error;
+	char			c_error;
 	int				field_w;
 	int				precision;
 	int				bytes;
@@ -220,7 +214,7 @@ void				ft_exit(const char *message);
 char				**ft_buildtab(int j);
 int					ft_includes_char(char *s, char c);
 void				ft_putendlnbr(char *s, int num);
-int				ft_printf(const char *format, ...);
+int					ft_printf(const char *format, ...);
 void				check_format(const char *format);
 int					ft_isconversion(char c);
 int					ft_islmod(char c);
@@ -231,9 +225,8 @@ void				handle_precision(t_pf *pf, t_pf_item *pfi);
 void				handle_field_width(t_pf *pf, t_pf_item *pfi);
 void				handle_len_mod(t_pf *pf, t_pf_item *pfi);
 void				handle_conversion(t_pf *pf, t_pf_item *pfi);
-void				init_pfi(t_pf_item *pfi);
+t_pf_item			*init_pfi(t_pf_item *pfi);
 void				print_pfi(t_pf_item *pfi);
-void				handle_conditions(t_pf_item *pfi);
 void				print_identifier(t_pf_item *pfi, va_list args);
 void				print_int(t_pf_item *pfi, intmax_t num);
 void				print_unsigned_int(t_pf_item *pfi, intmax_t num);
@@ -247,22 +240,23 @@ void				print_string(t_pf_item *pfi, char *s);
 void				print_wide_char(t_pf_item *pfi, wint_t wide);
 void				print_prefix(t_pf_item *pfi);
 void				print_zero_space(t_pf_item *pfi);
+void				print_zero_byte(t_pf_item *pfi);
+void				print_plus_byte(t_pf_item *pfi);
 void				print_x_ul(t_pf_item *pfi, char *num);
+void				print_o_ul(t_pf_item *pfi, char *num);
 void				print_space_byte(t_pf_item *pfi);
 void				print_hex_max(t_pf_item *pfi, intmax_t num);
-void					print_wide_string(t_pf_item *pfi, wchar_t *ws);
+void				print_wide_string(t_pf_item *pfi, wchar_t *ws);
 int					int_length(intmax_t num);
 int					long_length(long num);
-char					*ft_dec_to_hex(unsigned int n);
-char					*ft_dec_to_hex_long(t_ulli n);
-char					*ft_dec_to_hex_max(uintmax_t n);
-char					*ft_address_to_hex(long int n);
-int					ft_dec_to_oct(long int n);
-void					ft_strrev(char *s);
-char					*ft_strupper(char *s);
-char					*ft_strlower(char *s);
-void				ft_putll(long long int nb);
-char		*ft_llitoa(intmax_t n);
-
+char				*ft_dec_to_hex(unsigned int n);
+char				*ft_dec_to_hex_long(t_ulli n);
+char				*ft_dec_to_hex_max(uintmax_t n);
+char				*ft_address_to_hex(long int n);
+int					ft_dec_to_oct(long int decimal_number);
+void				ft_strrev(char *s);
+char				*ft_strupper(char *s);
+char				*ft_strlower(char *s);
+char				*ft_llitoa(intmax_t n);
 
 #endif

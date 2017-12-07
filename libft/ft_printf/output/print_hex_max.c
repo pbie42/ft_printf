@@ -20,10 +20,7 @@ void					print_hex_max_precision(t_pf_item *pfi, char *num, t_bool field)
 	i = pfi->precision;
 	len = ft_strlen(num);
 	while (i-- > len)
-	{
-		ft_putchar('0');
-		pfi->bytes++;
-	}
+		print_zero_byte(pfi);
 	if (pfi->flags->hash && pfi->flags->zero && (num != 0) && !field)
 		print_prefix(pfi);
 	if (pfi->lenmods->p && (ft_strcmp(num, "0") == 0) && (pfi->precision == 0))

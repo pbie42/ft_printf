@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/16 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 15:04:40 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,19 @@ int					int_get_width(t_pf_item *pfi, intmax_t num)
 	return (width);
 }
 
-void					pr_int_precision(t_pf_item *pfi, intmax_t num)
+void				pr_int_precision(t_pf_item *pfi, intmax_t num)
 {
 	int				i;
 	int				len;
-	intmax_t				anum;
-	char				*test;
-	
+	intmax_t		anum;
+	char			*test;
+
 	i = pfi->precision;
 	len = int_length(num);
 	if (num < 0 && !pfi->flags->zero && num != 2147483648 && num != -2147483648)
 		ft_putchar('-');
 	while (i-- > len)
-	{
-		ft_putchar('0');
-		pfi->bytes++;
-	}
+		print_zero_byte(pfi);
 	if (num < 0)
 		pfi->bytes++;
 	if (num < 0)
@@ -55,14 +52,13 @@ void					pr_int_precision(t_pf_item *pfi, intmax_t num)
 		anum = num;
 	test = ft_llitoa(anum);
 	if (pfi->lenmods->p && (num == 0) && (pfi->precision == 0))
-			ft_putchar(' ');
+		ft_putchar(' ');
 	else
 		ft_putstr(test);
-	// free(test);
 	pfi->bytes += int_length(num);
 }
 
-void					pr_int_field_w(t_pf_item *pfi, intmax_t num)
+void				pr_int_field_w(t_pf_item *pfi, intmax_t num)
 {
 	int				i;
 	int				width;
@@ -72,10 +68,7 @@ void					pr_int_field_w(t_pf_item *pfi, intmax_t num)
 	if (pfi->flags->minus)
 	{
 		if (pfi->flags->plus && num >= 0 && !pfi->flags->zero)
-		{
-			ft_putchar('+');
-			pfi->bytes++;
-		}
+			print_plus_byte(pfi);
 		pr_int_precision(pfi, num);
 		while (i++ <= width)
 			print_space_byte(pfi);
@@ -83,10 +76,7 @@ void					pr_int_field_w(t_pf_item *pfi, intmax_t num)
 	else
 	{
 		if (pfi->flags->plus && num >= 0 && pfi->flags->zero)
-		{
-			ft_putchar('+');
-			pfi->bytes++;
-		}
+			print_plus_byte(pfi);
 		while (i++ <= width)
 		{
 			if (pfi->flags->zero && i >= pfi->precision)
@@ -96,21 +86,18 @@ void					pr_int_field_w(t_pf_item *pfi, intmax_t num)
 			pfi->bytes++;
 		}
 		if (pfi->flags->plus && num >= 0 && !pfi->flags->zero)
-		{
-			ft_putchar('+');
-			pfi->bytes++;
-		}
+			print_plus_byte(pfi);
 		pr_int_precision(pfi, num);
 	}
 }
 
-void					print_int(t_pf_item *pfi, intmax_t num)
+void				print_int(t_pf_item *pfi, intmax_t num)
 {
-	intmax_t				anum;
-	char							*test;
+	intmax_t		anum;
+	char			*test;
 
 	if (!pfi->lenmods->h && !pfi->lenmods->hh && !pfi->lenmods->l
-		&& !pfi->lenmods->ll)
+		&& !pfi->lenmods->ll && !pfi->lenmods->j && !pfi->lenmods->z)
 		num = (int)num;
 	if (pfi->lenmods->h)
 		num = (short)num;
@@ -121,19 +108,14 @@ void					print_int(t_pf_item *pfi, intmax_t num)
 	if (pfi->flags->space && !pfi->flags->plus && num > 0)
 		print_space_byte(pfi);
 	if (pfi->flags->plus && num >= 0 && pfi->field_w == 0)
-	{
-		ft_putchar('+');
-		pfi->bytes++;
-	}
+		print_plus_byte(pfi);
 	if (pfi->flags->zero && num < 0 && num != 2147483648)
 		ft_putchar('-');
 	if (pfi->field_w > 0)
-	{
 		if (pfi->precision > pfi->field_w)
 			pr_int_precision(pfi, num);
 		else
 			pr_int_field_w(pfi, num);
-	}
 	else if (pfi->precision > 0)
 		pr_int_precision(pfi, num);
 	else
@@ -152,7 +134,6 @@ void					print_int(t_pf_item *pfi, intmax_t num)
 			pfi->bytes--;
 		else
 			ft_putstr(test);
-		// free(test);
 		pfi->bytes += int_length(num);
 	}
 }

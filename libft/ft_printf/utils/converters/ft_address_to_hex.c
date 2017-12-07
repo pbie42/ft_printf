@@ -6,15 +6,15 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/24 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2017/12/07 13:23:35 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-long int					ft_address_to_hex_ter(char *hex, long int n)
+long int				ft_address_to_hex_ter(char *hex, long int n)
 {
-	int				temp;
+	int					temp;
 	char				*tmp;
 
 	temp = 0;
@@ -37,9 +37,9 @@ long int					ft_address_to_hex_ter(char *hex, long int n)
 	return (n);
 }
 
-long int					ft_address_to_hex_bis(char *hex, long int n)
+long int				ft_address_to_hex_bis(char *hex, long int n)
 {
-	int				temp;
+	int					temp;
 
 	temp = 0;
 	temp = n % 16;
