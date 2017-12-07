@@ -17,9 +17,9 @@ int				main(void){
 	int			x;
 	unsigned long	ul;
 
-	i = printf("%5%");
+	i = printf("real: {%S}", NULL);
 	ft_putchar('\n');
-	x = ft_printf("%5%");
+	x = ft_printf("mine: {%S}", NULL);
 	ft_putchar('\n');
 
 	ft_putendlnbr("real is ", i);

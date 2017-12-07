@@ -66,6 +66,12 @@ void					print_wide_string(t_pf_item *pfi, wchar_t *ws)
 {
 	int				i;
 
+	if (!ws)
+	{
+		ft_putstr("(null)");
+		pfi->bytes += ft_strlen("(null)");
+		return ;
+	}
 	i = -1;
 	while (ws[++i])
 		print_wide_char(pfi, ws[i]);
