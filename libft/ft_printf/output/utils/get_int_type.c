@@ -18,7 +18,7 @@ void				get_int_type(t_pf_item *pfi)
 		&& !pfi->lenmods->ll && !pfi->lenmods->j && !pfi->lenmods->z
 		&& !pfi->cspecs->lg_d)
 		pfi->num = (int)pfi->num;
-	if (pfi->lenmods->h)
+	if (pfi->lenmods->h && !pfi->cspecs->lg_d)
 		pfi->num = (short)pfi->num;
 	if (pfi->lenmods->hh)
 		pfi->num = (signed char)pfi->num;

@@ -84,11 +84,13 @@ void			print_hex_bis(t_pf_item *pfi, char *tmp)
 	pfi->bytes += ft_strlen(tmp);
 }
 
-void			print_hex(t_pf_item *pfi, int num)
+void			print_hex(t_pf_item *pfi, intmax_t num)
 {
 	char		*tmp;
 	t_ui		i;
 
+	if (pfi->lenmods->hh)
+		num = (unsigned char)num;
 	i = num;
 	tmp = ft_dec_to_hex(i);
 	if (pfi->flags->hash && (ft_strcmp(tmp, "0") != 0))

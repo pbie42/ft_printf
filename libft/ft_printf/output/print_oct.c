@@ -107,6 +107,8 @@ void			print_oct(t_pf_item *pfi, intmax_t n)
 	}
 	else
 	{
+		if (!pfi->cspecs->lg_o && pfi->lenmods->hh)
+			n = (unsigned char)n;
 		oct = ft_dec_to_oct(n);
 		tmp = ft_llitoa(oct);
 	}
