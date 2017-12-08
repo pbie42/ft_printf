@@ -26,10 +26,10 @@ int				main(void){
 
 	// ft_putendl(setlocale(LC_CTYPE, NULL));
 
-	if ((i = printf("real: %hhD, %hhD", 0, USHRT_MAX)))
+	if ((i = printf("real: %zx, %zx", 0, ULLONG_MAX)))
 		perror("printf");
 	ft_putchar('\n');
-	x = ft_printf("mine: %hhD, %hhD", 0, USHRT_MAX);
+	x = ft_printf("mine: %zx, %zx", 0, ULLONG_MAX);
 	ft_putchar('\n');
 
 	ft_putendlnbr("real is ", i);

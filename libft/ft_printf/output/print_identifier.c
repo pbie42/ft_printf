@@ -34,7 +34,7 @@ void					print_identifier(t_pf_item *pfi, va_list args)
 		&& (pfi->cspecs->x || pfi->cspecs->lg_x))
 		print_hex_long(pfi, va_arg(args, long int));
 	else if (pfi->cspecs->x || pfi->cspecs->lg_x)
-		print_hex(pfi, va_arg(args, intmax_t));
+		print_hex(pfi, va_arg(args, uintmax_t));
 	else if (pfi->cspecs->p)
 		print_address(pfi, va_arg(args, long int));
 	else if (pfi->cspecs->percent)

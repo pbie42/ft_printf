@@ -79,7 +79,8 @@ void					print_unsigned_int(t_pf_item *pfi, intmax_t num)
 	char				*tmp;
 
 	if (!pfi->lenmods->l && !pfi->lenmods->h && !pfi->lenmods->ll
-		&& !pfi->lenmods->j && !pfi->cspecs->lg_u && !pfi->lenmods->hh)
+		&& !pfi->lenmods->j && !pfi->cspecs->lg_u && !pfi->lenmods->hh
+		&& !pfi->lenmods->z)
 		num = (unsigned int)num;
 	if (pfi->lenmods->l)
 		num = (unsigned long int)num;

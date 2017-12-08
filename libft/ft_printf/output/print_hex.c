@@ -87,12 +87,21 @@ void			print_hex_bis(t_pf_item *pfi, char *tmp)
 void			print_hex(t_pf_item *pfi, intmax_t num)
 {
 	char		*tmp;
-	t_ui		i;
+	// t_ui		i;
 
+	if (!pfi->lenmods->hh && !pfi->lenmods->l
+		&& !pfi->lenmods->ll && !pfi->lenmods->j && !pfi->lenmods->z
+		&& !pfi->cspecs->lg_d)
+		num = (unsigned int)num;
 	if (pfi->lenmods->hh)
 		num = (unsigned char)num;
-	i = num;
-	tmp = ft_dec_to_hex(i);
+	// if (pfi->lenmods->z)
+	// {
+	// 	ft_putendl("here biu");
+	// 	num = (unsigned long)num;
+	// }
+	// i = num;
+	tmp = ft_dec_to_hex(num);
 	if (pfi->flags->hash && (ft_strcmp(tmp, "0") != 0))
 		pfi->bytes += 2;
 	if (pfi->field_w > 0)

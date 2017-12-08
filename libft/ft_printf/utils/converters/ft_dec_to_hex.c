@@ -12,9 +12,9 @@
 
 #include "libftprintf.h"
 
-int					ft_dec_to_hex_ter(char *hex, unsigned int n)
+uintmax_t					ft_dec_to_hex_ter(char *hex, uintmax_t n)
 {
-	int				temp;
+	uintmax_t				temp;
 	char			*tmp;
 
 	temp = 0;
@@ -37,9 +37,9 @@ int					ft_dec_to_hex_ter(char *hex, unsigned int n)
 	return (n);
 }
 
-int					ft_dec_to_hex_bis(char *hex, unsigned int n)
+uintmax_t					ft_dec_to_hex_bis(char *hex, uintmax_t n)
 {
-	int				temp;
+	uintmax_t				temp;
 
 	temp = 0;
 	temp = n % 16;
@@ -57,7 +57,7 @@ int					ft_dec_to_hex_bis(char *hex, unsigned int n)
 	return (n);
 }
 
-char				*ft_dec_to_hex(unsigned int n)
+char				*ft_dec_to_hex(uintmax_t n)
 {
 	char			*hex;
 

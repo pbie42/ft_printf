@@ -255,7 +255,7 @@ void				print_wide_string(t_pf_item *pfi, wchar_t *ws);
 void				get_int_type(t_pf_item *pfi);
 int					int_length(intmax_t num);
 int					long_length(long num);
-char				*ft_dec_to_hex(unsigned int n);
+char				*ft_dec_to_hex(uintmax_t n);
 char				*ft_dec_to_hex_long(t_ulli n);
 char				*ft_dec_to_hex_max(uintmax_t n);
 char				*ft_address_to_hex(long int n);
