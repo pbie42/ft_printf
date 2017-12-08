@@ -95,8 +95,21 @@ void			print_oct(t_pf_item *pfi, intmax_t n)
 	char		*tmp;
 	intmax_t			oct;
 
-	oct = ft_dec_to_oct(n);
-	tmp = ft_llitoa(oct);
+	if ((long)n == LONG_MAX)
+	{
+		tmp = (char *)malloc(sizeof(char) * ft_strlen("777777777777777777777") + 1);
+		tmp = ft_strcpy(tmp, "777777777777777777777");
+	}
+	else if ((unsigned long)n == ULONG_MAX && n != 0)
+	{
+		tmp = (char *)malloc(sizeof(char) * ft_strlen("1777777777777777777777") + 1);
+		tmp = ft_strcpy(tmp, "1777777777777777777777");
+	}
+	else
+	{
+		oct = ft_dec_to_oct(n);
+		tmp = ft_llitoa(oct);
+	}
 	if (pfi->flags->hash && (ft_strcmp(tmp, "0") != 0))
 		pfi->bytes += 1;
 	if (pfi->field_w > 0)

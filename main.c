@@ -16,10 +16,20 @@ int				main(void){
 	int			i;
 	int			x;
 	unsigned long	ul;
+	char			c;
+	// char* l = setlocale(LC_ALL, "");
 
-	i = printf("real: %O", LONG_MAX);
+	// if (l == NULL) 
+	// 	printf("Locale not set\n");
+	// else
+	// 	printf("Locale set to %s\n", l);
+
+	// ft_putendl(setlocale(LC_CTYPE, NULL));
+
+	if ((i = printf("real: %lo, %lo", 0, ULONG_MAX)))
+		perror("printf");
 	ft_putchar('\n');
-	x = ft_printf("mine: %O", LONG_MAX);
+	x = ft_printf("mine: %lo, %lo", 0, ULONG_MAX);
 	ft_putchar('\n');
 
 	ft_putendlnbr("real is ", i);

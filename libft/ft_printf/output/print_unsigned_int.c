@@ -16,15 +16,21 @@ void					pr_int_us_precision(t_pf_item *pfi, uintmax_t num)
 {
 	int					i;
 	int					len;
-	char				*test;
+	char				*tmp;
 
 	i = pfi->precision;
 	len = int_length(num);
 	while (i-- > len)
 		print_zero_byte(pfi);
-	test = ft_llitoa(num);
-	ft_putstr(test);
-	pfi->bytes += int_length(num);
+	if (num == ULONG_MAX)
+	{
+		tmp = (char *)malloc(sizeof(char) * ft_strlen("18446744073709551615") + 1);
+		tmp = ft_strcpy(tmp, "18446744073709551615");
+	}
+	else
+		tmp = ft_llitoa(num);
+	ft_putstr(tmp);
+	pfi->bytes += ft_strlen(tmp);
 }
 
 int						int_us_get_width(t_pf_item *pfi, uintmax_t num)
@@ -70,15 +76,17 @@ void					pr_int_us_field_w(t_pf_item *pfi, uintmax_t num)
 void					print_unsigned_int(t_pf_item *pfi, intmax_t num)
 {
 	uintmax_t			i;
-	char				*test;
+	char				*tmp;
 
 	if (!pfi->lenmods->l && !pfi->lenmods->h && !pfi->lenmods->ll
 		&& !pfi->lenmods->j && !pfi->cspecs->lg_u)
 		num = (unsigned int)num;
 	if (pfi->lenmods->l)
 		num = (unsigned long int)num;
-	if (pfi->lenmods->ll || pfi->cspecs->lg_u)
+	if (pfi->lenmods->ll)
 		num = (unsigned long long int)num;
+	if (pfi->cspecs->lg_u)
+		num = (uintmax_t)num;
 	i = num;
 	if (pfi->field_w > 0)
 		if (pfi->precision > pfi->field_w)
@@ -89,9 +97,15 @@ void					print_unsigned_int(t_pf_item *pfi, intmax_t num)
 		pr_int_us_precision(pfi, i);
 	else
 	{
-		test = ft_llitoa(num);
-		ft_putstr(test);
-		pfi->bytes += int_length(num);
-		free(test);
+		if ((unsigned long)num == ULONG_MAX)
+		{
+			tmp = (char *)malloc(sizeof(char) * ft_strlen("18446744073709551615") + 1);
+			tmp = ft_strcpy(tmp, "18446744073709551615");
+		}
+		else
+			tmp = ft_llitoa(num);
+		ft_putstr(tmp);
+		pfi->bytes += ft_strlen(tmp);
+		free(tmp);
 	}
 }
