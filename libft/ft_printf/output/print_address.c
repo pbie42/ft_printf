@@ -17,6 +17,7 @@ void				print_address_precision(t_pf_item *pfi, char *num)
 	int				i;
 	int				len;
 
+	ft_putstr("0x");
 	i = pfi->precision;
 	len = ft_strlen(num);
 	while (i-- > len)
@@ -25,7 +26,7 @@ void				print_address_precision(t_pf_item *pfi, char *num)
 		ft_strrev(ft_strupper(num));
 	else
 		ft_strrev(ft_strlower(num));
-	pfi->bytes++;
+	pfi->bytes += ft_strlen(num);
 }
 
 int					address_get_width(t_pf_item *pfi, char *num)
@@ -72,7 +73,6 @@ void				print_address(t_pf_item *pfi, long int num)
 {
 	char			*tmp;
 
-	ft_putstr("0x");
 	pfi->bytes += 2;
 	tmp = ft_address_to_hex(num);
 	if (pfi->field_w > 0)
@@ -86,6 +86,7 @@ void				print_address(t_pf_item *pfi, long int num)
 		print_address_precision(pfi, tmp);
 	else
 	{
+		ft_putstr("0x");
 		if (pfi->cspecs->lg_x)
 			ft_strrev(ft_strupper(tmp));
 		else

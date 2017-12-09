@@ -12,6 +12,17 @@
 
 #include "libftprintf.h"
 
+t_bool				valid_identifier(t_pf_item *pfi)
+{
+	if (!pfi->cspecs->s && !pfi->cspecs->lg_s && !pfi->cspecs->p
+		&& !pfi->cspecs->d && !pfi->cspecs->lg_d && !pfi->cspecs->i
+		&& !pfi->cspecs->o && !pfi->cspecs->lg_o && !pfi->cspecs->u
+		&& !pfi->cspecs->lg_u && !pfi->cspecs->x && !pfi->cspecs->lg_x
+		&& !pfi->cspecs->c && !pfi->cspecs->lg_c)
+		return (FALSE);
+	return (TRUE);
+}
+
 void					handle_error(t_pf *pf, t_pf_item *pfi)
 {
 	if (pf->format[pf->pos] != '%')
@@ -43,7 +54,10 @@ void					handle_identifier(t_pf *pf, va_list args)
 		handle_conversion(pf, pfi);
 	else
 		handle_error(pf, pfi);
-	print_identifier(pfi, args);
+	if (!valid_identifier(pfi))
+		print_invalid_identifier(pfi);
+	else
+		print_identifier(pfi, args);
 	// print_pfi(pfi);
 	pf->bytes += pfi->bytes;
 	free(pfi);
