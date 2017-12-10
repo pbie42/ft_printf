@@ -231,6 +231,7 @@ t_pf_item			*init_pfi(t_pf_item *pfi);
 void				print_pfi(t_pf_item *pfi);
 void				print_percentage(t_pf_item *pfi);
 void				print_identifier(t_pf_item *pfi, va_list args);
+void				print_invalid_identifier(t_pf *pf, t_pf_item *pfi);
 void				print_int(t_pf_item *pfi, intmax_t num);
 void				print_unsigned_int(t_pf_item *pfi, intmax_t num);
 void				print_long(t_pf_item *pfi, long num);

@@ -53,11 +53,11 @@ void					handle_identifier(t_pf *pf, va_list args)
 	if (ft_isconversion(pf->format[pf->pos]))
 		handle_conversion(pf, pfi);
 	else
-		handle_error(pf, pfi);
-	if (!valid_identifier(pfi))
-		print_invalid_identifier(pfi);
-	else
-		print_identifier(pfi, args);
+		print_invalid_identifier(pf, pfi);
+	// if (!valid_identifier(pfi))
+	// 	print_invalid_identifier(pf, pfi);
+	// else
+	print_identifier(pfi, args);
 	// print_pfi(pfi);
 	pf->bytes += pfi->bytes;
 	free(pfi);

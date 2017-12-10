@@ -110,6 +110,7 @@ SRC = ft_libft/ft_atoi.c \
 		ft_printf/output/print_hex_max.c \
 		ft_printf/output/print_identifier.c \
 		ft_printf/output/print_int.c \
+		ft_printf/output/print_invalid_identifier.c \
 		ft_printf/output/print_long.c \
 		ft_printf/output/print_oct.c \
 		ft_printf/output/print_percentage.c \

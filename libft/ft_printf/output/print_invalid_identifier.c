@@ -11,3 +11,11 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void				print_invalid_identifier(t_pf *pf, t_pf_item *pfi)
+{
+	if (pf->format[pf->pos] != '%')
+	{
+		print_char(pfi, pf->format[pf->pos]);
+	}
+}
