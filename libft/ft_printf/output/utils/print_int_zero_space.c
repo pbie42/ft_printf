@@ -12,9 +12,9 @@
 
 #include "libftprintf.h"
 
-void				print_int_zero_space(t_pf_item *pfi, int i)
+void				print_int_zero_space(t_pf_item *pfi, int i, int prcsn)
 {
-	if (pfi->flags->zero && i >= pfi->precision)
+	if (pfi->flags->zero && i >= prcsn)
 		ft_putchar('0');
 	else
 		ft_putchar(' ');

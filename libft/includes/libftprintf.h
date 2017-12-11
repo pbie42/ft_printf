@@ -244,7 +244,7 @@ void				print_char(t_pf_item *pfi, unsigned char c);
 void				print_string(t_pf_item *pfi, char *s);
 void				print_wide_char(t_pf_item *pfi, wint_t wide);
 void				print_prefix(t_pf_item *pfi);
-void				print_int_zero_space(t_pf_item *pfi, int i);
+void				print_int_zero_space(t_pf_item *pfi, int i, int prcsn);
 void				print_zero_space(t_pf_item *pfi);
 void				print_zero_byte(t_pf_item *pfi);
 void				print_plus_byte(t_pf_item *pfi);
