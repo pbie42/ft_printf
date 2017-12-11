@@ -12,12 +12,13 @@
 
 #include "libftprintf.h"
 
-void					pr_int_us_precision(t_pf_item *pfi, uintmax_t num)
+void					pr_int_us_precision(t_pf_item *pfi, uintmax_t num, int prcsn)
 {
 	int					i;
 	int					len;
 	char				*tmp;
 
+	i = prcsn;
 	i = pfi->precision;
 	len = int_length(num);
 	while (i-- > len)
@@ -33,29 +34,34 @@ void					pr_int_us_precision(t_pf_item *pfi, uintmax_t num)
 	pfi->bytes += ft_strlen(tmp);
 }
 
-int						int_us_get_width(t_pf_item *pfi, uintmax_t num)
+int						int_us_get_width(t_pf_item *pfi, uintmax_t num, int prcsn)
 {
 	int					width;
 
 	width = 0;
+	if (pfi->precision < int_length(num))
+		pfi->precision = int_length(num);
 	if (pfi->precision >= pfi->field_w)
+	{
 		pfi->precision = 0;
+		prcsn = 0;
+	}
 	width = pfi->field_w - pfi->precision - 1;
 	if (!pfi->precision)
 		width -= int_length(num);
 	return (width);
 }
 
-void					pr_int_us_field_w(t_pf_item *pfi, uintmax_t num)
+void					pr_int_us_field_w(t_pf_item *pfi, uintmax_t num, int prcsn)
 {
 	int					i;
 	int					width;
 
 	i = 0;
-	width = int_us_get_width(pfi, num);
+	width = int_us_get_width(pfi, num, prcsn);
 	if (pfi->flags->minus)
 	{
-		pr_int_us_precision(pfi, num);
+		pr_int_us_precision(pfi, num, prcsn);
 		while (i++ <= width)
 			print_space_byte(pfi);
 	}
@@ -63,13 +69,13 @@ void					pr_int_us_field_w(t_pf_item *pfi, uintmax_t num)
 	{
 		while (i++ <= width)
 		{
-			if (pfi->flags->zero)
+			if (pfi->flags->zero && i >= prcsn)
 				ft_putchar('0');
 			else
 				ft_putchar(' ');
 			pfi->bytes++;
 		}
-		pr_int_us_precision(pfi, num);
+		pr_int_us_precision(pfi, num, prcsn);
 	}
 }
 
@@ -77,6 +83,7 @@ void					print_unsigned_int(t_pf_item *pfi, intmax_t num)
 {
 	uintmax_t			i;
 	char				*tmp;
+	int						prcsn;
 
 	if (!pfi->lenmods->l && !pfi->lenmods->h && !pfi->lenmods->ll
 		&& !pfi->lenmods->j && !pfi->cspecs->lg_u && !pfi->lenmods->hh
@@ -91,13 +98,14 @@ void					print_unsigned_int(t_pf_item *pfi, intmax_t num)
 	if (pfi->cspecs->u && pfi->lenmods->hh)
 		num = (unsigned char)num;
 	i = num;
+	prcsn = pfi->precision;
 	if (pfi->field_w > 0)
 		if (pfi->precision > pfi->field_w)
-			pr_int_us_precision(pfi, i);
+			pr_int_us_precision(pfi, i, prcsn);
 		else
-			pr_int_us_field_w(pfi, i);
+			pr_int_us_field_w(pfi, i, prcsn);
 	else if (pfi->precision > 0)
-		pr_int_us_precision(pfi, i);
+		pr_int_us_precision(pfi, i, prcsn);
 	else
 	{
 		if ((unsigned long)num == ULONG_MAX)

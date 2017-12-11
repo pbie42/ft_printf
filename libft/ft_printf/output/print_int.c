@@ -15,10 +15,8 @@
 int					int_get_width(t_pf_item *pfi, intmax_t num, int prcsn)
 {
 	int				width;
-	int				subtract;
 
 	width = 0;
-	subtract = pfi->precision;
 	if (pfi->precision < int_length(num))
 		pfi->precision = int_length(num);
 	if (pfi->precision >= pfi->field_w)
@@ -72,7 +70,6 @@ void				pr_int_field_w(t_pf_item *pfi, intmax_t num, int prcsn)
 
 	i = 0;
 	width = int_get_width(pfi, num, prcsn);
-	// ft_putendlnbr("width is ", width);
 	if (pfi->flags->minus)
 	{
 		if (pfi->flags->plus && num >= 0 && !pfi->flags->zero)
@@ -87,7 +84,6 @@ void				pr_int_field_w(t_pf_item *pfi, intmax_t num, int prcsn)
 			print_plus_byte(pfi);
 		while (i <= width)
 		{
-			// ft_putendlnbr("i is ", i);
 			print_int_zero_space(pfi, i, prcsn);
 			i++;
 		}
@@ -122,6 +118,7 @@ void				print_int_bis(t_pf_item *pfi)
 void				print_int(t_pf_item *pfi, intmax_t num)
 {
 	int				prcsn;
+
 	pfi->num = num;
 	prcsn = pfi->precision;
 	get_int_type(pfi);
