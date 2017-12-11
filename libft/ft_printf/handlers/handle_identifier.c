@@ -57,8 +57,8 @@ void					handle_identifier(t_pf *pf, va_list args)
 	// if (!valid_identifier(pfi))
 	// 	print_invalid_identifier(pf, pfi);
 	// else
-	print_identifier(pfi, args);
 	// print_pfi(pfi);
+	print_identifier(pfi, args);
 	pf->bytes += pfi->bytes;
 	free(pfi);
 }

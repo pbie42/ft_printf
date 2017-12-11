@@ -58,6 +58,7 @@ void					print_pfi(t_pf_item *pfi)
 	ft_putendlnbr("lenmods->j: ", pfi->lenmods->j);
 	ft_putendlnbr("lenmods->j: ", pfi->lenmods->j);
 	ft_putendlnbr("lenmods->z: ", pfi->lenmods->z);
+	ft_putendlnbr("lenmods->p: ", pfi->lenmods->p);
 	ft_putchar('\n');
 	print_pfi_bis(pfi);
 }

@@ -115,7 +115,10 @@ void					print_unsigned_int(t_pf_item *pfi, intmax_t num)
 		}
 		else
 			tmp = ft_llitoa(num);
-		ft_putstr(tmp);
+		if (pfi->lenmods->p && (ft_strcmp(tmp, "0") == 0) && (pfi->precision == 0))
+			pfi->bytes--;
+		else
+			ft_putstr(tmp);
 		pfi->bytes += ft_strlen(tmp);
 		free(tmp);
 	}
