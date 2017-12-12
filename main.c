@@ -26,10 +26,10 @@ int				main(void){
 
 	// ft_putendl(setlocale(LC_CTYPE, NULL));
 
-	if ((i = printf("real: %15.4x", 42)))
+	if ((i = printf("real: %8.4x", 424242424)))
 		perror("printf");
 	ft_putchar('\n');
-	x = ft_printf("mine: %15.4x", 42);
+	x = ft_printf("mine: %8.4x", 424242424);
 	ft_putchar('\n');
 
 	ft_putendlnbr("real is ", i);
