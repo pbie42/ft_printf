@@ -26,10 +26,10 @@ int				main(void){
 
 	// ft_putendl(setlocale(LC_CTYPE, NULL));
 
-	if ((i = printf("real: %lc, %c", L'暖', 'c')))
+	if ((i = printf("real: {%30S}", L"我是一只猫。")))
 		perror("printf");
 	ft_putchar('\n');
-	x = ft_printf("mine: %lc, %c", L'暖', 'c');
+	x = ft_printf("mine: {%30S}", L"我是一只猫。");
 	ft_putchar('\n');
 
 	ft_putendlnbr("real is ", i);

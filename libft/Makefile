@@ -116,6 +116,7 @@ SRC = ft_libft/ft_atoi.c \
 		ft_printf/output/print_percentage.c \
 		ft_printf/output/print_string.c \
 		ft_printf/output/print_unsigned_int.c \
+		ft_printf/output/print_wide_string.c \
 		ft_printf/output/print_wide.c \
 		ft_printf/utils/check_format.c \
 		ft_printf/utils/converters/ft_address_to_hex.c \

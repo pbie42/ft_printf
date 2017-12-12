@@ -49,8 +49,6 @@ int					get_width(t_pf_item *pfi, char *s)
 	prcsn = pfi->precision;
 	if (pfi->precision >= pfi->field_w)
 		pfi->precision = 0;
-	// ft_putendlnbr("field_w ", pfi->field_w);
-	// ft_putendlnbr("precision ", pfi->precision);
 	width = pfi->field_w - 1;
 	if (ft_strcmp(s, "") != 0 || (int)ft_strlen(s) >= pfi->precision)
 		width -= pfi->precision;
@@ -58,7 +56,6 @@ int					get_width(t_pf_item *pfi, char *s)
 		width += ft_strlen(s);
 	if (!pfi->precision)
 		width -= ft_strlen(s);
-	// ft_putendlnbr("width is ", width);
 	return (width);
 }
 
