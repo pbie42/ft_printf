@@ -42,10 +42,6 @@ void					print_pfi(t_pf_item *pfi)
 	ft_putendlnbr("flags->minus: ", pfi->flags->minus);
 	ft_putendlnbr("flags->space: ", pfi->flags->space);
 	ft_putchar('\n');
-	ft_putendl("ERROR");
-	ft_putstr("c_error ");
-	ft_putchar(pfi->c_error);
-	ft_putchar('!');
 	ft_putendl("FIELD WIDTH");
 	ft_putendlnbr("field_w: ", pfi->field_w);
 	ft_putendl("PRECISION WIDTH");

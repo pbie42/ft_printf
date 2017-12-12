@@ -17,7 +17,7 @@ int				main(void){
 	int			x;
 	unsigned long	ul;
 	char			c;
-	// char* l = setlocale(LC_ALL, "");
+	char* l = setlocale(LC_ALL, "");
 
 	// if (l == NULL) 
 	// 	printf("Locale not set\n");
@@ -26,10 +26,10 @@ int				main(void){
 
 	// ft_putendl(setlocale(LC_CTYPE, NULL));
 
-	if ((i = printf("real: %8.4x", 424242424)))
+	if ((i = printf("real: %lc, %c", L'暖', 'c')))
 		perror("printf");
 	ft_putchar('\n');
-	x = ft_printf("mine: %8.4x", 424242424);
+	x = ft_printf("mine: %lc, %c", L'暖', 'c');
 	ft_putchar('\n');
 
 	ft_putendlnbr("real is ", i);

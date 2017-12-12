@@ -16,16 +16,24 @@ void				print_precision(t_pf_item *pfi, char *s)
 {
 	int				i;
 
+	i = -1;
+	if (pfi->precision > pfi->field_w && pfi->field_w > 0 && (int)ft_strlen(s) < pfi->field_w)
+		while (s[++i] && i < pfi->precision)
+			print_space_byte(pfi);
 	i = 0;
 	if (pfi->precision > 0 && (ft_strcmp(s, "") != 0))
-		while (i < pfi->precision)
+		while (i < pfi->precision && s[i])
 		{
 			ft_putchar(s[i++]);
 			pfi->bytes++;
 		}
 	else if (ft_strcmp(s, "") != 0)
 	{
-		ft_putstr(s);
+		if (pfi->lenmods->p && pfi->precision == 0)
+			while (s[i++])
+				ft_putchar(' ');
+		else
+			ft_putstr(s);
 		pfi->bytes += ft_strlen(s);
 	}
 	else
@@ -35,15 +43,22 @@ void				print_precision(t_pf_item *pfi, char *s)
 int					get_width(t_pf_item *pfi, char *s)
 {
 	int				width;
+	int				prcsn;
 
 	width = 0;
+	prcsn = pfi->precision;
 	if (pfi->precision >= pfi->field_w)
 		pfi->precision = 0;
+	// ft_putendlnbr("field_w ", pfi->field_w);
+	// ft_putendlnbr("precision ", pfi->precision);
 	width = pfi->field_w - 1;
-	if (ft_strcmp(s, ""))
+	if (ft_strcmp(s, "") != 0 || (int)ft_strlen(s) >= pfi->precision)
 		width -= pfi->precision;
+	if ((int)ft_strlen(s) < pfi->precision)
+		width += ft_strlen(s);
 	if (!pfi->precision)
 		width -= ft_strlen(s);
+	// ft_putendlnbr("width is ", width);
 	return (width);
 }
 
@@ -76,8 +91,14 @@ void				print_field_w(t_pf_item *pfi, char *s)
 
 void				print_string(t_pf_item *pfi, char *s)
 {
+	t_bool		sull;
+
+	sull = FALSE;
 	if (!s)
+	{
 		s = ft_strdup("(null)");
+		sull = TRUE;
+	}
 	if (pfi->field_w > 0)
 	{
 		if (pfi->precision > pfi->field_w)
@@ -94,4 +115,6 @@ void				print_string(t_pf_item *pfi, char *s)
 	}
 	else
 		;
+	if (sull)
+		free(s);
 }

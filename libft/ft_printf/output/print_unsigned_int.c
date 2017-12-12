@@ -32,6 +32,9 @@ void					pr_int_us_precision(t_pf_item *pfi, uintmax_t num, int prcsn)
 		tmp = ft_llitoa(num);
 	ft_putstr(tmp);
 	pfi->bytes += ft_strlen(tmp);
+	if (ft_strcmp(tmp, "9223372036854775807") != 0
+		&& ft_strcmp(tmp, "9223372036854775808") != 0)
+		free(tmp);
 }
 
 int						int_us_get_width(t_pf_item *pfi, uintmax_t num, int prcsn)
@@ -120,6 +123,8 @@ void					print_unsigned_int(t_pf_item *pfi, intmax_t num)
 		else
 			ft_putstr(tmp);
 		pfi->bytes += ft_strlen(tmp);
-		free(tmp);
+		if (ft_strcmp(tmp, "9223372036854775807") != 0
+		&& ft_strcmp(tmp, "9223372036854775808") != 0)
+			free(tmp);
 	}
 }

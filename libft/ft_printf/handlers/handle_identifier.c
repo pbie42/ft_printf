@@ -59,6 +59,9 @@ void					handle_identifier(t_pf *pf, va_list args)
 	// else
 	// print_pfi(pfi);
 	print_identifier(pfi, args);
-	pf->bytes += pfi->bytes;
-	free(pfi);
+	if (pfi->bytes == -1)
+		pf->bytes = -1;
+	else
+		pf->bytes += pfi->bytes;
+	free_pfi(pfi);
 }

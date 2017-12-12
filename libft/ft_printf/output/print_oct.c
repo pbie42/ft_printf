@@ -109,6 +109,8 @@ void			print_oct(t_pf_item *pfi, intmax_t n)
 	{
 		if (!pfi->cspecs->lg_o && pfi->lenmods->hh)
 			n = (unsigned char)n;
+		if (!pfi->cspecs->lg_o)
+			n = (unsigned int)n;
 		oct = ft_dec_to_oct(n);
 		tmp = ft_llitoa(oct);
 	}
@@ -125,5 +127,7 @@ void			print_oct(t_pf_item *pfi, intmax_t n)
 		print_oct_precision(pfi, tmp, FALSE);
 	else
 		print_oct_bis(pfi, tmp);
-	free(tmp);
+	if (ft_strcmp(tmp, "9223372036854775807") != 0
+		&& ft_strcmp(tmp, "9223372036854775808") != 0)
+		free(tmp);
 }

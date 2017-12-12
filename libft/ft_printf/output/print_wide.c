@@ -62,21 +62,15 @@ void					print_wide_char(t_pf_item *pfi, wint_t wide)
 	}
 }
 
-size_t				bytesInWCharStr(wchar_t *wstr)
-{
-	size_t len;
-	
-	wchar_t *p = wstr;
-	while(*p != 0) p++;
-	
-	len = (char *)p - (char *)wstr;
-	return len;
-}
-
 void					print_wide_string(t_pf_item *pfi, wchar_t *ws)
 {
 	int				i;
 
+	if (MB_CUR_MAX == 1)
+	{
+		pfi->bytes = -1;
+		return ;
+	}
 	if (!ws)
 	{
 		ft_putstr("(null)");

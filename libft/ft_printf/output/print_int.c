@@ -61,6 +61,9 @@ void				pr_int_precision(t_pf_item *pfi, intmax_t num, int prcsn)
 	else
 		ft_putstr(test);
 	pfi->bytes += int_length(num);
+	if (ft_strcmp(test, "9223372036854775807") != 0
+		&& ft_strcmp(test, "9223372036854775808") != 0)
+		free(test);
 }
 
 void				pr_int_field_w(t_pf_item *pfi, intmax_t num, int prcsn)
@@ -113,6 +116,9 @@ void				print_int_bis(t_pf_item *pfi)
 	else
 		ft_putstr(test);
 	pfi->bytes += int_length(pfi->num);
+	if (ft_strcmp(test, "9223372036854775807") != 0
+		&& ft_strcmp(test, "9223372036854775808") != 0)
+		free(test);
 }
 
 void				print_int(t_pf_item *pfi, intmax_t num)

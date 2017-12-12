@@ -111,7 +111,6 @@ typedef struct		s_pf_item
 	t_pf_flags		*flags;
 	t_pf_lmods		*lenmods;
 	t_pf_cspecs		*cspecs;
-	char			c_error;
 	int				field_w;
 	int				precision;
 	int				bytes;
@@ -265,5 +264,6 @@ void				ft_strrev(char *s);
 char				*ft_strupper(char *s);
 char				*ft_strlower(char *s);
 char				*ft_llitoa(intmax_t n);
+void				free_pfi(t_pf_item *pfi);
 
 #endif

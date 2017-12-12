@@ -124,7 +124,6 @@ SRC = ft_libft/ft_atoi.c \
 		ft_printf/utils/converters/ft_dec_to_hex_max.c \
 		ft_printf/utils/converters/ft_dec_to_oct.c \
 		ft_printf/utils/converters/ft_lltoa.c \
-		ft_printf/utils/checks/check_conversions.c \
 		ft_printf/utils/checks/ft_isconversion.c \
 		ft_printf/utils/checks/ft_isflag.c \
 		ft_printf/utils/checks/ft_islmod.c \
@@ -138,6 +137,7 @@ SRC = ft_libft/ft_atoi.c \
 		ft_printf/handlers/handle_len_mod.c \
 		ft_printf/handlers/handle_conversion.c \
 		ft_printf/inits/init_pfi.c \
+		ft_printf/inits/free_pfi.c \
 
 
 OBJ = $(SRC:.c=.o)

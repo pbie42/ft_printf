@@ -36,7 +36,7 @@ int						ft_printf(const char *format, ...)
 	pf->bytes = 0;
 	pf->format = format;
 	b = 0;
-	while (pf->format[++pf->pos])
+	while (pf->format[++pf->pos] && pf->bytes != -1)
 		if (pf->format[pf->pos] == '%' && !pf->format[pf->pos + 1])
 			;
 		else if (pf->format[pf->pos] == '%' && pf->format[pf->pos + 1]
@@ -48,6 +48,8 @@ int						ft_printf(const char *format, ...)
 		else
 			putchar_byte(pf);
 	va_end(args);
+	if (pf->bytes == -1)
+		return (-1);
 	b = pf->bytes;
 	free(pf);
 	return (b);
