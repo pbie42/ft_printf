@@ -62,22 +62,36 @@ void					print_wide_char(t_pf_item *pfi, wint_t wide)
 	}
 }
 
-void					print_wide_string(t_pf_item *pfi, wchar_t *ws)
+int						get_wide_char_length(wint_t wide)
 {
-	int				i;
-
-	if (MB_CUR_MAX == 1)
-	{
-		pfi->bytes = -1;
-		return ;
-	}
-	if (!ws)
-	{
-		ft_putstr("(null)");
-		pfi->bytes += ft_strlen("(null)");
-		return ;
-	}
-	i = -1;
-	while (ws[++i])
-		print_wide_char(pfi, ws[i]);
+	if (wide <= 0x7F)
+		return (1);
+	else if (wide <= 0x7FF)
+		return (2);
+	else if (wide <= 0xFFFF)
+		return (3);
+	else if (wide <= 0x10FFFF)
+		return (4);
+	else
+		return (0);
 }
+
+// void					print_wide_string(t_pf_item *pfi, wchar_t *ws)
+// {
+// 	int				i;
+
+// 	if (MB_CUR_MAX == 1)
+// 	{
+// 		pfi->bytes = -1;
+// 		return ;
+// 	}
+// 	if (!ws)
+// 	{
+// 		ft_putstr("(null)");
+// 		pfi->bytes += ft_strlen("(null)");
+// 		return ;
+// 	}
+// 	i = -1;
+// 	while (ws[++i])
+// 		print_wide_char(pfi, ws[i]);
+// }

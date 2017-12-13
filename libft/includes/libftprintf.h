@@ -265,5 +265,6 @@ char				*ft_strupper(char *s);
 char				*ft_strlower(char *s);
 char				*ft_llitoa(intmax_t n);
 void				free_pfi(t_pf_item *pfi);
+int						get_wide_char_length(wint_t wide);
 
 #endif
