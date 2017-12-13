@@ -30,8 +30,19 @@ void				print_precision(t_pf_item *pfi, char *s)
 	else if (ft_strcmp(s, "") != 0)
 	{
 		if (pfi->lenmods->p && pfi->precision == 0)
-			while (s[i++])
-				ft_putchar(' ');
+		{
+			if (ft_strcmp(s, "(null)") == 0)
+			{
+				i++;
+				pfi->bytes -= 1;
+			}
+			if (pfi->flags->zero)
+				while (s[i++])
+					ft_putchar('0');
+			else
+				while (s[i++])
+					ft_putchar(' ');
+		}
 		else
 			ft_putstr(s);
 		pfi->bytes += ft_strlen(s);
@@ -76,6 +87,7 @@ void				print_field_w(t_pf_item *pfi, char *s)
 	{
 		while (i++ <= width)
 		{
+			// ft_putendl("in here?");
 			if (pfi->flags->zero)
 				ft_putchar('0');
 			else

@@ -17,6 +17,10 @@ void			print_hex_precision(t_pf_item *pfi, char *num, t_bool field, int prcsn)
 	int			i;
 	int			len;
 
+	if (field == FALSE && pfi->cspecs->x && pfi->flags->hash && pfi->lenmods->p)
+		ft_putstr("0x");
+	if (field == FALSE && pfi->cspecs->lg_x && pfi->flags->hash && pfi->lenmods->p)
+		ft_putstr("0X");
 	i = pfi->precision;
 	len = ft_strlen(num);
 	while (i-- > len)
