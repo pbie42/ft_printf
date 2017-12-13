@@ -26,10 +26,10 @@ int				main(void){
 
 	// ft_putendl(setlocale(LC_CTYPE, NULL));
 
-	if ((i = printf("real: %o", LONG_MAX)))
+	if ((i = printf("real: %O", LONG_MIN)))
 		perror("printf");
 	ft_putchar('\n');
-	x = ft_printf("mine: %o", LONG_MAX);
+	x = ft_printf("mine: %O", LONG_MIN);
 	ft_putchar('\n');
 	ft_putendlnbr("real is ", i);
 	ft_putendlnbr("mine is ", x);
