@@ -17,7 +17,8 @@ void				print_address_precision(t_pf_item *pfi, char *num)
 	int				i;
 	int				len;
 
-	ft_putstr("0x");
+	if (!pfi->flags->zero)
+		ft_putstr("0x");
 	i = pfi->precision;
 	len = ft_strlen(num);
 	while (i-- > len)
@@ -75,6 +76,8 @@ void				print_address(t_pf_item *pfi, long int num)
 
 	pfi->bytes += 2;
 	tmp = ft_address_to_hex(num);
+	if (pfi->flags->zero)
+		ft_putstr("0x");
 	if (pfi->field_w > 0)
 	{
 		if (pfi->precision > pfi->field_w)
