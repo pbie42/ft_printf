@@ -97,7 +97,12 @@ void			print_oct(t_pf_item *pfi, intmax_t n)
 	char		*tmp;
 	intmax_t			oct;
 
-	if ((long)n == LONG_MAX)
+	if (n == LONG_MAX && !pfi->cspecs->lg_o)
+	{
+		tmp = (char *)malloc(sizeof(char) * ft_strlen("37777777777") + 1);
+		tmp = ft_strcpy(tmp, "37777777777");
+	}
+	else if ((long)n == LONG_MAX)
 	{
 		tmp = (char *)malloc(sizeof(char) * ft_strlen("777777777777777777777") + 1);
 		tmp = ft_strcpy(tmp, "777777777777777777777");
@@ -111,6 +116,8 @@ void			print_oct(t_pf_item *pfi, intmax_t n)
 	{
 		if (!pfi->cspecs->lg_o && pfi->lenmods->hh)
 			n = (unsigned char)n;
+		if (!pfi->cspecs->lg_o && pfi->lenmods->h)
+			n = (unsigned short)n;
 		if (!pfi->cspecs->lg_o)
 			n = (unsigned int)n;
 		oct = ft_dec_to_oct(n);
