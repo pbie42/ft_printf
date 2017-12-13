@@ -18,6 +18,8 @@ void			print_oct_precision(t_pf_item *pfi, char *num, t_bool field)
 	int			len;
 
 	i = pfi->precision;
+	if (pfi->flags->hash)
+		i--;
 	len = ft_strlen(num);
 	while (i-- > len)
 		print_zero_byte(pfi);
