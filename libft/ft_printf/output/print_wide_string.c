@@ -43,11 +43,84 @@ int					get_ws_width(wchar_t *ws)
 	return (width);
 }
 
-void				print_wide_string(t_pf_item *pfi, wchar_t *ws)
+void				print_ws_precision(t_pf_item *pfi, wchar_t *ws)
+{
+	int				i;
+	int				width;
+
+	i = 0;
+	width = get_wide_char_length(ws[i]);
+	while (i <= pfi->precision && i < width && width <= pfi->precision)
+	{
+		// ft_putendlnbr("wide is ", width);
+		print_wide_char(pfi, ws[i]);
+		i++;
+		width += get_wide_char_length(ws[i]);
+	}
+	// ft_putendlnbr("i is ", i);
+	// ft_putendlnbr("wide is ", width - get_wide_char_length(ws[i]));
+}
+
+int				get_ws_precision(t_pf_item *pfi, wchar_t *ws)
+{
+	int				i;
+	int				width;
+
+	i = 0;
+	width = get_wide_char_length(ws[i]);
+	while (i <= pfi->precision && i < width && width <= pfi->precision)
+	{
+		i++;
+		width += get_wide_char_length(ws[i]);
+	}
+	return (width - get_wide_char_length(ws[i]));
+}
+
+void				print_ws_field_w(t_pf_item *pfi, wchar_t *ws)
 {
 	int			width;
+	int			prcsn;
 
-	width = 0;
+	prcsn = get_ws_width(ws);
+	if (pfi->precision > 0)
+		prcsn = get_ws_precision(pfi, ws);
+	else if (pfi->lenmods->p && pfi->precision == 0)
+		prcsn = 0;
+	width = pfi->field_w - prcsn - 1;;
+	if (!pfi->flags->minus)
+	{
+		while (width >= 0)
+		{
+			if (pfi->flags->zero)
+				ft_putchar('0');
+			else
+				ft_putchar(' ');
+			pfi->bytes++;
+			width--;
+		}
+	}
+	if (pfi->precision > 0)
+		print_ws_precision(pfi, ws);
+	else if (pfi->lenmods->p && pfi->precision == 0)
+		;
+	else
+		ft_putwidestr(pfi, ws);
+	if (pfi->flags->minus)
+	{
+		while (width >= 0)
+		{
+			if (pfi->flags->zero)
+				ft_putchar('0');
+			else
+				ft_putchar(' ');
+			pfi->bytes++;
+			width--;
+		}
+	}
+}
+
+void				print_wide_string(t_pf_item *pfi, wchar_t *ws)
+{
 	if (MB_CUR_MAX == 1)
 	{
 		pfi->bytes = -1;
@@ -61,84 +134,12 @@ void				print_wide_string(t_pf_item *pfi, wchar_t *ws)
 	}
 	if (pfi->field_w > 0)
 	{
-		if (!pfi->flags->minus)
-		{
-			width = pfi->field_w - get_ws_width(ws) - 1;
-			while (width >= 0)
-			{
-				if (pfi->flags->zero)
-					ft_putchar('0');
-				else
-					ft_putchar(' ');
-				pfi->bytes++;
-				width--;
-			}
-		}
-		ft_putwidestr(pfi, ws);
-		if (pfi->flags->minus)
-		{
-			width = pfi->field_w - get_ws_width(ws) - 1;
-			while (width >= 0)
-			{
-				if (pfi->flags->zero)
-					ft_putchar('0');
-				else
-					ft_putchar(' ');
-				pfi->bytes++;
-				width--;
-			}
-		}
+		print_ws_field_w(pfi, ws);
+	}
+	else if (pfi->precision > 0)
+	{
+		print_ws_precision(pfi, ws);
 	}
 	else
 		ft_putwidestr(pfi, ws);
 }
-
-// void				print_string(t_pf_item *pfi, char *s)
-// {
-// 	t_bool		sull;
-
-// 	sull = FALSE;
-// 	if (!s)
-// 	{
-// 		s = ft_strdup("(null)");
-// 		sull = TRUE;
-// 	}
-// 	if (pfi->field_w > 0)
-// 	{
-// 		if (pfi->precision > pfi->field_w)
-// 			print_precision(pfi, s);
-// 		else
-// 			print_field_w(pfi, s);
-// 	}
-// 	else if (pfi->precision > 0)
-// 		print_precision(pfi, s);
-// 	else if (ft_strcmp(s, "") != 0)
-// 	{
-// 		ft_putstr(s);
-// 		pfi->bytes += ft_strlen(s);
-// 	}
-// 	else
-// 		;
-// 	if (sull)
-// 		free(s);
-// }
-
-// void					print_wide_string(t_pf_item *pfi, wchar_t *ws)
-// {
-// 	int				i;
-
-// 	if (MB_CUR_MAX == 1)
-// 	{
-// 		pfi->bytes = -1;
-// 		return ;
-// 	}
-// 	if (!ws)
-// 	{
-// 		ft_putstr("(null)");
-// 		pfi->bytes += ft_strlen("(null)");
-// 		return ;
-// 	}
-// 	i = -1;
-// 	while (ws[++i])
-// 		print_wide_char(pfi, ws[i]);
-// }

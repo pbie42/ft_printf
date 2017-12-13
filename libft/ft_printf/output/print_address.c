@@ -87,6 +87,8 @@ void				print_address(t_pf_item *pfi, long int num)
 	}
 	else if (pfi->precision > 0)
 		print_address_precision(pfi, tmp);
+	else if (pfi->lenmods->p && pfi->precision == 0)
+		ft_putstr("0x");
 	else
 	{
 		ft_putstr("0x");
