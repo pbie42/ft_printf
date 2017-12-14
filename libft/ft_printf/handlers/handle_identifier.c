@@ -52,7 +52,7 @@ void					handle_identifier(t_pf *pf, va_list args)
 	}
 	while (ft_isflag(pf->format[pf->pos]))
 		handle_flag(pf, pfi);
-	if (ft_islmod(pf->format[pf->pos]))
+	while (ft_islmod(pf->format[pf->pos]))
 		handle_len_mod(pf, pfi);
 	while (ft_isflag(pf->format[pf->pos]))
 		handle_flag(pf, pfi);

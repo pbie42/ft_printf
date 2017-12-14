@@ -77,6 +77,8 @@ void				pr_int_field_w(t_pf_item *pfi, intmax_t num, int prcsn)
 	{
 		if (pfi->flags->plus && num >= 0 && !pfi->flags->zero)
 			print_plus_byte(pfi);
+		if (pfi->flags->plus && num >= 0 && pfi->flags->zero && pfi->flags->minus)
+			print_plus_byte(pfi);
 		pr_int_precision(pfi, num, prcsn);
 		while (i++ <= width)
 			print_space_byte(pfi);

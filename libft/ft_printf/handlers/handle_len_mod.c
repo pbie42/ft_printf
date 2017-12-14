@@ -22,7 +22,10 @@ void					handle_len_mod(t_pf *pf, t_pf_item *pfi)
 			++pf->pos;
 		}
 		else
+		{
 			pfi->lenmods->h = TRUE;
+			++pf->pos;
+		}
 	}
 	else if (pf->format[pf->pos] == 'l')
 	{
@@ -32,11 +35,20 @@ void					handle_len_mod(t_pf *pf, t_pf_item *pfi)
 			++pf->pos;
 		}
 		else
+		{
 			pfi->lenmods->l = TRUE;
+			++pf->pos;
+		}
 	}
 	else if (pf->format[pf->pos] == 'j')
+	{
 		pfi->lenmods->j = TRUE;
+		++pf->pos;
+	}
 	else if (pf->format[pf->pos] == 'z')
+	{
 		pfi->lenmods->z = TRUE;
-	++pf->pos;
+		++pf->pos;
+	}
+	// ++pf->pos;
 }
