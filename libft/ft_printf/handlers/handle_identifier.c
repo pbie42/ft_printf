@@ -14,12 +14,14 @@
 
 t_bool				valid_identifier(t_pf_item *pfi)
 {
+	// ft_putendl("in hurr");
 	if (!pfi->cspecs->s && !pfi->cspecs->lg_s && !pfi->cspecs->p
 		&& !pfi->cspecs->d && !pfi->cspecs->lg_d && !pfi->cspecs->i
 		&& !pfi->cspecs->o && !pfi->cspecs->lg_o && !pfi->cspecs->u
 		&& !pfi->cspecs->lg_u && !pfi->cspecs->x && !pfi->cspecs->lg_x
-		&& !pfi->cspecs->c && !pfi->cspecs->lg_c)
+		&& !pfi->cspecs->c && !pfi->cspecs->lg_c && !pfi->cspecs->percent)
 		return (FALSE);
+	// ft_putendl("past hurr");
 	return (TRUE);
 }
 
@@ -35,10 +37,10 @@ void					handle_error(t_pf *pf, t_pf_item *pfi)
 void					handle_identifier(t_pf *pf, va_list args)
 {
 	t_pf_item		*pfi;
-	t_bool			lenmod_error;
+	t_bool			error;
 
 	pfi = NULL;
-	lenmod_error = FALSE;
+	error = FALSE;
 	++pf->pos;
 	pfi = init_pfi(pfi);
 	while (ft_isflag(pf->format[pf->pos]))
@@ -54,29 +56,32 @@ void					handle_identifier(t_pf *pf, va_list args)
 	}
 	while (ft_isflag(pf->format[pf->pos]))
 		handle_flag(pf, pfi);
-	while (ft_islmod(pf->format[pf->pos]) && !lenmod_error)
+	while (ft_islmod(pf->format[pf->pos]) && !error)
 	{
 		if (pfi->lenmods->l == TRUE)
-			lenmod_error = TRUE;
+			error = TRUE;
 		else
 			handle_len_mod(pf, pfi);
 	}
-	while (ft_isflag(pf->format[pf->pos]) && !lenmod_error)
+	while (ft_isflag(pf->format[pf->pos]) && !error)
 		handle_flag(pf, pfi);
-	if (ft_isconversion(pf->format[pf->pos]) && !lenmod_error)
+	if (ft_isconversion(pf->format[pf->pos]) && !error)
 		handle_conversion(pf, pfi);
-	else if (lenmod_error)
+	else if (error)
 		;
+	else if (!valid_identifier(pfi) && pf->format[pf->pos] != 'Z' && pf->format[pf->pos] != 'R'
+	&& pf->format[pf->pos - 1] && pf->format[pf->pos - 1] != '%')
+		error = TRUE;
 	else
 		print_invalid_identifier(pf, pfi);
 	// if (!valid_identifier(pfi))
 	// 	print_invalid_identifier(pf, pfi);
-	// else
-	print_identifier(pfi, args);
+	if (!error)
+		print_identifier(pfi, args);
 	// print_pfi(pfi);
-	if (pfi->bytes == -1 && !lenmod_error)
+	if (pfi->bytes == -1 && !error)
 		pf->bytes = -1;
-	else if (lenmod_error)
+	else if (error)
 	{
 		pfi->bytes = 0;
 		pf->len_error = TRUE;
