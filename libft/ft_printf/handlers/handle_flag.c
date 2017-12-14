@@ -39,7 +39,7 @@ void					handle_flag(t_pf *pf, t_pf_item *pfi)
 	}
 	while (pf->format[pf->pos] == '0')
 	{
-		pfi->flags->zero = TRUE;
+		pfi->flags->zero = !pfi->flags->zero;
 		pf->pos++;
 	}
 }
