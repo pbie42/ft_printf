@@ -121,6 +121,7 @@ typedef struct		s_pf
 {
 	int				pos;
 	int				bytes;
+	t_bool			len_error;
 	const char		*format;
 }					t_pf;
 

@@ -35,8 +35,10 @@ void					handle_error(t_pf *pf, t_pf_item *pfi)
 void					handle_identifier(t_pf *pf, va_list args)
 {
 	t_pf_item		*pfi;
+	t_bool			lenmod_error;
 
 	pfi = NULL;
+	lenmod_error = FALSE;
 	++pf->pos;
 	pfi = init_pfi(pfi);
 	while (ft_isflag(pf->format[pf->pos]))
@@ -52,12 +54,19 @@ void					handle_identifier(t_pf *pf, va_list args)
 	}
 	while (ft_isflag(pf->format[pf->pos]))
 		handle_flag(pf, pfi);
-	while (ft_islmod(pf->format[pf->pos]))
-		handle_len_mod(pf, pfi);
-	while (ft_isflag(pf->format[pf->pos]))
+	while (ft_islmod(pf->format[pf->pos]) && !lenmod_error)
+	{
+		if (pfi->lenmods->l == TRUE)
+			lenmod_error = TRUE;
+		else
+			handle_len_mod(pf, pfi);
+	}
+	while (ft_isflag(pf->format[pf->pos]) && !lenmod_error)
 		handle_flag(pf, pfi);
-	if (ft_isconversion(pf->format[pf->pos]))
+	if (ft_isconversion(pf->format[pf->pos]) && !lenmod_error)
 		handle_conversion(pf, pfi);
+	else if (lenmod_error)
+		;
 	else
 		print_invalid_identifier(pf, pfi);
 	// if (!valid_identifier(pfi))
@@ -65,8 +74,13 @@ void					handle_identifier(t_pf *pf, va_list args)
 	// else
 	print_identifier(pfi, args);
 	// print_pfi(pfi);
-	if (pfi->bytes == -1)
+	if (pfi->bytes == -1 && !lenmod_error)
 		pf->bytes = -1;
+	else if (lenmod_error)
+	{
+		pfi->bytes = 0;
+		pf->len_error = TRUE;
+	}
 	else
 		pf->bytes += pfi->bytes;
 	free_pfi(pfi);

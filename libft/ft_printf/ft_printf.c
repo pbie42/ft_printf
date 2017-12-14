@@ -48,6 +48,7 @@ int						ft_printf(const char *format, ...)
 	pf->pos = -1;
 	pf->bytes = 0;
 	pf->format = format;
+	pf->len_error = FALSE;
 	b = 0;
 	fine = TRUE;
 	while (pf->format[++pf->pos] && pf->bytes != -1 && fine)
@@ -58,7 +59,11 @@ int						ft_printf(const char *format, ...)
 			fine = FALSE;
 		else if (pf->format[pf->pos] == '%' && pf->format[pf->pos + 1]
 			&& pf->format[pf->pos + 1] != '%')
-			handle_identifier(pf, args);
+			{
+				handle_identifier(pf, args);
+				if (pf->len_error)
+					fine = FALSE;
+			}
 		else if (pf->format[pf->pos] == '%' && pf->format[pf->pos + 1]
 			&& pf->format[pf->pos + 1] == '%')
 			inc_putchar_byte(pf);
