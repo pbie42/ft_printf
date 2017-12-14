@@ -24,11 +24,24 @@ void					putchar_byte(t_pf *pf)
 	pf->bytes++;
 }
 
+t_bool				nothing_else(t_pf *pf)
+{
+	int				i;
+
+	i = pf->pos + 2;
+	while(!ft_not_conversion_space(pf->format[i]) || ft_islmod(pf->format[i]))
+		i++;
+	if (i == (int)ft_strlen(pf->format))
+		return (TRUE);
+	return (FALSE);
+}
+
 int						ft_printf(const char *format, ...)
 {
 	t_pf				*pf;
 	va_list				args;
 	int					b;
+	t_bool				fine;
 
 	va_start(args, format);
 	pf = (t_pf *)malloc(sizeof(t_pf) * 1);
@@ -36,9 +49,13 @@ int						ft_printf(const char *format, ...)
 	pf->bytes = 0;
 	pf->format = format;
 	b = 0;
-	while (pf->format[++pf->pos] && pf->bytes != -1)
+	fine = TRUE;
+	while (pf->format[++pf->pos] && pf->bytes != -1 && fine)
 		if (pf->format[pf->pos] == '%' && !pf->format[pf->pos + 1])
 			;
+		else if (pf->format[pf->pos] == '%' && pf->format[pf->pos + 1] == ' '
+			&& nothing_else(pf))
+			fine = FALSE;
 		else if (pf->format[pf->pos] == '%' && pf->format[pf->pos + 1]
 			&& pf->format[pf->pos + 1] != '%')
 			handle_identifier(pf, args);

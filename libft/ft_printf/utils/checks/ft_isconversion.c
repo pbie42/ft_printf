@@ -20,3 +20,12 @@ int					ft_isconversion(char c)
 		return (1);
 	return (0);
 }
+
+t_bool				ft_not_conversion_space(char c)
+{
+	if (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D' || c == 'i' ||
+		c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' || c == 'X' ||
+		c == 'c' || c == 'C' || c == '%' || c == ' ')
+		return (FALSE);
+	return (TRUE);
+}
