@@ -101,6 +101,7 @@ void			print_hex(t_pf_item *pfi, intmax_t num)
 	char		*tmp;
 	int			prcsn;
 
+	// ft_putendl("here homie");
 	if (!pfi->lenmods->hh && !pfi->lenmods->l
 		&& !pfi->lenmods->ll && !pfi->lenmods->j && !pfi->lenmods->z
 		&& !pfi->cspecs->lg_d)

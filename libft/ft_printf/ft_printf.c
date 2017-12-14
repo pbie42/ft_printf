@@ -31,7 +31,7 @@ t_bool				nothing_else(t_pf *pf)
 	i = pf->pos + 2;
 	while(!ft_not_conversion_space(pf->format[i]) || ft_islmod(pf->format[i]))
 		i++;
-	if (i == (int)ft_strlen(pf->format))
+	if (i == (int)ft_strlen(pf->format) && !ft_isconversion(pf->format[i - 1]))
 		return (TRUE);
 	return (FALSE);
 }

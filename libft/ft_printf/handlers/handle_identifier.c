@@ -43,13 +43,19 @@ void					handle_identifier(t_pf *pf, va_list args)
 		handle_flag(pf, pfi);
 	if (ft_isdigit(pf->format[pf->pos]))
 		handle_field_width(pf, pfi);
+	while (ft_isflag(pf->format[pf->pos]))
+		handle_flag(pf, pfi);
 	if (pf->format[pf->pos] == '.')
 	{
 		pfi->lenmods->p = TRUE;
 		handle_precision(pf, pfi);
 	}
+	while (ft_isflag(pf->format[pf->pos]))
+		handle_flag(pf, pfi);
 	if (ft_islmod(pf->format[pf->pos]))
 		handle_len_mod(pf, pfi);
+	while (ft_isflag(pf->format[pf->pos]))
+		handle_flag(pf, pfi);
 	if (ft_isconversion(pf->format[pf->pos]))
 		handle_conversion(pf, pfi);
 	else
