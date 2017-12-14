@@ -49,9 +49,9 @@ void					handle_identifier(t_pf *pf, va_list args)
 		handle_field_width(pf, pfi);
 	while (ft_isflag(pf->format[pf->pos]))
 		handle_flag(pf, pfi);
-	if (pf->format[pf->pos] == '.')
+	while (pf->format[pf->pos] == '.')
 	{
-		pfi->lenmods->p = TRUE;
+		pfi->lenmods->p = !pfi->lenmods->p;
 		handle_precision(pf, pfi);
 	}
 	while (ft_isflag(pf->format[pf->pos]))
