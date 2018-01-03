@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:25:33 by pbie              #+#    #+#             */
-/*   Updated: 2017/12/07 16:52:46 by pbie             ###   ########.fr       */
+/*   Updated: 2018/01/03 12:57:31 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,13 +260,13 @@ char				*ft_dec_to_hex(uintmax_t n);
 char				*ft_dec_to_hex_long(t_ulli n);
 char				*ft_dec_to_hex_max(uintmax_t n);
 char				*ft_address_to_hex(long int n);
-intmax_t					ft_dec_to_oct(intmax_t decimal_number);
+intmax_t			ft_dec_to_oct(intmax_t decimal_number);
 void				ft_strrev(char *s);
 char				*ft_strupper(char *s);
 char				*ft_strlower(char *s);
 char				*ft_llitoa(intmax_t n);
 void				free_pfi(t_pf_item *pfi);
-int						get_wide_char_length(wint_t wide);
+int					get_wide_char_length(wint_t wide);
 t_bool				ft_not_conversion_space(char c);
 
 #endif

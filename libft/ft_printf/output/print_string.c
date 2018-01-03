@@ -12,12 +12,34 @@
 
 #include "libftprintf.h"
 
+void				print_precision_bis(t_pf_item *pfi, char *s)
+{
+	if (pfi->lenmods->p && pfi->precision == 0)
+	{
+		if (ft_strcmp(s, "(null)") == 0)
+		{
+			i++;
+			pfi->bytes -= 1;
+		}
+		if (pfi->flags->zero)
+			while (s[i++])
+				ft_putchar('0');
+		else
+			while (s[i++])
+				ft_putchar(' ');
+	}
+	else
+		ft_putstr(s);
+	pfi->bytes += ft_strlen(s);
+}
+
 void				print_precision(t_pf_item *pfi, char *s)
 {
 	int				i;
 
 	i = -1;
-	if (pfi->precision > pfi->field_w && pfi->field_w > 0 && (int)ft_strlen(s) < pfi->field_w)
+	if (pfi->precision > pfi->field_w && pfi->field_w > 0
+		&& (int)ft_strlen(s) < pfi->field_w)
 		while (s[++i] && i < pfi->precision)
 			print_space_byte(pfi);
 	i = 0;
@@ -28,25 +50,7 @@ void				print_precision(t_pf_item *pfi, char *s)
 			pfi->bytes++;
 		}
 	else if (ft_strcmp(s, "") != 0)
-	{
-		if (pfi->lenmods->p && pfi->precision == 0)
-		{
-			if (ft_strcmp(s, "(null)") == 0)
-			{
-				i++;
-				pfi->bytes -= 1;
-			}
-			if (pfi->flags->zero)
-				while (s[i++])
-					ft_putchar('0');
-			else
-				while (s[i++])
-					ft_putchar(' ');
-		}
-		else
-			ft_putstr(s);
-		pfi->bytes += ft_strlen(s);
-	}
+		print_precision_bis(pfi, s);
 	else
 		;
 }
@@ -87,7 +91,6 @@ void				print_field_w(t_pf_item *pfi, char *s)
 	{
 		while (i++ <= width)
 		{
-			// ft_putendl("in here?");
 			if (pfi->flags->zero)
 				ft_putchar('0');
 			else
@@ -122,8 +125,6 @@ void				print_string(t_pf_item *pfi, char *s)
 		ft_putstr(s);
 		pfi->bytes += ft_strlen(s);
 	}
-	else
-		;
 	if (sull)
 		free(s);
 }

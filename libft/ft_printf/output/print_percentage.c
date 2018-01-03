@@ -15,5 +15,4 @@
 void				print_percentage(t_pf_item *pfi)
 {
 	print_char(pfi, '%');
-	// pfi->bytes++;
 }

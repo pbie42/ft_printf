@@ -25,7 +25,7 @@ void					print_char_field_w(t_pf_item *pfi, unsigned char c)
 	}
 	else
 	{
-		while(i++ < pfi->field_w - 1)
+		while (i++ < pfi->field_w - 1)
 		{
 			if (pfi->flags->zero)
 				ft_putchar('0');
