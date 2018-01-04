@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-void				print_precision_bis(t_pf_item *pfi, char *s)
+void				print_precision_bis(t_pf_item *pfi, char *s, int i)
 {
 	if (pfi->lenmods->p && pfi->precision == 0)
 	{
@@ -50,7 +50,7 @@ void				print_precision(t_pf_item *pfi, char *s)
 			pfi->bytes++;
 		}
 	else if (ft_strcmp(s, "") != 0)
-		print_precision_bis(pfi, s);
+		print_precision_bis(pfi, s, i);
 	else
 		;
 }

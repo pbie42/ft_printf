@@ -75,23 +75,3 @@ int						get_wide_char_length(wint_t wide)
 	else
 		return (0);
 }
-
-// void					print_wide_string(t_pf_item *pfi, wchar_t *ws)
-// {
-// 	int				i;
-
-// 	if (MB_CUR_MAX == 1)
-// 	{
-// 		pfi->bytes = -1;
-// 		return ;
-// 	}
-// 	if (!ws)
-// 	{
-// 		ft_putstr("(null)");
-// 		pfi->bytes += ft_strlen("(null)");
-// 		return ;
-// 	}
-// 	i = -1;
-// 	while (ws[++i])
-// 		print_wide_char(pfi, ws[i]);
-// }

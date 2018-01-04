@@ -12,6 +12,8 @@
 
 #include "libftprintf.h"
 
+#define MAXUL "18446744073709551615"
+
 void					pr_int_us_precision(t_pf_item *pfi, uintmax_t num, int prcsn)
 {
 	int					i;
@@ -25,8 +27,8 @@ void					pr_int_us_precision(t_pf_item *pfi, uintmax_t num, int prcsn)
 		print_zero_byte(pfi);
 	if (num == ULONG_MAX)
 	{
-		tmp = (char *)malloc(sizeof(char) * ft_strlen("18446744073709551615") + 1);
-		tmp = ft_strcpy(tmp, "18446744073709551615");
+		tmp = (char *)malloc(sizeof(char) * ft_strlen(MAXUL) + 1);
+		tmp = ft_strcpy(tmp, MAXUL);
 	}
 	else
 		tmp = ft_llitoa(num);
@@ -113,8 +115,8 @@ void					print_unsigned_int(t_pf_item *pfi, intmax_t num)
 	{
 		if ((unsigned long)num == ULONG_MAX)
 		{
-			tmp = (char *)malloc(sizeof(char) * ft_strlen("18446744073709551615") + 1);
-			tmp = ft_strcpy(tmp, "18446744073709551615");
+			tmp = (char *)malloc(sizeof(char) * ft_strlen(MAXUL) + 1);
+			tmp = ft_strcpy(tmp, MAXUL);
 		}
 		else
 			tmp = ft_llitoa(num);
