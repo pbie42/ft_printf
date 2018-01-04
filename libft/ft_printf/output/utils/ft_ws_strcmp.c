@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_pfi.c                                         :+:      :+:    :+:   */
+/*   ft_ws_strcmp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/12 13:17:17 by pbie              #+#    #+#             */
-/*   Updated: 2017/12/12 15:16:26 by pbie             ###   ########.fr       */
+/*   Created: 2018/01/04 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2018/01/04 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void				free_pfi(t_pf_item *pfi)
+int			ft_ws_strcmp(const wchar_t *s1, const wchar_t *s2)
 {
-	free(pfi->cspecs);
-	free(pfi->flags);
-	free(pfi->lenmods);
-	free(pfi);
+	unsigned int	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s1[i] == s2[i])
+		i++;
+	return ((wchar_t)s1[i] - (wchar_t)s2[i]);
 }

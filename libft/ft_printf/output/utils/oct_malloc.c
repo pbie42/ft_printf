@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_pfi.c                                         :+:      :+:    :+:   */
+/*   oct_malloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/12 13:17:17 by pbie              #+#    #+#             */
-/*   Updated: 2017/12/12 15:16:26 by pbie             ###   ########.fr       */
+/*   Created: 2018/01/04 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2018/01/04 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void				free_pfi(t_pf_item *pfi)
+char				*oct_malloc(char *str)
 {
-	free(pfi->cspecs);
-	free(pfi->flags);
-	free(pfi->lenmods);
-	free(pfi);
+	char			*tmp;
+
+	tmp = (char *)malloc(sizeof(char) * ft_strlen(str) + 1);
+	tmp = ft_strcpy(tmp, str);
+	return (tmp);
 }

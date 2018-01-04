@@ -261,6 +261,7 @@ char				*ft_dec_to_hex_long(t_ulli n);
 char				*ft_dec_to_hex_max(uintmax_t n);
 char				*ft_address_to_hex(long int n);
 intmax_t			ft_dec_to_oct(intmax_t decimal_number);
+uintmax_t			unsigned_int_setup(t_pf_item *pfi, intmax_t num);
 void				ft_strrev(char *s);
 char				*ft_strupper(char *s);
 char				*ft_strlower(char *s);
@@ -268,5 +269,10 @@ char				*ft_llitoa(intmax_t n);
 void				free_pfi(t_pf_item *pfi);
 int					get_wide_char_length(wint_t wide);
 t_bool				ft_not_conversion_space(char c);
+int					ft_ws_strcmp(const wchar_t *s1, const wchar_t *s2);
+int					ft_ws_width(wchar_t *ws);
+int					print_zero_space_ws(t_pf_item *pfi, int width);
+char				*oct_malloc(char *str);
+char				*oct_change(t_pf_item *pfi, intmax_t n);
 
 #endif
